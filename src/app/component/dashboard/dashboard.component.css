@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+/* General Styles */
+a {
+    cursor: pointer;
+    text-decoration: none;  
+    font-family: 'Poppins', sans-serif;
+}
+
+li {
+    list-style: none;
+}
+
+h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.275rem;
+    color: var(--bs-emphasis-color);
+}
+
+/* Layout for Admin Dashboard */
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+#sidebar {
+    min-width: 264px;
+    max-width: 264px;
+    background: var(--bs-dark);
+    transition: all 0.35s ease-in-out;
+}
+
+.main {
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    overflow: hidden;
+    transition: all 0.35s ease-in-out;
+}
+
+/* Sidebar Elements Style */
+
+.sidebar-logo {
+    padding: 1.15rem;
+}
+
+.sidebar-logo a {
+    color: #e9ecef;
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+a.sidebar-link {
+    display: block;
+    padding: 0.625rem 1.625rem;
+    color: #e9ecef;
+    font-size: 0.875rem;
+    position: relative;
+}
+
+/* Accordion Styles */
+    /* Closed state */
+    .accordion-button.collapsed {
+        background-color: #f8f9fa;
+        color: inherit;
+    }
+
+    /* Opened state */
+    .accordion-button:not(.collapsed) {
+        background-color: var(--bs-warning-bg-subtle);
+        color: var(--bs-warning-text);
+    }
+
+    /* Sidebar Toggle */
+    #sidebar.collapsed {
+        margin-left: -264px;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 767.98px) {
+        .js-sidebar {
+            margin-left: -264px;
+        }
+        
+        #sidebar.collapsed {
+            margin-left: 0;
+        }
+        
+        .navbar, footer {
+            width: 100vw;
+        }
+    }
+
+/* Navbar and Footer */
+.navbar-expand .navbar-nav {
+    margin-left: auto;
+}
+
+.content {
+    flex: 1;
+    width: 100vw;
+}
+
+@media (min-width: 768px) {
+    .content {
+        width: auto;
+        max-width: auto;
+    }
+}
+
+/*image size*/
+img {
+    width: 30px;
+    height: 30px;
+  }

@@ -1,0 +1,30 @@
+.card-body {
+    position: relative; /* Pour positionner l'icône dans le coin */
+}
+
+.trash-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+.trash-icon:hover{
+    transform: scale(1.05);
+}
+
+.box-image{
+    transition: transform 0.5s ease;
+}
+
+.box-image:hover{
+    transform: translateY(-20px);
+}
+.card-body:hover .trash-icon {
+    opacity: 1; /* Afficher l'icône au survol */
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}

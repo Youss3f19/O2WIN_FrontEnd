@@ -1,0 +1,58 @@
+<div class="p-3">
+    <table class="table table-striped table-hover text-center">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">description</th>
+                <th scope="col">Price</th>
+                <th scope="col">Categorie(s)</th>
+                <th scope="col">stock</th>
+                <th scope="col">rarity</th>
+                <th scope="col">Updates</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @for (p of products; track $index) {
+            <tr>
+                <td>
+                    @if(p.productImage) {
+                        <div>
+                            <img [src]="getImagePath(p.productImage)" width="100" height="100" alt="{{ p.productImage }}" />
+                        </div>
+                    }@else {
+                        <div>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUrgu4a7W_OM8LmAuN7Prk8dzWXm7PVB_FmA&s" width="30" height="30" alt="{{ p.name }}" />
+                        </div>
+                    }
+                    {{p.name}}
+                </td>
+                <td>
+                    {{p.description}}
+                </td>
+                <td>
+                    {{p.price}}
+                </td>
+                <td>
+                    @for (cat of p.categories; track $index) {
+                    <span>{{cat.name}}</span> <br>
+                    }
+                </td>
+                <td>
+                    {{p.stock}}
+                </td>
+                <td>
+                    {{p.rarity.name}}
+                </td>
+                <td>
+                    <button type="button" class="btn rotate" [routerLink]="['/dashboard/update-product',p._id]">
+                        <img src="images/tool-dynamic-color.png" width="50" height="50" alt="">
+                    </button>
+                    <button type="button" class="btn rotate">
+                        <img src="images/trash-can-dynamic-color.png" width="50" height="50" alt="">
+                    </button>                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

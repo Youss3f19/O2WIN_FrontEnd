@@ -1,0 +1,38 @@
+.rotate{
+    transition: all 500ms ease-in-out;
+}
+
+.rotate:hover{
+    transform: scale(0.8) rotate(360deg) ;
+    
+}
+.table {
+    border-radius: 10px;
+}
+
+/*-----rarity Colors-----*/
+.common-rarity {
+    background-color: #d3d3d3; 
+    color: #333; 
+  }
+  
+.uncommon-rarity {
+    background-color: #76c7c0;
+    color: #fff;
+  }
+  
+.rare-rarity {
+    background-color: #284089; 
+    color: #fff;
+  }
+  
+.epic-rarity {
+    background-color: #7d4b96; 
+    color: #fff;
+  }
+  
+.legendary-rarity {
+    background-color: goldenrod; 
+    color: #fff;
+  }
+/*------------------------*/

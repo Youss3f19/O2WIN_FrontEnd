@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap');
+
+*{
+  font-family: "Kode Mono", monospace;
+
+}
+.bg-gradient{
+    background-image: url(https://i.pinimg.com/originals/59/00/f6/5900f64c8f73b1eb1995686cae95678b.jpg) !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+
+/*-------form control------*/
+input.ng-invalid{
+  border-bottom: 3px solid red;
+}
+input.ng-valid{
+  border-bottom: 3px solid green;
+}
+/*--------------------------*/
+
+/*------button style----------*/
+
+
+.btn-53 {
+  background-color: #000000;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+}
+
+
+.btn-53 {
+  border: 1px solid;
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: block;
+  font-weight: 900;
+  overflow: hidden;
+  padding: 1.2rem 3rem;
+  position: relative;
+  text-transform: uppercase;
+}
+
+.btn-53 .original {
+  background: #ffffff;
+  color: #000;
+  display: grid;
+  inset: 0;
+  place-content: center;
+  position: absolute;
+  transition: transform 0.2s cubic-bezier(0.87, 0, 0.13, 1);
+}
+
+.btn-53:hover .original {
+  transform: translateY(100%);
+}
+
+.btn-53 .letters {
+  display: inline-flex;
+}
+
+.btn-53 span {
+  opacity: 0;
+  transform: translateY(-15px);
+  transition: transform 0.2s cubic-bezier(0.87, 0, 0.13, 1), opacity 0.2s;
+}
+
+
+
+.btn-53:hover span {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.btn-53:hover span:nth-child(2) {
+  transition-delay: 0.1s;
+}
+
+.btn-53:hover span:nth-child(3) {
+  transition-delay: 0.2s;
+}
+
+
+
+/*------------------------------------------*/

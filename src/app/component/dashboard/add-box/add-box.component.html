@@ -1,0 +1,116 @@
+<div class="container">
+    <div class="row d-flex justify-content-center p-3">
+        <div class="col-12 col-lg-6 ">
+            <div class="row justify-content-xl-center">
+                <div class="col-12 col-xl-11 ">
+                    <div class="bg-gradient border rounded shadow-sm overflow-hidden">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="fs-3 text-center pt-4 fw-bold">ADD BOX</div>
+                            </div>
+                        </div>
+                        <form [formGroup]="boxForm" (ngSubmit)="onSubmit()">
+                            <div class="row gy-4 gy-xl-3 p-4 p-xl-5">
+                                <div class="col-12">
+                                    <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" formControlName="name" id="name" name="name"
+                                        value="" required>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label for="price" class="form-label">Price <span
+                                            class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <img src="images/eth-dynamic-color.png" width="25" height="25" alt="">
+                                        </span>
+                                        <input type="number" class="form-control" id="price" name="price"
+                                            formControlName="price" value="" required>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label for="productLimit" class="form-label">ProductLimit</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <img src="images/flag-dynamic-color.png" width="25" height="25" alt="">
+
+                                        </span>
+                                        <input type="number" class="form-control" id="productLimit" name="productLimit"
+                                            formControlName="productLimit" value="">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <label for="categorie" class="form-label">Categorie</label>
+                                    <div formArrayName="category">
+                                        <div class="row">
+                                            @for (cat of categories; track $index ; let i = $index) {
+                                                <div class="col-4 d-flex align-items-center ">
+                                                    <input type="checkbox" [value]="cat._id"  [formControlName]="i" />
+                                                    <label class="ms-2">{{ cat.name }}</label>
+                                                </div>
+                                               
+                                            }
+                                        </div>
+                                     
+                                    </div>
+
+                                  
+                                </div>
+                                <div class="col-12">
+                                    <label for="message" class="form-label">Rarity 
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="row" formArrayName="rarityProbabilities">
+                                        @for (r of rarities; track $index ; let i = $index) {
+                                            <div class="col-4 d-flex flex-column"   [formGroupName]="i">
+                                                  <label>{{ r.name }}</label>
+                                                  <input class="form-control"  formControlName="probability" type="number" min="0" max="100"
+                                                        [ngClass]="{
+                                                            'is-invalid': boxForm.get('rarityProbabilities')?.hasError('probabilitySum') && boxForm.get('rarityProbabilities')?.touched
+                                                        }"
+                                                  />
+                                            </div>
+                                        }
+                                    </div>
+                                    @if (boxForm.get('rarityProbabilities')?.hasError('probabilitySum') && boxForm.get('rarityProbabilities')?.touched) {
+                                        <small class="text-danger" role="alert">
+                                            Probability sum must be 100%
+                                        </small>
+                                    }
+                                       
+                                
+                                </div>
+                                <div class="col-12">
+                                    <label for="image">Upload Image</label>
+                                    <input id="image" type="file" class="form-control" (change)="onFileChange($event)" accept=".png, .jpg, .jpeg" />
+                                
+                                </div>
+                                <div class="col-12 d-flex flex-column align-items-center">
+                                    @if (boxForm.invalid) {
+                                        <small class="text-danger">
+                                            Please fill out all required fields
+                                        </small>
+                                    }
+
+                                    <div class="d-grid w-100">
+                                        <button  class="btn-53" [disabled]="boxForm.invalid" >
+                                            <div class="original">ADD</div>
+                                            <div class="letters">
+
+                                                <span>A</span>
+                                                <span>D</span>
+                                                <span>D</span>
+
+                                            </div>
+                                        </button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
