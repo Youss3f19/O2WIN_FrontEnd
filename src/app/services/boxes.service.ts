@@ -27,5 +27,7 @@
       return this.http.get<Box>(this.API_URL + "getBoxById/" + boxId);
     }
     
-
+    deleteBox(boxId: string): Observable<Box>{
+      return this.http.delete<Box>(this.API_URL + "deleteBox/" + boxId);
+    }
   }

@@ -37,26 +37,29 @@
                 <td>
                     <ul class="list-group">
                         @for (r of box.rarityProbabilities ; track $index) {
-                        <li class="list-group-item" [ngClass]="{
-                            'common-rarity': r.rarity.name == 'Common',
-                            'uncommon-rarity': r.rarity.name == 'Uncommon',
-                            'rare-rarity': r.rarity.name == 'Rare',
-                            'epic-rarity': r.rarity.name == 'Epic',
-                            'legendary-rarity': r.rarity.name == 'Legendary'
-                          }">
-                            {{r.probability}}% {{r.rarity.name}}
-
-                        </li>
+                            @if (r.probability>0) {
+                                <li class="list-group-item" [ngClass]="{
+                                    'common-rarity': r.rarity.name == 'Common',
+                                    'uncommon-rarity': r.rarity.name == 'Uncommon',
+                                    'rare-rarity': r.rarity.name == 'Rare',
+                                    'epic-rarity': r.rarity.name == 'Epic',
+                                    'legendary-rarity': r.rarity.name == 'Legendary'
+                                  }">
+                                    {{r.probability}}% {{r.rarity.name}}
+        
+                                </li>
+                            }
+                       
 
                         }
                     </ul>
                 </td>
                 <td>
                     <button type="button" class="btn rotate" [routerLink]="['/dashboard/update-box',box._id]">
-                        <img src="images/tool-dynamic-color.png" width="50" height="50" alt="">
+                        <img src="images/setting-dynamic-premium.png" width="50" height="50" alt="">
                     </button>
-                    <button type="button" class="btn rotate">
-                        <img src="images/trash-can-dynamic-color.png" width="50" height="50" alt="">
+                    <button type="button" class="btn rotate" (click)="deleteBox(box._id)">
+                        <img src="images/trash-can-dynamic-premium.png" width="50" height="50" alt="">
                     </button>
 
                 </td>

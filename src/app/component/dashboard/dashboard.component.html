@@ -26,24 +26,32 @@
             <ul class=" list-unstyled accordion-collapse collapse"  id="flush-collapsetwo"  data-bs-parent="#accordionFlushExample" >
               <li><a  class="sidebar-link" [routerLink]="['product-table']" routerLinkActive="text-warning" >AllProducts</a></li>
               <li><a  class="sidebar-link" [routerLink]="['add-product']" routerLinkActive="text-warning" >Add Product</a></li>
-              <li><a  class="sidebar-link" >Add Categorie</a></li>
             </ul>
           </li>
-          
           <li class=" my-2">
             <a  class="accordion-item d-flex align-items-center accordion-button collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseOne" >
-                <img src="images/folder-dynamic-premium.png" class=" me-2"  alt="">Logs
+                <img src="images/cube-dynamic-premium.png" class=" me-2"  alt="">Categories
             </a>
             <ul class=" list-unstyled accordion-collapse collapse"  id="flush-collapseThree"  data-bs-parent="#accordionFlushExample" >
-              <li><a  class="sidebar-link" >purchaseLogs</a></li>
+              <li><a  class="sidebar-link" [routerLink]="['category-table']" routerLinkActive="text-warning" >AllCategories</a></li>
+              <li><a  class="sidebar-link" [routerLink]="['add-category']" routerLinkActive="text-warning" >Add Categorie</a></li>
             </ul>
           </li>
           
           <li class=" my-2">
             <a  class="accordion-item d-flex align-items-center accordion-button collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseOne" >
-                <img src="images/crown-dynamic-premium.png" class=" me-2"  alt="">Users
+                <img src="images/folder-dynamic-premium.png" class=" me-2"  alt="">Logs
             </a>
             <ul class=" list-unstyled accordion-collapse collapse"  id="flush-collapseFour"  data-bs-parent="#accordionFlushExample" >
+              <li><a  class="sidebar-link" >purchaseLogs</a></li>
+            </ul>
+          </li>
+          
+          <li class=" my-2">
+            <a  class="accordion-item d-flex align-items-center accordion-button collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseOne" >
+                <img src="images/crown-dynamic-premium.png" class=" me-2"  alt="">Users
+            </a>
+            <ul class=" list-unstyled accordion-collapse collapse"  id="flush-collapseFive"  data-bs-parent="#accordionFlushExample" >
               <li><a  class="sidebar-link" >AllUsers</a></li>
             </ul>
           </li>

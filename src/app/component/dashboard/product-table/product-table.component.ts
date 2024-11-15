@@ -7,7 +7,7 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-product-table',
   standalone: true,
-  imports: [NgClass,RouterLink],
+  imports: [RouterLink],
   templateUrl: './product-table.component.html',
   styleUrl: './product-table.component.css'
 })
@@ -27,6 +27,17 @@ export class ProductTableComponent implements OnInit  {
         
         this.products = products;
     });
+  }
+
+  deleteProduct(productId:string){
+    this.productService.deleteProduct(productId).subscribe(
+      (response) => {
+        console.log('Product deleted successfully', response);
+        this.products = this.products.filter(product => product._id !== productId);
+
+      },
+      (error) => console.error('Error deleting product', error)
+    );
   }
 
   getImagePath(relativePath: string): string {

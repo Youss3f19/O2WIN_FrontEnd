@@ -28,6 +28,20 @@ export class BoxTableComponent {
         this.boxes = boxes;
     });
   }
+  
+  deleteBox(boxId: string): void {
+    this.boxService.deleteBox(boxId).subscribe(
+      () => {
+        console.log('Box deleted successfully');
+        this.boxes = this.boxes.filter(product => product._id !== boxId);
+
+      },
+      (error) => {
+        console.error('Error deleting box:', error);
+      }
+    );
+  }
+
   getImagePath(relativePath: string): string {
     return `http://localhost:3000/${relativePath.replace(/\\/g, '/')}`;
   }

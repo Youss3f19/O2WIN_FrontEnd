@@ -25,10 +25,13 @@ export class ProductsService {
     return this.http.post<Product>(this.API_URL + "addProduct", product);
   }
 
-  updatteredProduct(productId: string,  product: FormData): Observable<Product> {
-    return this.http.put<Product>(this.API_URL + "updateProduct/" + productId, product);
-  }
+  updateProduct(productId: string, formData: FormData) {
+    return this.http.put(`${this.API_URL}/updateProduct/${productId}`, formData);
+}
 
+  deleteProduct(productId: string):Observable<Product>{
+    return this.http.delete<Product>(`${this.API_URL}/deleteProduct/${productId}`);
+  }
   
 
   

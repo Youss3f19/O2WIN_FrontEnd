@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, Validators, ReactiveFormsModule, AbstractControl, ValidationErrors } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, Validators, ReactiveFormsModule, AbstractControl } from '@angular/forms';
 import { ProductsService } from '../../../services/products.service';
 import { CategoryService } from '../../../services/category.service';
 import { RarityService } from '../../../services/rarity.service';
@@ -15,7 +15,7 @@ import { Rarity } from '../../../models/rarity';
   styleUrls: ['./add-product.component.css']
 })
 export class AddProductComponent implements OnInit {
-  
+
   private readonly productService: ProductsService = inject(ProductsService);
   private readonly categoryService: CategoryService = inject(CategoryService);
   private readonly rarityService: RarityService = inject(RarityService);
@@ -28,58 +28,54 @@ export class AddProductComponent implements OnInit {
   productId!: string;
   productByIdCategories!: any[];
   selectedImage: File | null = null;
+  categoriesLoaded = false; // New flag to control rendering
 
   ngOnInit(): void {
     this.productId = this.activatedRoute.snapshot.params['id'];
 
-    // Initialize the form
+    // Initialize the form with empty FormArray for category
     this.productForm = this.fb.group({
       name: ['', [Validators.required, Validators.pattern('^[A-Z][A-Za-z 0-9]+'), Validators.maxLength(25)]],
       description: ['', Validators.maxLength(500)],
       price: ['', [Validators.required, Validators.min(1)]],
       stock: ['', [Validators.required, Validators.min(0)]],
-      category: this.fb.array([], this.minSelectedCheckboxes(1)),
+      category: this.fb.array([], [this.minSelectedCheckboxes(1)]), 
       rarity: ['', Validators.required]
     });
 
-    // Fetch the categories and rarities
+    // Load categories and rarities
+    this.getAllCategories();
+    this.getAllRarity();
 
+    // If product ID exists, fetch product details
     if (this.productId) {
-      // Fetch the product by ID for updating
       this.productService.getProductById(this.productId).subscribe(
         (product) => {
-          console.log(product);
           this.productByIdCategories = product.categories.map(c => c._id);
-          console.log(this.productByIdCategories);
-          
+          this.initializeCategoryControls();
           this.productForm.patchValue(product);
-         this.productForm.get('rarity')?.setValue(product.rarity._id);
-
+          this.productForm.get('rarity')?.setValue(product.rarity._id);
           this.selectedImage = null;
         },
         (error) => console.error('Error retrieving product', error)
       );
     }
-
-    this.initializeCategoryControls();  
-
-    this.getAllCategories();
-    this.getAllRarity();
-
-
   }
 
-  // Get categories and rarities
+  // Fetch all categories and initialize category controls
   getAllCategories(): void {
     this.categoryService.getCategorys().subscribe(
       (categories) => {
         this.categories = categories;
-        this.initializeCategoryControls();
+        if (!this.productId) {
+          this.initializeCategoryControls();
+        }
       },
       (error) => console.error('Error retrieving categories', error)
     );
   }
 
+  // Fetch all rarities
   getAllRarity(): void {
     this.rarityService.getRarities().subscribe(
       (rarities) => {
@@ -89,23 +85,32 @@ export class AddProductComponent implements OnInit {
     );
   }
 
-  // Initialize category checkboxes based on existing categories for the product
+  // Initialize category checkboxes
   private initializeCategoryControls(): void {
-    this.categories.forEach((category, index) => {
-      const isSelected = this.productByIdCategories ? this.productByIdCategories.includes(category._id) : false;
-      console.log(isSelected);
-      
-    
-      this.category.push(this.fb.control(isSelected));
+    this.category.clear();
+  
+    // Populate FormArray with controls for each category
+    Promise.resolve().then(() => {
+      this.categories.forEach((category) => {
+        const isSelected = this.productByIdCategories
+          ? this.productByIdCategories.includes(category._id)
+          : false;
+  
+        const control = this.fb.control(isSelected);
+        this.category.push(control);
+      });
+
+      // Indicate that categories have been loaded
+      this.categoriesLoaded = true;
     });
   }
 
-  // Get category form array
+  // Getter for category FormArray
   get category(): FormArray {
     return this.productForm.get('category') as FormArray;
   }
 
-  // Ensure at least one category is selected
+  // Custom validator to ensure at least one checkbox is selected
   minSelectedCheckboxes(min = 1): (control: AbstractControl) => null | object {
     return (control: AbstractControl) => {
       const selected = control.value.filter((checked: boolean) => checked).length;
@@ -113,13 +118,13 @@ export class AddProductComponent implements OnInit {
     };
   }
 
-  // Handle file selection for image
+  // Handle image file selection
   onFileChange(event: any): void {
-    const file = event.target.files[0]; 
+    const file = event.target.files[0];
     this.selectedImage = file ? file : null;
   }
 
-  // Handle form submission for both adding and updating a product
+  // Handle form submission for adding/updating a product
   onSubmit(): void {
     if (this.productForm.invalid) {
       console.log('Form is invalid');
@@ -131,7 +136,7 @@ export class AddProductComponent implements OnInit {
       .map((control, index) => control.value ? this.categories[index]._id : null)
       .filter((id) => id !== null);
 
-    // Create FormData to send
+    // Prepare FormData for submission
     const formData = new FormData();
     formData.append('name', this.productForm.value.name);
     formData.append('description', this.productForm.value.description);
@@ -140,20 +145,23 @@ export class AddProductComponent implements OnInit {
     formData.append('rarity', this.productForm.value.rarity);
     formData.append('categories', JSON.stringify(selectedCategories));
 
-    // Append the image if selected
     if (this.selectedImage) {
       formData.append('file', this.selectedImage, this.selectedImage.name);
     }
 
-    // Call the appropriate service method to add or update the product
+    // Submit the form data
     if (this.productId) {
-      this.productService.updatteredProduct(this.productId, formData).subscribe(
-        (response) => console.log('Product updated successfully', response),
+      this.productService.updateProduct(this.productId, formData).subscribe(
+        (response) => {
+          console.log('Product updated successfully', response);
+        },
         (error) => console.error('Error updating product', error)
       );
     } else {
       this.productService.addProduct(formData).subscribe(
-        (response) => console.log('Product added successfully', response),
+        (response) => {
+          console.log('Product added successfully', response);
+        },
         (error) => console.error('Error adding product', error)
       );
     }

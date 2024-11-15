@@ -169,7 +169,7 @@ export class AddBoxComponent implements OnInit {
     // Perform update if boxId exists, otherwise, add a new box
     if (this.boxId) {
       this.boxService.updateBox(this.boxId, formData).subscribe(
-        (response) => console.log('Box updated successfully', response),
+        (response ) => console.log('Box updated successfully', response),
         (error) => console.error('Error updating box', error)
       );
     } else {

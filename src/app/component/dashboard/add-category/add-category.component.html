@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="row d-flex justify-content-center p-3">
+        <div class="col-12 col-lg-6">
+            <div class="row justify-content-xl-center">
+                <div class="col-12 col-xl-11">
+                    <div class="bg-gradient border rounded shadow-sm overflow-hidden">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="fs-3 text-center pt-4 fw-bold">ADD CATEGORY</div>
+                            </div>
+                        </div>
+                        <form  [formGroup]="categoryForm" (submit)="onSubmit()">
+                            <div class="row gy-4 gy-xl-3 p-4 p-xl-5">
+                                
+                                <div class="col-12">
+                                    <label for="name" class="form-label">Category Name <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="name" formControlName="name" required>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="description" class="form-label">Description</label>
+                                    <textarea class="form-control" id="description" formControlName="description"></textarea>
+                                </div>
+
+                              
+
+                                <div class="col-12">
+                                    <label for="image">Upload Image</label>
+                                    <div class="input-group">
+                                        <input id="image" type="file" class="form-control" (change)="onFileChange($event)" accept=".png, .jpg, .jpeg" />
+                                        <span class="input-group-text">
+                                            <img src="images/picture-dynamic-color.png" width="25" height="25" alt="">
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 d-flex flex-column align-items-center">
+                                    <div class="d-grid w-100">
+                                        <button class="btn-53" type="submit">
+                                            <div class="original">ADD</div>
+                                            <div class="letters">
+                                                <span>A</span>
+                                                <span>D</span>
+                                                <span>D</span>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

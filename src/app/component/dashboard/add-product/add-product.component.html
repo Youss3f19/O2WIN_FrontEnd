@@ -45,14 +45,17 @@
                                     <label for="categories" class="form-label">Categories</label>
                                     <div>
                                         <div formArrayName="category">
-                                            <div class="row">
-                                            @for (cat of categories; track $index ; let i = $index ;) {
-                                                <div class="col-4 d-flex align-items-center">
-                                                    <input type="checkbox" [formControlName]="i">
-                                                    <label for="category1" class="ms-2">{{cat.name}}</label>
-                                                </div>
+                                            @if (categoriesLoaded) {
+                                                <div class="row">   
+                                                    @for (cat of categories; track $index ; let i = $index ;) {
+                                                        <div class="col-4 d-flex align-items-center">
+                                                            <input type="checkbox" [formControlName]="i">
+                                                            <label  class="ms-2">{{cat.name}}</label>
+                                                        </div>
+                                                    }
+                                                    </div>
                                             }
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>

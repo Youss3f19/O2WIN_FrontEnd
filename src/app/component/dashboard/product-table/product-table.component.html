@@ -48,7 +48,7 @@
                     <button type="button" class="btn rotate" [routerLink]="['/dashboard/update-product',p._id]">
                         <img src="images/tool-dynamic-color.png" width="50" height="50" alt="">
                     </button>
-                    <button type="button" class="btn rotate">
+                    <button type="button" class="btn rotate" (click)="deleteProduct(p._id)">
                         <img src="images/trash-can-dynamic-color.png" width="50" height="50" alt="">
                     </button>                </td>
             </tr>
