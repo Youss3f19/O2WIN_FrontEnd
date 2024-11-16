@@ -11,7 +11,7 @@ import { CategorieTableComponent } from './component/dashboard/categorie-table/c
 import { AddCategoryComponent } from './component/dashboard/add-category/add-category.component';
 
 export const routes: Routes = [
-    { path: '', redirectTo: '/dashboard/home-dashboard', pathMatch: 'full' },
+    { path: '', redirectTo: '/main/list-boxes', pathMatch: 'full' },
     {
         path: 'dashboard',
         component: DashboardComponent,
