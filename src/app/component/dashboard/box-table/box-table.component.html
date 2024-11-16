@@ -12,59 +12,64 @@
             </tr>
         </thead>
         <tbody>
-            @for (box of boxes; track $index) {
-            <tr>
-                <td>
-                    {{box.name}}
-                    @if(box.boxImage) {
-                        <div>
-                            <img [src]="getImagePath(box.boxImage)" width="100" height="100" alt="{{ box.name }}" />
-                        </div>
-                    }@else {
-                        <div>
-                            <img src="https://c1.klipartz.com/pngpicture/867/576/sticker-png-cardboard-box-freight-transport-packaging-and-labeling-delivery-mail-parcel-line-logo.png" width="100" height="100" alt="{{ box.name }}" />
-                        </div>
-                    }
-                </td>
-                <td>{{box.productLimit}}</td>
-                <td>
-                    @for (category of box.categories; track $index) {
-                    <span>{{category.name}}</span> <br>
-                    }
-                    @empty {allCategories}
-                </td>
-                <td>{{box.price}} DT</td>
-                <td>
-                    <ul class="list-group">
-                        @for (r of box.rarityProbabilities ; track $index) {
-                            @if (r.probability>0) {
-                                <li class="list-group-item" [ngClass]="{
-                                    'common-rarity': r.rarity.name == 'Common',
-                                    'uncommon-rarity': r.rarity.name == 'Uncommon',
-                                    'rare-rarity': r.rarity.name == 'Rare',
-                                    'epic-rarity': r.rarity.name == 'Epic',
-                                    'legendary-rarity': r.rarity.name == 'Legendary'
-                                  }">
-                                    {{r.probability}}% {{r.rarity.name}}
-        
-                                </li>
+            @if (!isLoading && boxes.length === 0) {
+                No boxes available.
+            }@else{
+                @for (box of boxes; track $index) {
+                    <tr>
+                        <td>
+                            {{box.name}}
+                            @if(box.boxImage) {
+                                <div>
+                                    <img [src]="getImagePath(box.boxImage)" width="100" height="100" alt="{{ box.name }}" />
+                                </div>
+                            }@else {
+                                <div>
+                                    <img src="https://c1.klipartz.com/pngpicture/867/576/sticker-png-cardboard-box-freight-transport-packaging-and-labeling-delivery-mail-parcel-line-logo.png" width="100" height="100" alt="{{ box.name }}" />
+                                </div>
                             }
-                       
-
-                        }
-                    </ul>
-                </td>
-                <td>
-                    <button type="button" class="btn rotate" [routerLink]="['/dashboard/update-box',box._id]">
-                        <img src="images/setting-dynamic-premium.png" width="50" height="50" alt="">
-                    </button>
-                    <button type="button" class="btn rotate" (click)="deleteBox(box._id)">
-                        <img src="images/trash-can-dynamic-premium.png" width="50" height="50" alt="">
-                    </button>
-
-                </td>
-            </tr>
+                        </td>
+                        <td>{{box.productLimit}}</td>
+                        <td>
+                            @for (category of box.categories; track $index) {
+                            <span>{{category.name}}</span> <br>
+                            }
+                            @empty {allCategories}
+                        </td>
+                        <td>{{box.price}} DT</td>
+                        <td>
+                            <ul class="list-group">
+                                @for (r of box.rarityProbabilities ; track $index) {
+                                    @if (r.probability>0) {
+                                        <li class="list-group-item" [ngClass]="{
+                                            'common-rarity': r.rarity.name == 'Common',
+                                            'uncommon-rarity': r.rarity.name == 'Uncommon',
+                                            'rare-rarity': r.rarity.name == 'Rare',
+                                            'epic-rarity': r.rarity.name == 'Epic',
+                                            'legendary-rarity': r.rarity.name == 'Legendary'
+                                          }">
+                                            {{r.probability}}% {{r.rarity.name}}
+                
+                                        </li>
+                                    }
+                               
+        
+                                }
+                            </ul>
+                        </td>
+                        <td>
+                            <button type="button" class="btn rotate" [routerLink]="['/dashboard/update-box',box._id]">
+                                <img src="images/setting-dynamic-premium.png" width="50" height="50" alt="">
+                            </button>
+                            <button type="button" class="btn rotate" (click)="deleteBox(box._id)">
+                                <img src="images/trash-can-dynamic-premium.png" width="50" height="50" alt="">
+                            </button>
+        
+                        </td>
+                    </tr>
+                    }  
             }
+         
 
         </tbody>
     </table>
