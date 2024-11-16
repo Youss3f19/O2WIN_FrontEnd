@@ -1,0 +1,143 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 0 20px;
+    background-color: #222;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.login-card {
+    display: flex;
+    width: 100%;
+    max-width: 1000px;
+    background-color: #1d2326;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.login-form {
+    flex: 1;
+    padding: 40px;
+}
+
+.login-form input {
+    margin-bottom: 15px;
+}
+
+.login-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #444;
+}
+
+.login-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+button {
+    padding: 10px 20px;
+    text-transform: uppercase;
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: 500;
+    color: white;
+    text-shadow: none;
+    background: transparent;
+    cursor: pointer;
+    box-shadow: transparent;
+    border: 1px solid white;
+    transition: 0.5s ease;
+    user-select: none;
+}
+
+.btn:hover {
+    color: #ffffff;
+    background: #e8600c;
+    border: 1px solid #e8600c;
+    text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff;
+    box-shadow: 0 0 5px #e8600c, 0 0 20px #e8600c, 0 0 50px #e8600c,
+        0 0 100px #e8600c;
+}
+
+.register-links {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+input[type="radio"] {
+    display: none; /* Cacher les radio buttons */
+}
+
+.register-link {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 20px;
+    line-height: 2;
+    position: relative;
+    margin: 0 15px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    padding-bottom: 5px;
+}
+
+.register-link:hover {
+    color: white;
+}
+
+/* Surligner le lien Register */
+#register-tab:checked + .register-link {
+    color: white;
+    font-weight: bold;
+    border-bottom: 2px solid #e8600c;
+}
+
+/* Option pour surligner également le lien Login, si nécessaire */
+.active {
+    color: white;
+    font-weight: bold;
+    border-bottom: 2px solid #e8600c;
+}
+
+.btn-container {
+    text-align: center;
+}
+
+.p {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.icon-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.icon-container a {
+    color: white; /* Icônes en blanc */
+    margin: 0 10px; /* Espacement entre les icônes */
+    font-size: 24px; /* Taille des icônes */
+    transition: color 0.3s; /* Transition de couleur */
+}
+
+.icon-container a:hover {
+    color: #e8600c; /* Changer la couleur au survol */
+}
+
+.login-link {
+    text-align: center; /* Centrer le texte */
+    color: rgba(255, 255, 255, 0.7); /* Couleur légèrement visible */
+    margin-top: 15px; /* Espacement au-dessus */
+}
+
+.forgot-password {
+    text-align: center;
+}

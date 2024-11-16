@@ -9,9 +9,12 @@ import { ProductTableComponent } from './component/dashboard/product-table/produ
 import { AddProductComponent } from './component/dashboard/add-product/add-product.component';
 import { CategorieTableComponent } from './component/dashboard/categorie-table/categorie-table.component';
 import { AddCategoryComponent } from './component/dashboard/add-category/add-category.component';
+import { AuthComponent } from './component/main/auth/auth.component';
+import { SignupComponent } from './component/main/auth/signup/signup.component';
+import { LoginComponent } from './component/main/auth/login/login.component';
 
 export const routes: Routes = [
-    { path: '', redirectTo: '/main/list-boxes', pathMatch: 'full' },
+    { path: '', redirectTo: '/main/auth/signup', pathMatch: 'full' },
     {
         path: 'dashboard',
         component: DashboardComponent,
@@ -35,6 +38,12 @@ export const routes: Routes = [
     {path: 'main',component: MainComponent,
         children: [
             { path: 'list-boxes', component: ListBoxComponent },
+            { path: 'auth', component: AuthComponent, 
+                children: [
+                    { path:'signup', component: SignupComponent },
+                    { path: 'login', component: LoginComponent},
+                ]
+             },
 
 
         ]

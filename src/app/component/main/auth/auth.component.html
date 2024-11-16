@@ -1,0 +1,16 @@
+<div class="login-container">
+    <div class="login-card">
+        <div class="login-form">
+            <div class="register-links">
+                <label class="register-link" for="login-tab" [routerLink]="['login']" routerLinkActive="active" >Login</label>
+                <label class="register-link" for="register-tab" [routerLink]="['signup']" routerLinkActive="active">Register</label>
+            </div>
+            <router-outlet></router-outlet>
+            
+            
+        </div>
+        <div class="login-image">
+            <img src="images/2024.png" alt="Image">
+        </div>
+    </div>
+</div>
