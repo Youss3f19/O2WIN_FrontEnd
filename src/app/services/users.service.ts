@@ -9,9 +9,12 @@ import { Auth } from '../models/auth';
 })
 export class UsersService {
 
+  private readonly http: HttpClient = inject(HttpClient);
+  API_URL = "http://localhost:3000/user/";
+
+  private isLoggedIn: boolean = false;  
+
   constructor() { }
-  private readonly http:HttpClient = inject(HttpClient);
-  API_URL="http://localhost:3000/user/";
 
   signup(user: User): Observable<User> {
     return this.http.post<User>(this.API_URL + "signup", user);
@@ -22,9 +25,19 @@ export class UsersService {
   }
 
   verifyToken(token: string): Observable<any> { 
-    return this.http.post<any>(this.API_URL + "verifyToken", { token }); 
+    return this.http.post<any>(this.API_URL + "verifyToken", { token });
   }
 
-  
+  logout(): void {
+    this.setLoggedIn(false);
+    localStorage.removeItem('token'); 
+  }
+
+  setLoggedIn(status: boolean): void {
+    this.isLoggedIn = status;
+  }
+  getLoggedIn(): boolean {
+    return this.isLoggedIn;
+  }
 
 }

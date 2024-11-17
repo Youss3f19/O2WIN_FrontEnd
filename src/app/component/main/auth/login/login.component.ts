@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
         (response : any) => {
           console.log('User logged in successfully', response);
           localStorage.setItem('authToken', response.mytoken);
+          this.userService.setLoggedIn(true)
           this.errorMessage =""
         },
         (error) => {
