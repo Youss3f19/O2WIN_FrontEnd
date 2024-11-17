@@ -12,6 +12,7 @@ import { AddCategoryComponent } from './component/dashboard/add-category/add-cat
 import { AuthComponent } from './component/main/auth/auth.component';
 import { SignupComponent } from './component/main/auth/signup/signup.component';
 import { LoginComponent } from './component/main/auth/login/login.component';
+import { HomeComponent } from './component/main/home/home.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/main/auth/signup', pathMatch: 'full' },
@@ -44,6 +45,7 @@ export const routes: Routes = [
                     { path: 'login', component: LoginComponent},
                 ]
              },
+             { path: 'home', component: HomeComponent },
 
 
         ]

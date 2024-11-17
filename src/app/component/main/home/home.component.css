@@ -1,0 +1,298 @@
+.container{
+    max-width: 100%;
+    padding: 0 1rem;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    
+    
+}
+/* Section vidéo en arrière-plan */
+.video-background {
+    position: relative;
+    background-color: transparent;
+    height: 50vh;
+    /* Limite la hauteur à 50% de l'écran */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.giphy-embed {
+    width: 100%;
+    height: 100%;
+    border-radius: 40px;
+}
+
+/* Overlay pour le texte et le bouton par-dessus la vidéo */
+.overlay {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Deeps, sans-serif;
+}
+
+.overlay h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.overlay p {
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+
+/* Bouton "Shop" */
+.shop-button {
+    background-color: white;
+    color: #ff4f02;
+    border-radius: 10em;
+    font-size: 17px;
+    font-weight: 600;
+    padding: 1em 2em;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid #ff4f02;
+    box-shadow: 0 0 0 0 #ff4f02;
+}
+
+.shop-button:hover {
+    transform: translateY(-4px) translateX(-2px);
+    box-shadow: 2px 5px 0 0 #ff4f02;
+}
+
+.shop-button:active {
+    transform: translateY(2px) translateX(1px);
+    box-shadow: 0 0 0 0 #ff4f02;
+}
+
+/* Section d'information */
+.info-section {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    background-color: rgba(46, 50, 59, 0.648);
+    color: #fff;
+    border-radius: 50px;
+    margin: 2rem;
+    
+    text-align: center;
+}
+
+.info-content {
+    flex: 1;
+    padding-right: 0;
+}
+
+.info-content h2 {
+    font-size: 1.8rem;
+    color: #ff4f02;
+    font-family: Deeps, sans-serif;
+}
+
+.info-content p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-top: 1rem;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+
+/* Bouton "En savoir plus" */
+.learn-more-button {
+    padding: 15px 30px;
+    font-size: 15px;
+    border: none;
+    border-radius: 40px;
+    background: #ff4f02;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 0 10px #363636, inset 0 0 10px #363636;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: transform 0.5s;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.learn-more-button:hover {
+    animation: scale-animation 0.5s 1 linear;
+}
+
+/* Animation pour le bouton */
+@keyframes scale-animation {
+    0% {
+        transform: scale(0.7, 1.3);
+    }
+
+    25% {
+        transform: scale(1.3, 0.7);
+    }
+
+    50% {
+        transform: scale(0.7, 1.3);
+    }
+
+    75% {
+        transform: scale(1.3, 0.7);
+    }
+
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
+.title-products {
+    text-align: center;
+    font-family: Deeps;
+    color: beige;
+    font-size: 30px;
+    text-decoration: underline;
+
+}
+
+.info-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.info-image img {
+    width: 80%;
+    border-radius: 0.5rem;
+}
+
+.carousel-item img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.card {
+    width: 80%;
+    margin: 0 auto;
+    background-color: #c2ac94;
+    color: #fff;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #ff4f02;
+    /* Orange */
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+}
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+    background-color: #e04000;
+    /* Couleur plus foncée pour le survol */
+}
+
+.card-img-top {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px;
+}
+
+.card-img-top:hover {
+    transform: scale(1.1);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+
+
+.feature-container {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+    background-color: rgba(46, 50, 59, 0.648);
+    margin: 3rem 2rem;
+    border-radius: 40px;
+    
+}
+
+.feature {
+    flex: 1;
+    max-width: 300px;
+    margin: 10px;
+    padding: 20px;
+    background-color: hsla(0, 0%, 21%, 0.97);
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+
+.feature-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.feature-text {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+@media (max-width: 768px) {
+    .overlay h1 {
+        font-size: 1.5em;
+    }
+
+    .overlay p {
+        font-size: 1em;
+    }
+
+    .carousel-item img {
+        border-radius: 5px;
+    }
+
+    .shop-button {
+        padding: 0.8em 1.5em;
+    }
+
+    .learn-more-button {
+        padding: 12px 25px;
+        font-size: 13px;
+    }
+
+    .title-products {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 576px) {
+    .overlay h1 {
+        font-size: 1.3em;
+    }
+
+    .overlay p {
+        font-size: 0.9em;
+    }
+
+    .info-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .info-content p {
+        font-size: 0.85rem;
+    }
+
+    .feature-container {
+        padding: 1rem;
+    }
+
+    .feature-title {
+        font-size: 16px;
+    }
+
+    .feature-text {
+        font-size: 12px;
+    }
+}

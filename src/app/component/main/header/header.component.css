@@ -1,0 +1,119 @@
+.app-name {
+    font-size: 30px;
+    font-weight: bold;
+    color: #ff4f02;
+    text-transform: uppercase;
+    position: relative;
+    font-family: Deeps;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
+}
+
+.logo:hover {
+    transform: translateY(-8px);
+    box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.6);
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-nav .nav-link {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s;
+    text-decoration: none;
+    color: #fff;
+    line-height: 2;
+    position: relative;
+    font-family: Deeps;
+}
+
+.navbar-nav .nav-link i {
+    margin-right: 8px; /* Espacement entre l'icône et le texte */
+}
+
+.navbar-nav .nav-link::before {
+    content: '';
+    width: 100%;
+    height: 2px;
+    border-radius: 2px;
+    background-color: #fff;
+    position: absolute;
+    bottom: -.5rem;
+    left: 0;
+    transition: transform .4s, opacity .4s;
+    opacity: 0;
+}
+
+.navbar-nav .nav-link:hover::before {
+    transform: translateY(-.25rem);
+    opacity: 1;
+    color: #d7b32f;
+}
+
+.text-light {
+    font-size: 14px; /* Uniformiser la taille de police pour tous les éléments */
+}
+
+.bi {
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.fa-regular {
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.login-link {
+    background: transparent;
+    color: #fff;
+    font-family: inherit;
+    padding: 0.6em 1.3em;
+    font-weight: 900;
+    font-size: 18px;
+    border: 3px solid #ff4f02;
+    border-radius: 0.4em;
+    box-shadow: 0.1em 0.1em;
+    cursor: pointer;
+    font-family: Deeps;
+    text-decoration: none;
+    background-color: #ff4f02;
+}
+
+.login-link:hover {
+    transform: translate(-0.05em, -0.05em);
+    box-shadow: 0.15em 0.15em;
+}
+
+.login-link:active {
+    transform: translate(0.05em, 0.05em);
+    box-shadow: 0.05em 0.05em;
+}
+
+.no-underlined {
+    text-decoration: none;
+}
+
+/* Nouvelle classe pour navbar en scroll */
+.navbar-scroll {
+    background-color: rgba(191, 191, 191, 0.412) !important;
+    color: #000 !important;
+}
+
+.navbar-scroll .nav-link {
+    color: #000 !important;
+}
+
+.navbar-scroll .app-name {
+    color: #ff4f02 !important;
+}
