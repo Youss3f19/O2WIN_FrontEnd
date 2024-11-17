@@ -21,6 +21,7 @@ import { InventoryComponent } from './component/main/inventory/inventory.compone
 import { ProfileComponent } from './component/main/profile/profile.component';
 import { MyboxesComponent } from './component/main/myboxes/myboxes.component';
 import { FaqComponent } from './component/main/faq/faq.component';
+import { ProduitComponent } from './component/main/produit/produit.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/main/auth/signup', pathMatch: 'full' },
@@ -61,7 +62,8 @@ export const routes: Routes = [
              { path: 'inventory', component: InventoryComponent },
              { path: 'profile', component: ProfileComponent },
              { path: 'myboxes', component: MyboxesComponent },
-             { path: 'faq', component: FaqComponent }
+             { path: 'faq', component: FaqComponent },
+             { path: 'produit', component: ProduitComponent}
 
 
 

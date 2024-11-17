@@ -112,6 +112,7 @@
 
 .navbar-scroll .nav-link {
     color: #000 !important;
+    cursor: pointer;
 }
 
 .navbar-scroll .app-name {
