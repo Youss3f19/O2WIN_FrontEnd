@@ -1,21 +1,45 @@
-<form>
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
     <div class="mb-3">
-        <label for="username" class="form-label">Username</label>
-        <input type="text" class="form-control" id="username">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" formControlName="name">
+      @if (userForm.get('name')?.touched && userForm.get('name')?.invalid) {
+        <div class="text-danger">
+          Name is required.
+        </div>
+      }
     </div>
     <div class="mb-3">
-        <label for="email" class="form-label">E-mail</label>
-        <input type="email" class="form-control" id="email">
+      <label for="lastname" class="form-label">Last Name</label>
+      <input type="text" class="form-control" id="lastname" formControlName="lastname">
+      @if (userForm.get('lastname')?.touched && userForm.get('lastname')?.invalid) {
+        <div class="text-danger">
+          Last name is required.
+        </div>
+      }
     </div>
     <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" id="password">
+      <label for="email" class="form-label">E-mail</label>
+      <input type="email" class="form-control" id="email" formControlName="email">
+      @if (userForm.get('email')?.touched && userForm.get('email')?.invalid) {
+        <div class="text-danger">
+          Valid email is required.
+        </div>
+      }
     </div>
     <div class="mb-3">
-        <label for="password" class="form-label">Confirm password</label>
-        <input type="password" class="form-control" id="password">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" class="form-control" id="password" formControlName="password">
+      @if (userForm.get('password')?.touched && userForm.get('password')?.invalid) {
+        <div class="text-danger">
+          Password (min 6 characters) is required.
+        </div>
+      }
+    </div>
+    <div class="text-danger text-center my-2">
+        {{errorMessage}}
     </div>
     <div class="btn-container">
-        <button type="submit" class="btn text-light">START UNBOXING</button>
+      <button type="submit" class="btn text-light" [disabled]="userForm.invalid">START UNBOXING</button>
     </div>
-</form>
+  </form>
+  
