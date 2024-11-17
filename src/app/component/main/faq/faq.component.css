@@ -1,0 +1,70 @@
+.container {
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f1f1f1;
+    margin-top: 70px;
+    margin-bottom: 70px;
+}
+
+.card {
+    width: 70%;
+    background-color: #333840;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.top-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-bottom: 40px;
+    padding: 10px;
+    border-bottom: 1px solid #d3d3d3;
+    border-radius: 8px;
+}
+
+.goback-button {
+    
+    background-color: transparent;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    color: #ff8c00;
+    margin-right: 5px;
+}
+
+
+.accordion-button {
+    background-color: #2b3035;
+    color: #f1f1f1;
+    font-weight: bold;
+}
+
+.accordion-button:not(.collapsed) {
+    color: #ff8c00;
+    border: none;
+    box-shadow: none;
+}
+
+.accordion-button::after {
+    color: #ff8c00;
+}
+
+.accordion-item {
+    border: none;
+    margin-bottom: 10px;
+}
+
+.accordion-collapse {
+    background-color: #2b3035;
+    color: #d3d3d3;
+}
+
+.accordion-body {
+    padding: 15px;
+}

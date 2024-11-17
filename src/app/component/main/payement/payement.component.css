@@ -1,0 +1,102 @@
+
+/* Styling for the whole page */
+.container {
+  
+  color: #f1f1f1;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+ 
+  text-align: center;
+  line-height: 2;
+}
+
+
+/* Container for the main card */
+.card {
+  background-image: url("../../../../../public/images/ethbg1.png");
+  background-size: cover;
+  background-position: center;
+  width: 70vw;
+  height: 50vh;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Top bar with the "Go Back" and "FAQ" */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #2b3035;
+  border-radius: 8px;
+  color: #ffffff;
+}
+
+
+.top-bar button,
+.top-bar a {
+  color: #ffffff;
+  background-color: transparent;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Title styling */
+h2 {
+  color: #ffffff;
+  font-size: 25px;
+  margin-bottom: 50px;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+
+
+
+/* Proceed button */
+.proceed-button {
+  background: rgb(237, 152, 10);
+  background: radial-gradient(circle, rgba(237, 152, 10, 1) 0%, rgba(70, 69, 100, 1) 100%);
+  color: #ffffff;
+  border: none;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 40px;
+  cursor: pointer;
+  margin-left: 37%;
+  margin-top: 30px;
+  width: 25%;
+}
+
+/* Promo code section */
+.promocode {
+  margin: 10px 0;
+}
+
+.promocode input {
+  width: 25%;
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #3c3c3c;
+  background-color: #2c2c2c;
+  color: #ffffff;
+  text-align: center;
+}
+
+.promocode p {
+  font-size: 12px;
+  color: #aaaaaa;
+  margin-top: 5px;
+}
+
+
+

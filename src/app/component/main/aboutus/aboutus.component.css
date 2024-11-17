@@ -1,358 +1,383 @@
-        .container {
-            
-            font-family: Arial, sans-serif;
-            color: #fff;
-            
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: cover;
-
-        }
-
-        .bg-fixed {
-           margin-bottom: 100px;
-           
-        }
-
-        .aboutus-container {
-            text-align: center;
-            display: flex;
-            justify-content: flex-start;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px 50px 50px;
-            font-size: 18px;
-        }
-
-        .aboutus-container p {
-            color: #f8f8f8;
-            font-family: "Comic Sans MS", cursive, sans-serif;
-        }
-
-
-
-        h1 {
-            color: #ff4f02;
-            font-family: Deeps;
-        }
-
-        .check-button {
-            padding: 15px 30px;
-            font-size: 17px;
-            border: none;
-            border-radius: 40px;
-            background: #fff;
-            color: #ff4f02;
-
-            cursor: pointer;
-            box-shadow: 0 0 10px #363636, inset 0 0 10px #363636;
-            font-weight: bold;
-            margin-top: 20px;
-            transition: transform 0.5s;
-            font-family: "Comic Sans MS", cursive, sans-serif;
-        }
-
-        .check-button:hover {
-            animation: scale-animation 0.5s 1 linear;
-        }
-
-        /* Animation pour le bouton */
-        @keyframes scale-animation {
-            0% {
-                transform: scale(0.7, 1.3);
-            }
-
-            25% {
-                transform: scale(1.3, 0.7);
-            }
-
-            50% {
-                transform: scale(0.7, 1.3);
-            }
-
-            75% {
-                transform: scale(1.3, 0.7);
-            }
-
-            100% {
-                transform: scale(1, 1);
-            }
-        }
-
-        /* who-we-are */
-        h2 {
-            font-size: 35px;
-            color: #ff4f02;
-            font-family: Deeps;
-        }
-
-        .who-we-are-container {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            border-radius: 30px;
-            margin-right: 30px;
-            margin-left: 30px;
-            background-color: #1d2326ec;
-            padding: 30px;
-        }
-
-        .who-paragraph-container {
-            text-align: center;
-            width: 50vw;
-        }
-
-        .who-paragraph-container p {
-            color: #fff;
-            font-family: "Comic Sans MS", cursive, sans-serif;
-            font-size: larger;
-        }
-
-        /* card */
-        .card {
-            --bg: #1d2326ec;
-            --contrast: #1d2326c6;
-            --grey: #93a1a1;
-            position: relative;
-            padding: 9px;
-            background-color: var(--bg);
-            border-radius: 35px;
-            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
-                rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-            width: 250px;
-            height: 350px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            font-family: monospace;
-        }
-
-        .card-overlay {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            background: repeating-conic-gradient(var(--bg) 0.0000001%, var(--grey) 0.000104%) 60% 60%/600% 600%;
-            filter: opacity(10%) contrast(105%);
-            border-radius: 35px;
-        }
-
-        .card-inner {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-            height: 100%;
-            background-color: var(--contrast);
-            border-radius: 30px;
-            padding: 10px;
-            box-sizing: border-box;
-        }
-
-        .card img {
-            display: block;
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            font-size: 20px;
-            color: #d6d2d2;
-            font-weight: 700;
-            font-family: Deeps;
-        }
-
-        .card p:not(.heading) {
-            font-size: 16px;
-            font-weight: normal;
-            color: #f8f8f8;
-            font-family: 'Courier New', Courier, monospace;
-        }
-
-        /* Animation pour le bouton */
-        @keyframes scale-animation {
-            0% {
-                transform: scale(0.7, 1.3);
-            }
-
-            25% {
-                transform: scale(1.3, 0.7);
-            }
-
-            50% {
-                transform: scale(0.7, 1.3);
-            }
-
-            75% {
-                transform: scale(1.3, 0.7);
-            }
-
-            100% {
-                transform: scale(1, 1);
-            }
-        }
-
-        /* /card */
-        .meet-the-team-container {
-            text-align: center;
-            margin: 50px;
-
-
-        }
-
-        .meet-the-team-container h2 {
-            text-decoration: underline;
-        }
-
-        .card-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-        }
-
-        /* carte  */
-        .carte-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 30px;
-            gap: 40px;
-
-        }
-
-        .carte {
-            background-color: #363636;
-            border-radius: 8px;
-            width: 350px;
-            height: max-content;
-            padding: 20px;
-
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .carte:hover {
-            transform: scale(1.05);
-        }
-
-        .carte h2 {
-            font-size: 24px;
-            margin: 10px 0;
-            color: #d6d2d2;
-            text-decoration: none;
-        }
-
-        .carte p {
-            font-size: 16px;
-            color: #ddd;
-        }
-
-
-
-        .plans-container {
-
-            padding: 40px;
-            margin: 50px;
-            border-radius: 20px;
-            height: auto;
-        }
-
-        .plans-container h2 {
-            text-decoration: none;
-        }
-
-        .plans-container img {
-            width: 80px;
-        }
-
-        /* Ajustements pour les petits écrans */
-        @media (max-width: 1024px) {
-
-            .who-we-are-container,
-            .aboutus-container {
-                flex-direction: column;
-                padding: 20px;
-            }
-
-            .who-we-are-container img {
-                width: 70%;
-                margin-top: 20px;
-            }
-
-            .who-paragraph-container {
-                width: 100%;
-            }
-        }
-
-        @media (max-width: 768px) {
-
-            /* Ajustements pour la section about us */
-            .aboutus-container {
-                padding: 20px;
-                font-size: 16px;
-            }
-
-            /* Ajustements pour la section who we are */
-            .who-we-are-container {
-                flex-direction: column;
-                padding: 20px;
-                margin: 0 10px;
-            }
-
-            .who-paragraph-container {
-                width: 100%;
-                font-size: 1rem;
-            }
-
-            .who-we-are-container img {
-                width: 100%;
-                margin: 20px 0;
-            }
-
-            /* Réduction de la taille des cartes pour meet the team */
-            .card-container {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .card {
-                width: 80%;
-                height: auto;
-                margin-bottom: 20px;
-            }
-
-            /* Ajustements pour our plans */
-            .carte-container {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .carte {
-                width: 90%;
-            }
-        }
-
-        @media (max-width: 480px) {
-
-            h1,
-            h2 {
-                font-size: 24px;
-            }
-
-            .check-button {
-                padding: 10px 20px;
-                font-size: 14px;
-            }
-
-            .card {
-                width: 100%;
-                height: auto;
-            }
-
-            .plans-container {
-                padding: 20px;
-            }
-        }
+@import url('https://fonts.googleapis.com/css2?family=Days+One&display=swap');
+
+
+
+.container {
+
+    padding: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background: var(--c2);
+    padding-top: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.about-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fb9363b5;
+    border-radius: 40px;
+    padding: 20px;
+    margin-bottom: 40px;
+}
+
+.check-button {
+    padding: 15px 30px;
+    font-size: 17px;
+    border: none;
+    border-radius: 40px;
+    background: #fff;
+    color: #ff4f02;
+    margin-bottom: 20px;
+    cursor: pointer;
+    box-shadow: 0 0 10px #363636, inset 0 0 10px #363636;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: transform 0.5s;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.check-button:hover {
+    animation: scale-animation 0.5s 1 linear;
+}
+
+/* Animation pour le bouton */
+@keyframes scale-animation {
+    0% {
+        transform: scale(0.7, 1.3);
+    }
+
+    25% {
+        transform: scale(1.3, 0.7);
+    }
+
+    50% {
+        transform: scale(0.7, 1.3);
+    }
+
+    75% {
+        transform: scale(1.3, 0.7);
+    }
+
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
+
+
+.contentP {
+    color: #f0f8ff;
+    text-align: center;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+h1 {
+    margin: 0;
+    font-weight: normal;
+    font-size: 1.25em;
+    font-family: "Days One", Arial, Helvetica, serif;
+
+}
+
+h2 {
+    font-weight: bold;
+    font-size: 2em;
+    font-family: "Days One", Arial, Helvetica, serif;
+}
+
+p {
+    font-size: 1.25em;
+    margin: 2em 0;
+    color: #fff;
+}
+
+.who-we-are-section {
+    background-color: transparent;
+    /* Couleur de fond sombre */
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    /* Texte en blanc */
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.section-title {
+    font-size: 2em;
+    color: #ff4f02;
+    /* Titre en orange */
+    font-weight: bold;
+    margin: 70px;
+    text-align: center;
+
+}
+
+.section-description {
+    font-size: 1em;
+    line-height: 1.5;
+    max-width: 600px;
+    margin: 0 auto 10px auto;
+}
+
+.section-image {
+    width: 40%;
+    margin-top: 20px;
+}
+
+.section-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    width: 60vw;
+    height: auto;
+    padding: 5vmin;
+    margin-bottom: 20px;
+    background: #262a30;
+    box-sizing: border-box;
+    box-shadow: 0 0 1em 0em #000;
+}
+
+.progress-bar {
+    background: #ff4f02;
+    width: 0;
+    height: 1vmin;
+    position: fixed;
+    left: 0;
+    top: 0;
+    animation: grow-bar linear forwards;
+    animation-timeline: scroll(root);
+    z-index: 5;
+}
+
+@keyframes grow-bar {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+
+/* card */
+.card {
+    --bg: #1d2326ec;
+    --contrast: #1d2326c6;
+    --grey: #93a1a1;
+    position: relative;
+    padding: 9px;
+    background-color: var(--bg);
+    border-radius: 35px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+        rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    width: 250px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: monospace;
+}
+
+.card-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-conic-gradient(var(--bg) 0.0000001%, var(--grey) 0.000104%) 60% 60%/600% 600%;
+    filter: opacity(10%) contrast(105%);
+    border-radius: 35px;
+}
+
+.card-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: var(--contrast);
+    border-radius: 30px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.card img {
+    display: block;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 20px;
+    color: #d6d2d2;
+    font-weight: 700;
+    font-family: Deeps;
+}
+
+.card p:not(.heading) {
+    font-size: 16px;
+    font-weight: normal;
+    color: #f8f8f8;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Animation pour le bouton */
+@keyframes scale-animation {
+    0% {
+        transform: scale(0.7, 1.3);
+    }
+
+    25% {
+        transform: scale(1.3, 0.7);
+    }
+
+    50% {
+        transform: scale(0.7, 1.3);
+    }
+
+    75% {
+        transform: scale(1.3, 0.7);
+    }
+
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
+/* /card */
+.meet-the-team-container {
+    text-align: center;
+    margin: 50px;
+
+
+}
+
+.meet-the-team-container h2 {
+    text-decoration: underline;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+
+
+
+.parallax-header {
+    color: #fff;
+    height: 100vh;
+    width: 100%;
+    background-image: url("../../../../../public/images/gift-dynamic-color.png");
+    background-size: cover;
+    background-position: 50% 50%;
+    background-blend-mode: soft-light;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    font-size: calc(4vw + 1em);
+    z-index: 3;
+    position: fixed;
+    top: 0;
+    animation: sticky-parallax-header linear forwards;
+    animation-timeline: scroll();
+    animation-range: 0vh 90vh;
+    box-shadow: 0 0 1em 0 #000;
+
+    text-shadow: 1vmin 1vmin 1vmin #000, 1px 1px 1px #000, -1px -1px 1px #000,
+        -1px 1px 1px #000, 1px -1px 1px #000;
+}
+
+@keyframes sticky-parallax-header {
+    0% {
+        background-position: 50% 0;
+        height: 100vh;
+        font-size: calc(4vw + 1em);
+    }
+
+    100% {
+        background-position: 50% 100;
+        height: 10vh;
+        font-size: 2em;
+        background-color: #00000080;
+        filter: sepia(1);
+        text-shadow: 0 0 0 #000, 1px 1px 1px #000, -1px -1px 1px #000,
+            -1px 1px 1px #000, 1px -1px 1px #000;
+    }
+}
+
+.carte-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 20px;
+
+}
+
+.carte {
+    background-color: #363636;
+    border-radius: 8px;
+    width: 350px;
+    height: 400px;
+    padding: 20px;
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.carte:hover {
+    transform: scale(1.05);
+}
+
+.carte h2 {
+    font-size: 24px;
+    margin: 10px 0;
+    color: #d6d2d2;
+    text-decoration: none;
+}
+
+.carte p {
+    font-size: 16px;
+    color: #ddd;
+}
+
+
+
+.plans-container {
+
+    padding: 40px;
+    margin: 20px;
+    border-radius: 20px;
+    height: auto;
+}
+
+.plans-container h2 {
+    text-decoration: none;
+}
+
+.plans-container img {
+    width: 80px;
+}
+
+@media (min-width: 768px) {
+    .carte {
+        width: 350px;
+        max-width: unset;
+    }
+
+    .card {
+        width: 250px;
+        height: 350px;
+    }
+}

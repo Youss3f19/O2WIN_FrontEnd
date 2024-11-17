@@ -12,6 +12,15 @@ import { AddCategoryComponent } from './component/dashboard/add-category/add-cat
 import { AuthComponent } from './component/main/auth/auth.component';
 import { SignupComponent } from './component/main/auth/signup/signup.component';
 import { LoginComponent } from './component/main/auth/login/login.component';
+import { isAdminGuard } from './guards/is-admin.guard';
+import { HomeComponent } from './component/main/home/home.component';
+import { AboutusComponent } from './component/main/aboutus/aboutus.component';
+import { ChoixpayementComponent } from './component/main/choixpayement/choixpayement.component';
+import { PayementComponent } from './component/main/payement/payement.component';
+import { InventoryComponent } from './component/main/inventory/inventory.component';
+import { ProfileComponent } from './component/main/profile/profile.component';
+import { MyboxesComponent } from './component/main/myboxes/myboxes.component';
+import { FaqComponent } from './component/main/faq/faq.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/main/auth/signup', pathMatch: 'full' },
@@ -46,6 +55,14 @@ export const routes: Routes = [
                 ]
              },
              { path: 'home', component: HomeComponent },
+             { path: 'aboutus', component: AboutusComponent },
+             { path: 'choixpayement', component: ChoixpayementComponent },
+             { path: 'payement', component: PayementComponent },
+             { path: 'inventory', component: InventoryComponent },
+             { path: 'profile', component: ProfileComponent },
+             { path: 'myboxes', component: MyboxesComponent },
+             { path: 'faq', component: FaqComponent }
+
 
 
         ]
