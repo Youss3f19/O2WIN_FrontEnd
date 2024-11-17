@@ -21,7 +21,7 @@
                             class="fa-regular fa-handshake no-underlined"></i> PARTNERSHIP</a>
                 </li>
             </ul>
-            @if (isLoggedIn()){
+            @if (!isLoggedIn()){
             <div class="d-flex align-items-center">
                 <a routerLink="auth/login" class="d-flex align-items-center login-link">
                     <img src="images/boy-dynamic-color.png" alt="" style="width: 30px; height: 30px;" class="me-2">

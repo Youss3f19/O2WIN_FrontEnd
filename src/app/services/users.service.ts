@@ -12,9 +12,11 @@ export class UsersService {
   private readonly http: HttpClient = inject(HttpClient);
   API_URL = "http://localhost:3000/user/";
 
-  private isLoggedIn: boolean = false;  
+  private isLoggedIn!: boolean ;  
 
-  constructor() { }
+  constructor() {
+    this.chackUserValidity();
+   }
 
   signup(user: User): Observable<User> {
     return this.http.post<User>(this.API_URL + "signup", user);
@@ -29,6 +31,7 @@ export class UsersService {
   }
 
   logout(): void {
+    console.log("s200");
     this.setLoggedIn(false);
     localStorage.removeItem('token'); 
   }
@@ -38,6 +41,28 @@ export class UsersService {
   }
   getLoggedIn(): boolean {
     return this.isLoggedIn;
+  }
+
+  chackUserValidity(){
+    const token = localStorage.getItem('authToken');
+    if (token) {
+      this.verifyToken(token).subscribe(
+        (response) => {
+          this.setLoggedIn(true);
+          console.log("200faza");
+          
+        },
+        (error) => {
+          this.setLoggedIn(false);
+          console.log("401faza");
+
+        }
+      );
+    } else {
+      console.log("501");
+      
+      this.setLoggedIn(false);
+    }
   }
 
 }
