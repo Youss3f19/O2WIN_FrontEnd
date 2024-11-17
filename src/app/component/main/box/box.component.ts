@@ -1,10 +1,10 @@
 import { Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-box',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './box.component.html',
   styleUrl: './box.component.css'
 })

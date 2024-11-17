@@ -36,8 +36,9 @@ export class LoginComponent implements OnInit {
         (response : any) => {
           console.log('User logged in successfully', response);
           localStorage.setItem('authToken', response.mytoken);
-          this.userService.setLoggedIn(true)
+          this.userService.setLoggedIn(true) 
           this.errorMessage =""
+          this.router.navigate(['/main/list-boxes']);
         },
         (error) => {
           console.error('Error logging in', error);
@@ -48,4 +49,5 @@ export class LoginComponent implements OnInit {
       console.error('Form is invalid');
     }
   }
+  
 }
