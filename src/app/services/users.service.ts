@@ -54,26 +54,6 @@ export class UsersService {
     }
   }
 
-  chackUserValidity(){
-    const token = localStorage.getItem('authToken');
-    if (token) {
-      this.verifyToken(token).subscribe(
-        (response) => {
-          this.setLoggedIn(true);
-          console.log("200faza");
-          
-        },
-        (error) => {
-          this.setLoggedIn(false);
-          console.log("401faza");
 
-        }
-      );
-    } else {
-      console.log("501");
-      
-      this.setLoggedIn(false);
-    }
-  }
 
 }
