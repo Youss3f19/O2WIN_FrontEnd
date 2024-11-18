@@ -1,8 +1,8 @@
 <div class="container-fluid pt-5 ">
     <div class="row">
-        @for (item of x; track $index) {
+        @for (box of boxes; track $index) {
             <div class="col-3">
-                <app-box></app-box>
+                <app-box [box]="box"></app-box>
              </div>
         }
     </div>

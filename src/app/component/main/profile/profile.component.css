@@ -47,16 +47,14 @@
     color: #888;
 }
 
-.notifications {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 5px;
-    color: #888;
+.change-button{
+    background: linear-gradient(45deg, #e92626, #e6873e);
+    border: none;
+    color: white;
+    border-radius: 40px;
+    height: 50px;
+    padding: 10px;
 }
-
-
-
 
 .shipping-address {
     padding: 20px;

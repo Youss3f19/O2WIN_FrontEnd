@@ -22,9 +22,12 @@ import { ProfileComponent } from './component/main/profile/profile.component';
 import { MyboxesComponent } from './component/main/myboxes/myboxes.component';
 import { FaqComponent } from './component/main/faq/faq.component';
 import { ProduitComponent } from './component/main/produit/produit.component';
+import { authGuard } from './guards/auth.guard';
+import { PanierComponent } from './component/main/panier/panier.component';
+import { ChangermdpComponent } from './component/main/changermdp/changermdp.component';
 
 export const routes: Routes = [
-    { path: '', redirectTo: '/main/auth/signup', pathMatch: 'full' },
+    { path: '', redirectTo: '/main/home', pathMatch: 'full' },
     {
         path: 'dashboard',
         component: DashboardComponent,
@@ -63,7 +66,9 @@ export const routes: Routes = [
              { path: 'profile', component: ProfileComponent },
              { path: 'myboxes', component: MyboxesComponent },
              { path: 'faq', component: FaqComponent },
-             { path: 'produit', component: ProduitComponent}
+             { path: 'panier', component: PanierComponent },
+             { path: 'produit', canActivate:[authGuard] , component: ProduitComponent},
+             { path: 'changepassword' , component: ChangermdpComponent}
 
 
 

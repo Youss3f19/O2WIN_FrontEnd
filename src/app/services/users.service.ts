@@ -33,7 +33,7 @@ export class UsersService {
 
   logout(): void {
     this.setLoggedIn(false);
-    localStorage.removeItem('token'); 
+    localStorage.removeItem('authToken'); 
   }
 
   setLoggedIn(status: boolean): void {
