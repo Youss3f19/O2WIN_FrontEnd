@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { BoxesService } from '../../../services/boxes.service';
 import { Box } from '../../../models/box';
 import { NgClass } from '@angular/common';
@@ -11,12 +11,13 @@ import { RouterLink } from '@angular/router';
   templateUrl: './box-table.component.html',
   styleUrl: './box-table.component.css',
 })
-export class BoxTableComponent {
+export class BoxTableComponent implements OnInit  {
+  
   private readonly boxService: BoxesService = inject(BoxesService);
   boxes: Box[] = [];
-  isLoading: boolean = false; // Loading state
+  isLoading: boolean = false; 
 
-  constructor() {
+  ngOnInit():void {
     this.loadBoxes();
   }
 

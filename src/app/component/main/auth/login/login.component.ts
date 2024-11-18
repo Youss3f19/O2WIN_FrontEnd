@@ -3,6 +3,7 @@ import { UsersService } from '../../../../services/users.service';
 import { FormBuilder, FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Auth } from '../../../../models/auth';
 import { Router } from '@angular/router';
+import { User } from '../../../../models/user';
 
 @Component({
   selector: 'app-login',
@@ -28,15 +29,16 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     if (this.userForm.valid) {
-      const loginData =  new Auth(
-        this.userForm.value.email,
-        this.userForm.value.password,
-      );
+      const loginData =  {
+        email : this.userForm.value.email,
+        password : this.userForm.value.password,
+      };
       this.userService.login(loginData).subscribe(
         (response : any) => {
           console.log('User logged in successfully', response);
           localStorage.setItem('authToken', response.mytoken);
           this.userService.setLoggedIn(true) 
+          this.userService.setCurrentUser(response.user)
           this.errorMessage =""
           this.router.navigate(['/main/list-boxes']);
         },
