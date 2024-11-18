@@ -1,0 +1,39 @@
+.Cinzel {
+    font-family: "Cinzel", serif;
+    font-weight: 200;
+    font-style: normal;
+  }
+
+
+.bgc{
+    background-color: #f7f1ee;
+    
+}
+
+.number{
+  width: 50px;
+  height: 50px;
+}
+
+.pointer{
+  cursor: pointer;
+}
+
+.bi {
+  display: inline-block;
+  width: 1.8rem !important;
+  height: 1.8rem !important;
+}
+.btn-acheter{
+    width: 150px;
+    height: 40px;
+    border-radius: 40px;
+    background: linear-gradient(45deg, #f5630f, #f49876);
+    border: none;
+    color: white;
+    font-weight: bold;
+}
+.panier{
+    color: #f5630f;
+    font-family: Deeps;
+}

@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-profile',
+  selector: 'app-panier',
   standalone: true,
   imports: [RouterLink],
-  templateUrl: './profile.component.html',
-  styleUrl: './profile.component.css'
+  templateUrl: './panier.component.html',
+  styleUrl: './panier.component.css'
 })
-export class ProfileComponent {
+export class PanierComponent {
 
 }

@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { BoxComponent } from "../box/box.component";
+import { BoxesService } from '../../../services/boxes.service';
+import { Box } from '../../../models/box';
 
 @Component({
   selector: 'app-list-box',
@@ -8,7 +10,29 @@ import { BoxComponent } from "../box/box.component";
   templateUrl: './list-box.component.html',
   styleUrl: './list-box.component.css'
 })
-export class ListBoxComponent {
-  x:Number []  = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+export class ListBoxComponent implements OnInit {
+  private readonly boxesService : BoxesService= inject(BoxesService);
+  boxes: Box[] = [];
+  isLoading: boolean = false; 
+  
+
+  ngOnInit(): void {
+    this.loadBoxes();
+  }
+
+  loadBoxes(): void {
+    this.isLoading = true; // Show loader
+    this.boxesService.getBoxes().subscribe(
+      (boxes) => {
+        console.log(boxes);
+        this.boxes = boxes;
+        this.isLoading = false; // Hide loader
+      },
+      (error) => {
+        console.error('Error loading boxes:', error);
+        this.isLoading = false; // Hide loader on error
+      }
+    );
+  }
   
 }

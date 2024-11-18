@@ -1,0 +1,70 @@
+/* Général */
+.container {
+    height: 550px;
+    width: 550px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    
+  }
+  
+  h2 {
+    text-align: center;
+    color: #ff4f02;
+    margin-bottom: 40px ;
+    font-family: Deeps;
+  }
+  
+  .shipping-container {
+    background-color: #202021;
+    
+    height: 500px;
+    color: #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    
+  }
+  
+  .form-group input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  .form-group input:focus {
+    border-color: #ef811a; 
+    outline: none;
+  }
+  
+  .saveInfo-button {
+    width: 50%;
+    padding: 12px;
+    font-size: 16px;
+    background-color: #f3985f; /* Couleur de bouton */
+    color: white;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin-left: 25%;
+    margin-top: 40px;
+  }
+  
+  .saveInfo-button:hover {
+    background-color: #eb762d; /* Couleur au survol */
+  }
+  

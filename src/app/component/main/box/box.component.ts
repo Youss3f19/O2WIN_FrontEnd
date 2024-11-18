@@ -1,5 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input} from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
+import { Box } from '../../../models/box';
 
 @Component({
   selector: 'app-box',
@@ -10,6 +11,7 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class BoxComponent {
   private readonly router: Router = inject(Router);
+  @Input() box! :Box;
   onPurchase(){
     const token = localStorage.getItem('authToken');
     if (token){
@@ -18,5 +20,10 @@ export class BoxComponent {
     }else{
       this.router.navigate(['/main/auth/login']);
     }
+  }
+
+  
+  getImagePath(relativePath: string): string {
+    return `http://localhost:3000/${relativePath.replace(/\\/g, '/')}`;
   }
 }

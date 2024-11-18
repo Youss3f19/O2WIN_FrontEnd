@@ -56,20 +56,37 @@ export class UsersService {
   checkUserValidity(): void {
     const token = localStorage.getItem('authToken');
     if (token) {
+      this.verifyToken(token).subscribe((res) => {
+        this.setLoggedIn(true);
+      }, (err) => {
+        this.setLoggedIn(false);
+        localStorage.removeItem('authToken');
+      });
+    } else {
+      this.setLoggedIn(false);
+    }
+  }
+
+  chackUserValidity(){
+    const token = localStorage.getItem('authToken');
+    if (token) {
       this.verifyToken(token).subscribe(
         (response) => {
           this.setLoggedIn(true);
-          this.setCurrentUser(response.user); 
+          console.log("200faza");
+          
         },
         (error) => {
           this.setLoggedIn(false);
-          this.setCurrentUser(null);
-          localStorage.removeItem('authToken');
+          console.log("401faza");
+
         }
       );
     } else {
+      console.log("501");
+      
       this.setLoggedIn(false);
-      this.setCurrentUser(null);
     }
   }
+
 }
