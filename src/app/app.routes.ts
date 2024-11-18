@@ -31,7 +31,7 @@ export const routes: Routes = [
     {
         path: 'dashboard',
         component: DashboardComponent,
-        canActivate: [isAdminGuard], 
+        // canActivate: [isAdminGuard], 
         children: [
             { path: 'home-dashboard', component: HomeDashboardComponent },
             { path: 'box-table', component: BoxTableComponent },

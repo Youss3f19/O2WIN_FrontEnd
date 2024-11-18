@@ -11,7 +11,6 @@ export class UsersService {
   private readonly http: HttpClient = inject(HttpClient);
   API_URL = 'http://localhost:3000/user/';
 
-  private isLoggedIn: boolean = false;
   private currentUserSubject = new BehaviorSubject<User | null>(null); 
   currentUser$ = this.currentUserSubject.asObservable(); 
 
@@ -32,18 +31,11 @@ export class UsersService {
   }
 
   logout(): void {
-    this.setLoggedIn(false);
-    localStorage.removeItem('authToken');
     this.setCurrentUser(null);
+    localStorage.removeItem('authToken');
   }
 
-  setLoggedIn(status: boolean): void {
-    this.isLoggedIn = status;
-  }
 
-  getLoggedIn(): boolean {
-    return this.isLoggedIn;
-  }
 
   setCurrentUser(user: User | null): void {
     this.currentUserSubject.next(user); 
@@ -57,36 +49,16 @@ export class UsersService {
     const token = localStorage.getItem('authToken');
     if (token) {
       this.verifyToken(token).subscribe((res) => {
-        this.setLoggedIn(true);
+        this.setCurrentUser(res.user);
       }, (err) => {
-        this.setLoggedIn(false);
+        this.setCurrentUser(null);
         localStorage.removeItem('authToken');
       });
     } else {
-      this.setLoggedIn(false);
+      this.setCurrentUser(null);
     }
   }
 
-  chackUserValidity(){
-    const token = localStorage.getItem('authToken');
-    if (token) {
-      this.verifyToken(token).subscribe(
-        (response) => {
-          this.setLoggedIn(true);
-          console.log("200faza");
-          
-        },
-        (error) => {
-          this.setLoggedIn(false);
-          console.log("401faza");
 
-        }
-      );
-    } else {
-      console.log("501");
-      
-      this.setLoggedIn(false);
-    }
-  }
 
 }
