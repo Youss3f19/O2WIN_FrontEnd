@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { User } from '../models/user';
 import { Observable, BehaviorSubject } from 'rxjs';
@@ -26,8 +26,16 @@ export class UsersService {
     return this.http.post<Auth>(this.API_URL + 'login', auth);
   }
 
+  resetPassword(currentPassword : string , newPassword : string , headers : HttpHeaders): Observable<{ message: string }>{
+    return this.http.post<{ message: string }>(this.API_URL + 'resetPassword', { currentPassword, newPassword }, { headers });
+  }
+
   verifyToken(token: string): Observable<any> {
     return this.http.post<any>(this.API_URL + 'verifyToken', { token });
+  }
+
+  getUserById(userId: string): Observable<User>{
+    return this.http.get<User>(this.API_URL + "userbyid/" + userId);
   }
 
   logout(): void {
@@ -49,7 +57,11 @@ export class UsersService {
     const token = localStorage.getItem('authToken');
     if (token) {
       this.verifyToken(token).subscribe((res) => {
-        this.setCurrentUser(res.user);
+        this.getUserById(res.user._id).subscribe(
+          (user) => {
+            this.setCurrentUser(user);
+          }  
+        )
       }, (err) => {
         this.setCurrentUser(null);
         localStorage.removeItem('authToken');
