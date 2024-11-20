@@ -2,14 +2,10 @@
 
 .container {
     background-color: #1b1e23;
-    width: 80%;
+    width: 85%;
     border-radius: 8px;
     padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     color: #fff;
-    height: 80vh;
     margin-top: 70px;
     margin-bottom: 70px;
 }
@@ -37,11 +33,8 @@
 .content {
     background-color: #1f2229;
     border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-grow: 1;
     color: #888;
+    padding: 10px;
     font-size: 18px;
     
 }

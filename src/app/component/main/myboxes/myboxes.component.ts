@@ -6,14 +6,14 @@ import { BoxComponent } from "../box/box.component";
 @Component({
   selector: 'app-myboxes',
   standalone: true,
-  imports: [BoxComponent],
+  imports: [],
   templateUrl: './myboxes.component.html',
   styleUrl: './myboxes.component.css'
 })
 export class MyboxesComponent {
   private readonly userService: UsersService = inject(UsersService);
   currentUser: User | null = null;
-
+  boxes : any[] = [];
 
 
   ngOnInit(): void {
@@ -21,5 +21,9 @@ export class MyboxesComponent {
       this.currentUser = user; 
       console.log('Current User:', this.currentUser);
     });
+  }
+
+  getImagePath(relativePath: string): string {
+    return `http://localhost:3000/${relativePath.replace(/\\/g, '/')}`;
   }
 }
