@@ -1,84 +1,73 @@
-<hr>
-<div>
-
 <div class="container text-light mt-5 mb-5">
-    <div class="row  ">
-        <div class="col-12 fs-2 text-center panier ">
-            Votre panier
-        </div>
-        <a class="col-12 text-center text-light " routerLink="/main/list-boxes"  >
-            Continuer les achats
-        </a>
+    <div class="row">
+      <div class="col-12 fs-2 text-center panier">
+        Votre panier
+      </div>
+      <a class="col-12 text-center text-light" routerLink="/main/list-boxes">
+        Continuer les achats
+      </a>
     </div>
-
+  
     <div class="row mt-5">
-        <div class="col-6">
-            PRODUIT
-        </div>
-        <div class="col-3">
-            Quantité
-        </div>
-        <div class="col-3">
-            TOTAL
-        </div>
+      <div class="col-6">PRODUIT</div>
+      <div class="col-3">Quantité</div>
+      <div class="col-3">TOTAL</div>
     </div>
+  
+    <hr />
+    @for (item of panier; track $index ; let i = $index ;) {
+        <div class="row mt-5">
+            <div class="col-6">
+              <div class="d-flex">
+                @if (item.box.boxImage) {
+                  <img class="rounded-1 w-25 h-25" [src]="getImagePath(item.box.boxImage)" alt=""> 
+              }@else{
+                <img
+                class="rounded-1 w-25 h-25"
+                src="https://poke-collect.com/cdn/shop/files/PCMysteryBoxSubscription.png?v=1723058879"
+                alt=""
+              />              }
 
-    <hr>
-
-    <div class="row mt-5 ">
-        <div class="col-6">
-            <div class="d-flex ">
-                <img class="w-25 h-25 " src="https://poke-collect.com/cdn/shop/files/PCMysteryBoxSubscription.png?v=1723058879" alt="">
-                <div class="d-flex flex-column ">
-                    <span class="mx-4 fs-6 ">Abaya Leena</span>
-                    <span class="mx-4 fs-6 ">Couleur: Beige clair</span>
+               
+                <div class="d-flex flex-column">
+                  <span class="mx-4 fs-6">{{ item.box.name }}</span>
+                  <span class="mx-4 fs-6">ProductLimit: {{ item.box.productLimit }}</span>
                 </div>
+              </div>
             </div>
-        </div>
-
-        <div class="col-3 d-flex align-items-center align-items-md-start     flex-column  flex-md-row ">
-            <input type="number" min="1" max="99" value="1" class="number rounded-1 text-center  mx-3 mb-3  mb-md-0   border-1 ">
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-trash3 text-danger pointer  mt-0 mt-lg-2 " viewBox="0 0 16 16">
-                <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
-              </svg>
-
-        </div>
-
-        <div class="col-3">
-            59,00DT
-        </div>
-    </div>
-
-    <div class="row mt-5">
-        <div class="col-6">
-            <div class="d-flex ">
-                <img class="w-25 h-25 " src="https://poke-collect.com/cdn/shop/files/PCMysteryBoxSubscription.png?v=1723058879" alt="">
-                <div class="d-flex flex-column ">
-                    <span class="mx-4 fs-6 ">Abaya Leena</span>
-                    <span class="mx-4 fs-6 ">Couleur: Beige clair</span>
-                </div>
+      
+            <div class="col-3 d-flex align-items-center align-items-md-start flex-column flex-md-row">
+              <input
+                type="number"
+                min="1"
+                max="99"
+                [(ngModel)]="item.quantity"
+                (change)="updateTotal(i, item.quantity)"
+                class="number rounded-1 text-center mx-3 mb-3 mb-md-0 border-1"
+              />
+              <a (click)="removeFromPanier(i)">
+                <i class="bi bi-trash3 text-danger pointer mt-0 mt-lg-1 fs-3"></i>
+              </a>
             </div>
-        </div>
-
-        <div class="col-3 d-flex align-items-center align-items-md-start flex-column  flex-md-row ">
-            <input type="number" min="1" max="99" value="1" class="number rounded-1 text-center  mx-3 mb-3  mb-md-0   border-1 ">
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-trash3 text-danger pointer mt-0 mt-lg-2 " viewBox="0 0 16 16">
-                <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
-            </svg>
-
-        </div>
-
-        <div class="col-3">
-            70,00DT
-        </div>
+      
+            <div class="col-3">
+              {{ item.box.price * item.quantity | number: '1.2-2' }}
+            </div>
+          </div>
+    }@empty {
+        <div class="col-12 d-flex align-items-center justify-content-center minH">Votre panier est vide</div>
+    }
+    
+    <hr />
+    <div class="row d-flex justify-content-end">
+      <div class="col-3">
+        @if (panier) {
+            <button class="btn-acheter" (click)="purchaseAll()">Acheter</button>
+        }
+      </div>
+      <div class="col-3">
+        {{ totalPanier() | number: '1.2-2' }}
+      </div>
     </div>
-    <hr>
-    <div class="row d-flex justify-content-end ">
-        <div class="col-3">
-            <button class="btn-acheter">Acheter</button>
-        </div>
-        <div class="col-3">
-            129,00DT
-        </div>
-    </div>
-</div>
+  </div>
+  

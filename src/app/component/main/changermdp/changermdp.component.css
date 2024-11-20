@@ -68,3 +68,7 @@
     background-color: #eb762d; /* Couleur au survol */
   }
   
+  input.ng-invalid.ng-touched,
+input.ng-invalid.ng-dirty{
+  border: 2px solid red !important;
+}

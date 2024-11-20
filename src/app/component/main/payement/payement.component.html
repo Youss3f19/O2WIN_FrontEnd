@@ -1,20 +1,28 @@
 <div class="container">
-    <div class="card">
-        <div class="top-bar">
-            <button class="goback-button" routerLink="/main/choixpayement">
-                <i class="fa-sharp fa-solid fa-arrow-left" style="margin-right: 5px; color: #ff8c00;"></i> GO BACK
-            </button>
-           
+    <form [formGroup]="codeForm" (ngSubmit)="onSubmit()">
+
+        <div class="card">
+            <div class="top-bar">
+                <button type="button" class="goback-button" routerLink="/main/choixpayement">
+                    <i class="fa-sharp fa-solid fa-arrow-left" style="margin-right: 5px; color: #ff8c00;"></i> GO BACK
+                </button>
+
+            </div>
+
+            <h2>Add a Gift Card</h2>
+            <div class="promocode">
+                <input type="text" placeholder="8car - 4car - 4car - 4 car - 12 car" formControlName="code">
+
+            </div>
+            <button class="proceed-button" [disabled]="codeForm.invalid">PROCEED CHECKOUT</button>
+            <div class="d-flex justify-content-end">
+                <small class="fw-bold" [ngClass]="{'text-success': messageResponse === 'Payment verified', 'text-danger': messageResponse !== 'Payment verified'}">
+                    {{ messageResponse }}
+                </small>
+            </div>
+
+
         </div>
+    </form>
 
-        <h2>Add a Gift Card</h2>
-
-        <div class="promocode">
-            <input type="text" placeholder="ABC-123-DEF-ABC-123-DEF">
-
-        </div>
-        <button class="proceed-button">PROCEED CHECKOUT</button>
-
-        
-    </div>
 </div>

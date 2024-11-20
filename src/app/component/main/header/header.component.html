@@ -30,17 +30,27 @@
             </div>
             }@else {
             <div class="d-flex align-items-center">
-                <!-- Bouton de money avec icône et montant -->
+
+
+                 <!-- Bouton de money avec icône et montant -->
                 <div class="d-flex align-items-center px-3 py-1 me-2"
                     style="border: 1px solid #444; border-radius: 5px;">
                     <img src="images/money-dynamic-premium.png" width="50px" style="margin-right: 10px;" alt="">
-                    <span style="color: #d7b32f;">${{currentUser.solde}}</span>
+                    <span style="color: #d7b32f;">${{currentUser.solde | number: '1.2-2'}}</span>
                     <!-- Bouton de "+" -->
                     <button class="btn btn-sm ms-2" routerLink="choixpayement"
                         style="background-color: #ff4f02; color: white; border-radius: 20px;">
                         <i class="fa fa-plus"></i>
                     </button>
                 </div>
+                <!-- panier -->
+                <a  class="position-relative pointer" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                    <img src="images/bag-dynamic-color.png" width="40" height="40" alt="">       
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        {{nbItems}}
+                        <span class="visually-hidden">unread messages</span>
+                    </span>           
+                </a>
 
                 <!-- Dropdown Menu à la fin de la navbar -->
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -77,3 +87,5 @@
         </div>
     </div>
 </header>
+
+<app-canvas-panier></app-canvas-panier>
