@@ -37,3 +37,7 @@
     color: #f5630f;
     font-family: Deeps;
 }
+
+.minH{
+  min-height: 200px;
+}

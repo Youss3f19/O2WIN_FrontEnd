@@ -4,7 +4,7 @@
             <img [src]="getImagePath(box.boxImage)" class="box-image cursor-pointer" width="200" height="200" alt="">
         }
         <h4>{{box.name}} </h4>
-        <a class="btn btn-warning w-75" routerLink="/main/produit" (click)="onPurchase()">
+        <a class="btn btn-warning w-75" (click)="addBoxToCart(box)">
             Purchase Now
         </a>
     </div>

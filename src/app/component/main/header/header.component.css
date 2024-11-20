@@ -118,3 +118,6 @@
 .navbar-scroll .app-name {
     color: #ff4f02 !important;
 }
+.pointer{
+    cursor: pointer;
+}

@@ -1,0 +1,45 @@
+<div class="offcanvas offcanvas-end bg-dark" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasRightLabel" style="color: red;">Panier</h5>
+      <button type="button" class="btn-close bg-red"   data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        @if(panier){
+            <div class="row text-light  ">
+                @for (p of panier; track $index) {
+                    <div class="col-12 my-2 d-flex justify-content-between">
+                        <div>
+                            @if (p.boxImage) {
+                                <img class="rounded-1" [src]="getImagePath(p.boxImage)" width="50" height="50" alt=""> -
+                            }@else{
+                                <img class="rounded-1" src="https://snacksquad.co.uk/cdn/shop/products/taste-the-world-mystery-boxsnack-squad-854170.jpg?v=1713368147&width=1946" width="50" height="50" alt=""> -
+                            }
+
+                            {{ p.name}} - 
+                            {{p.price}}DT 
+                        </div>
+                        <button class="btn btn-danger" (click)="removeFromPanier($index)">
+                            <i class="bi bi-trash-fill"></i>    
+                        </button>
+                       
+
+                    </div>
+                }                
+            </div>
+        }@else{
+            <div class="text-center text-light ">
+                Empty
+                
+            </div>
+        }
+        
+    </div>
+    <div class="offcanvas-footer p-3">
+       @if (panier?.length != 0) {
+        <button class="btn  w-100 bg-red text-light" (click)="checkout()">
+            Valid
+        </button>
+
+       }
+    </div>
+  </div>
