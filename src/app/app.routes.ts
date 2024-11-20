@@ -21,10 +21,10 @@ import { InventoryComponent } from './component/main/inventory/inventory.compone
 import { ProfileComponent } from './component/main/profile/profile.component';
 import { MyboxesComponent } from './component/main/myboxes/myboxes.component';
 import { FaqComponent } from './component/main/faq/faq.component';
-import { ProduitComponent } from './component/main/produit/produit.component';
 import { authGuard } from './guards/auth.guard';
 import { PanierComponent } from './component/main/panier/panier.component';
 import { ChangermdpComponent } from './component/main/changermdp/changermdp.component';
+import { DetailproduitComponent } from './component/main/detailproduit/detailproduit.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/main/home', pathMatch: 'full' },
@@ -67,7 +67,7 @@ export const routes: Routes = [
              { path: 'myboxes', component: MyboxesComponent },
              { path: 'faq', component: FaqComponent },
              { path: 'panier', component: PanierComponent },
-             { path: 'produit', canActivate:[authGuard] , component: ProduitComponent},
+             { path: 'detailbox' , component: DetailproduitComponent},
              { path: 'changepassword' , component: ChangermdpComponent}
 
 

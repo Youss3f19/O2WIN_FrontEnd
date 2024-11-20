@@ -38,7 +38,6 @@ export class LoginComponent implements OnInit {
           console.log('User logged in successfully', response);
           localStorage.setItem('authToken', response.mytoken);
           this.userService.setCurrentUser(response.user) 
-          this.userService.setCurrentUser(response.user)
           this.errorMessage =""
           this.router.navigate(['/main/list-boxes']);
         },
