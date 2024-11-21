@@ -1,47 +1,27 @@
-<div class="card-wrapper">
+<div class="container">
     @if (!isLoading){
-        @if (box){
+    @if (box){
     <div class="card">
-        <!-- card left -->
-        <div class="product-imgs">
-            <div class="img-display">
-                <div class="img-showcase">
-                    @if (box.boxImage){
-                    <img [src]="getImagePath(box.boxImage)">
-                }
-                </div>
-            </div>
+        <div class="top-bar">
+            <button routerLink="/main/list-boxes" class="goback-button">
+                <i class="fa-sharp fa-solid fa-arrow-left" style="margin-right: 5px; color: #ff8c00;"></i> GO BACK
+            </button>
 
         </div>
-        <!-- card right -->
-        <div class="product-content">
-            <h2 class="product-title">{{box.name}}</h2>
-            
-            <div class="product-rating">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-            </div>
+        <div class="title-container">
+            <h2>{{box.name}} </h2>
+            <p> Price: <i class="fa-brands fa-ethereum"></i> {{box.price}} </p>
+        </div>
 
-            <div class="product-price">
-                <p class="new-price">Price: <span>{{box.price}} <i class="fa-brands fa-ethereum"></i> </span></p>
-            </div>
-
-           
-
-            <div class="purchase-info">
-               
-                <button type="button" class="btn">
-                    Add to Cart <i class="fas fa-shopping-cart"></i>
-                </button>
-
-            </div>
-
-
+        <div class="img-container">
+            @if (box.boxImage){
+            <img [src]="getImagePath(box.boxImage)" width="200px" height="200px" alt="">
+            }
+        </div>
+        <div>
+            <button class="btnadd" (click)="addBoxToCart(box)">Add Box</button>
         </div>
     </div>
-}
-}
+    }
+    }
 </div>

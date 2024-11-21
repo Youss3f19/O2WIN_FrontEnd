@@ -68,7 +68,7 @@ export const routes: Routes = [
              { path: 'faq', component: FaqComponent },
              { path: 'panier', component: PanierComponent },
              { path: 'detailbox/:id' , component: DetailproduitComponent},
-             { path: 'changepassword' , component: ChangermdpComponent}
+             { path: 'changepassword' , component: ChangermdpComponent},
              { path: 'panier', component: PanierComponent, canActivate:[authGuard] },
              { path: 'detailbox' , component: DetailproduitComponent },
              { path: 'changepassword' , component: ChangermdpComponent , canActivate:[authGuard]}
