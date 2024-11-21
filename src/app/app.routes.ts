@@ -67,7 +67,7 @@ export const routes: Routes = [
              { path: 'myboxes', component: MyboxesComponent },
              { path: 'faq', component: FaqComponent },
              { path: 'panier', component: PanierComponent },
-             { path: 'detailbox' , component: DetailproduitComponent},
+             { path: 'detailbox/:id' , component: DetailproduitComponent},
              { path: 'changepassword' , component: ChangermdpComponent}
 
 
