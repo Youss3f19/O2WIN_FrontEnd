@@ -102,6 +102,10 @@
     padding: 40px 0;
     font-size: 18px;
 }
+.content{
+    height: 80%;
+    overflow-y: scroll;
+}
 
 .footer {
     font-size: 14px;
@@ -130,3 +134,14 @@
     background-color: #444;
     color: #fff;
 }
+.pointer{
+    cursor: pointer;
+  }
+  .modal-body img {
+    border-radius: 5px;
+    margin-bottom: 15px;
+    max-height: 300px;
+    object-fit: cover;
+  }
+  
+  

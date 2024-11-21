@@ -37,5 +37,6 @@ export class HeaderComponent implements OnInit  {
 
   logout(): void {
     this.userService.logout();
+    this.boxService.emptyPanier();
   }
 }
