@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { Box } from '../models/box';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Panier } from '../models/panier';
+import { UsersService } from './users.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ import { Panier } from '../models/panier';
 export class BoxesService {
 
   private readonly http: HttpClient = inject(HttpClient);
+
   API_URL = "http://localhost:3000/box/";
   private currentPanier = new BehaviorSubject<Box[] | null>(null); 
   currentPanier$ = this.currentPanier.asObservable(); 
@@ -45,6 +47,7 @@ export class BoxesService {
   openBox(boxId: string , headers: HttpHeaders): Observable<any> {
     return this.http.get<any>(`${this.API_URL}boxes/${boxId}/open`  , { headers });
   }
+  
 
 
   addToPanier(box: Box): void {

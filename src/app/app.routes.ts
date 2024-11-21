@@ -31,7 +31,7 @@ export const routes: Routes = [
     {
         path: 'dashboard',
         component: DashboardComponent,
-         canActivate: [isAdminGuard], 
+        canActivate:[isAdminGuard],
         children: [
             { path: 'home-dashboard', component: HomeDashboardComponent },
             { path: 'box-table', component: BoxTableComponent },
@@ -60,15 +60,15 @@ export const routes: Routes = [
              },
              { path: 'home', component: HomeComponent },
              { path: 'aboutus', component: AboutusComponent },
-             { path: 'choixpayement', component: ChoixpayementComponent },
-             { path: 'payement', component: PayementComponent },
-             { path: 'inventory', component: InventoryComponent },
-             { path: 'profile', component: ProfileComponent },
-             { path: 'myboxes', component: MyboxesComponent },
+             { path: 'choixpayement', component: ChoixpayementComponent , canActivate:[authGuard] },
+             { path: 'payement', component: PayementComponent , canActivate:[authGuard]},
+             { path: 'inventory', component: InventoryComponent , canActivate:[authGuard] },
+             { path: 'profile', component: ProfileComponent , canActivate:[authGuard]},
+             { path: 'myboxes', component: MyboxesComponent, canActivate:[authGuard] },
              { path: 'faq', component: FaqComponent },
-             { path: 'panier', component: PanierComponent },
-             { path: 'detailbox' , component: DetailproduitComponent},
-             { path: 'changepassword' , component: ChangermdpComponent}
+             { path: 'panier', component: PanierComponent, canActivate:[authGuard] },
+             { path: 'detailbox' , component: DetailproduitComponent },
+             { path: 'changepassword' , component: ChangermdpComponent , canActivate:[authGuard]}
 
 
 

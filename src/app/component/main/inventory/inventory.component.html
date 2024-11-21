@@ -27,6 +27,20 @@
                 </ul>
             </div>
         </div>
+        <div class="row">
+            @for (item of inventory; track $index) {
+                <div class="col-2 bg-light rounded m-2">
+                    <div class="item  text-center">
+                        <img [src]="getImagePath(item.product.productImage)" class="pointer" width="100" height="100" [alt]="item.product.name">
+                        <h6 class="text-muted mt-3">{{item.product.name}}</h6>
+                        <h6 class="text-muted mt-3">Price: {{item.product.price}}</h6>
+                        <h6 class="text-muted mt-3">Quantity: {{item.quantity}}</h6>                        
+                    </div>
+    
+                </div>
+                
+            }
+        </div>
     </div>
 
     <div class="footer">
