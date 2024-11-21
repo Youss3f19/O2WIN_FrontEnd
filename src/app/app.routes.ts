@@ -68,6 +68,9 @@ export const routes: Routes = [
              { path: 'myboxes', component: MyboxesComponent, canActivate:[authGuard]},
              { path: 'openBox', component: OpenBoxComponent, canActivate:[authGuard]},
              { path: 'faq', component: FaqComponent },
+             { path: 'panier', component: PanierComponent },
+             { path: 'detailbox/:id' , component: DetailproduitComponent},
+             { path: 'changepassword' , component: ChangermdpComponent},
              { path: 'panier', component: PanierComponent, canActivate:[authGuard] },
              { path: 'detailbox' , component: DetailproduitComponent },
              { path: 'changepassword' , component: ChangermdpComponent , canActivate:[authGuard]}
