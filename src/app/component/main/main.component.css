@@ -6,3 +6,7 @@
     background-size: cover;
     
 }
+
+.main{
+    min-height: 80vh;
+}

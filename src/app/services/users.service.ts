@@ -3,12 +3,15 @@ import { inject, Injectable } from '@angular/core';
 import { User } from '../models/user';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Auth } from '../models/auth';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
   private readonly http: HttpClient = inject(HttpClient);
+  private readonly router: Router = inject(Router);
+
   API_URL = 'http://localhost:3000/user/';
 
   private currentUserSubject = new BehaviorSubject<User | null>(null); 
@@ -41,7 +44,8 @@ export class UsersService {
   logout(): void {
     this.setCurrentUser(null);
     localStorage.removeItem('authToken');
-  }
+    this.router.navigate(['/main/auth/login'])
+    }
 
 
 

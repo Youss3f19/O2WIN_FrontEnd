@@ -25,6 +25,7 @@ import { authGuard } from './guards/auth.guard';
 import { PanierComponent } from './component/main/panier/panier.component';
 import { ChangermdpComponent } from './component/main/changermdp/changermdp.component';
 import { DetailproduitComponent } from './component/main/detailproduit/detailproduit.component';
+import { OpenBoxComponent } from './component/main/myboxes/open-box/open-box.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/main/home', pathMatch: 'full' },
@@ -64,7 +65,8 @@ export const routes: Routes = [
              { path: 'payement', component: PayementComponent , canActivate:[authGuard]},
              { path: 'inventory', component: InventoryComponent , canActivate:[authGuard] },
              { path: 'profile', component: ProfileComponent , canActivate:[authGuard]},
-             { path: 'myboxes', component: MyboxesComponent, canActivate:[authGuard] },
+             { path: 'myboxes', component: MyboxesComponent, canActivate:[authGuard]},
+             { path: 'openBox', component: OpenBoxComponent, canActivate:[authGuard]},
              { path: 'faq', component: FaqComponent },
              { path: 'panier', component: PanierComponent, canActivate:[authGuard] },
              { path: 'detailbox' , component: DetailproduitComponent },

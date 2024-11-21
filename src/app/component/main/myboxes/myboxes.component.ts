@@ -25,7 +25,9 @@ export class MyboxesComponent {
     this.userService.checkUserValidity();
     this.userService.currentUser$.subscribe((user) => {
       this.currentUser = user; 
-      this.boxes = this.currentUser?.boxes || [];
+      this.boxes = this.currentUser?.boxes.filter((box)=>{ box.opened == false}) || [];
+      console.log(this.boxes);
+      
       console.log('Current User:', this.currentUser);
     });
   }
@@ -43,7 +45,6 @@ export class MyboxesComponent {
     this.boxService.openBox(boxId , header).subscribe(
         (response) => {
             console.log('Box opened:', response);
-            // Met à jour l'état local des boîtes après ouverture
             this.boxes = this.boxes.map((box) => 
                 box.box._id === boxId ? { ...box, opened: true } : box
             );

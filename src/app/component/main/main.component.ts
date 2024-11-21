@@ -8,7 +8,7 @@ import { AboutusComponent } from './aboutus/aboutus.component';
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent,FooterComponent,HomeComponent,AboutusComponent],
+  imports: [RouterOutlet, HeaderComponent,FooterComponent],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })
