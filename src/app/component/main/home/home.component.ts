@@ -15,7 +15,6 @@ export class HomeComponent implements OnInit {
   boxes: Box[] = [];
   isLoading: boolean = false; 
   
-  
 
   ngOnInit(): void {
     this.loadBoxes();
@@ -36,7 +35,10 @@ export class HomeComponent implements OnInit {
     );
   }
   
-
+  getThreeBoxes(i:number):Box[]{
+    return this.boxes.slice(i, i + 3);
+    
+  }
   getImagePath(relativePath: string): string {
     return `http://localhost:3000/${relativePath.replace(/\\/g, '/')}`;
   }
