@@ -5,12 +5,11 @@ import { Box } from '../../../models/box';
 import { UsersService } from '../../../services/users.service';
 import { LoaderComponent } from '../../loader/loader.component';
 import { Product } from '../../../models/product';
-import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-detailproduit',
   standalone: true,
-  imports: [RouterLink, LoaderComponent,JsonPipe],
+  imports: [RouterLink, LoaderComponent],
   templateUrl: './detailproduit.component.html',
   styleUrl: './detailproduit.component.css'
 })
@@ -22,7 +21,7 @@ export class DetailproduitComponent {
 
 
   box? :  Box;
-  products!: Product[] ;
+  products: Product[] = [];
   isLoading: boolean = true; 
   error: string | null = null; 
 

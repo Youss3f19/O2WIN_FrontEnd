@@ -4,11 +4,12 @@ import { UsersService } from '../../../services/users.service';
 import { FormsModule } from '@angular/forms';
 import { CommandesService } from '../../../services/commandes.service';
 import { HttpHeaders } from '@angular/common/http';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-order',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './order.component.html',
   styleUrls: ['./order.component.css']
 })

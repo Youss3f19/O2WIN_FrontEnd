@@ -29,7 +29,7 @@
             @for(p of products ; track $index){
             <div class="product-card">
                 @if (p.productImage){
-                <img [src]="getImagePath(getImagePath(p.productImage))" />
+                <img [src]="getImagePath(p.productImage)"  />
                 }
                 <h3>{{ p.name }}</h3>
                 <p>Price: {{ p.price }}</p>
