@@ -173,10 +173,10 @@
 }
 
 .card {
-    width: 60%;
-    height: 360px;
+    width: 70%;
+    height: 60vh;
     margin: 0 auto;
-    background-color: #c2ac94;
+    background-color: rgba(31, 31, 36, 0.666);
     color: #fff;
     padding: 10px;
 }
@@ -219,8 +219,8 @@
 }
 .card-text{
     font-size: 20px;
-    color: rgb(99, 7, 7);
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(172, 174, 184);
+    font-family: mv boli;
     font-weight: bold;
 }
 

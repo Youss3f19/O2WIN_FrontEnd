@@ -4,11 +4,13 @@ import { BoxesService } from '../../../services/boxes.service';
 import { Box } from '../../../models/box';
 import { UsersService } from '../../../services/users.service';
 import { LoaderComponent } from '../../loader/loader.component';
+import { Product } from '../../../models/product';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-detailproduit',
   standalone: true,
-  imports: [RouterLink, LoaderComponent],
+  imports: [RouterLink, LoaderComponent,JsonPipe],
   templateUrl: './detailproduit.component.html',
   styleUrl: './detailproduit.component.css'
 })
@@ -20,6 +22,7 @@ export class DetailproduitComponent {
 
 
   box? :  Box;
+  products!: Product[] ;
   isLoading: boolean = true; 
   error: string | null = null; 
 
@@ -29,7 +32,8 @@ export class DetailproduitComponent {
       this.boxService.getBoxById(boxId).subscribe({
         next: (box) => {
           this.box = box;
-          this.isLoading = false;
+          this.getBoxByProduct(boxId);
+          
         },
         error: (err) => {
           this.error = "Unable to fetch box details.";
@@ -41,6 +45,20 @@ export class DetailproduitComponent {
       this.error = "Box ID not found.";
       this.isLoading = false;
     }
+  }
+
+  getBoxByProduct(boxId:string):void {
+    this.boxService.getProductsByBox(boxId).subscribe(
+      (products) => {
+        console.log('Products fetched:', products);
+        this.products = products;
+        this.isLoading = false;
+      },
+      (error) => {
+        console.error('Error fetching products:', error);
+        this.isLoading = false;
+      }
+    )
   }
 
   addBoxToCart(box: Box): void {

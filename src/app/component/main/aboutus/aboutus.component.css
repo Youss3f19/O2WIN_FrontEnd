@@ -14,7 +14,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #fb9363b5;
+    background-color: #3b292129;
     border-radius: 40px;
     padding: 20px;
     margin-bottom: 40px;
@@ -25,8 +25,8 @@
     font-size: 17px;
     border: none;
     border-radius: 40px;
-    background: #fff;
-    color: #ff4f02;
+    background: #ff4f02;
+    color: whitesmoke;
     margin-bottom: 20px;
     cursor: pointer;
     box-shadow: 0 0 10px #363636, inset 0 0 10px #363636;

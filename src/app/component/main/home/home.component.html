@@ -37,11 +37,11 @@
                             <div class="col-md-4">
                                 <div class="card" routerLink="/main/produit">
                                     @if (b.boxImage) {
-                                        <img [src]="getImagePath(b.boxImage)" class="card-img-top" alt="Image 1">
+                                        <img [src]="getImagePath(b.boxImage)" class="card-img-top" alt="Image 1" [routerLink]="['/main/detailbox', b._id]">
                                     }
                                     <div class="card-body">
                                         <h5 class="card-title">{{b.name}}</h5>
-                                        <p class="card-text">Price {{b.price}}</p>
+                                        <p class="card-text">Price {{b.price}} <i class="fa-brands fa-ethereum"></i></p>
                                     </div>
                                 </div>
                             </div>
@@ -55,7 +55,7 @@
                             <div class="col-md-4">
                                 <div class="card" routerLink="/main/produit">
                                     @if (b.boxImage) {
-                                        <img [src]="getImagePath(b.boxImage)" class="card-img-top" alt="Image 1">
+                                        <img [src]="getImagePath(b.boxImage)" class="card-img-top" alt="Image 1" [routerLink]="['/main/detailbox', b._id]">
                                     }
                                     <div class="card-body">
                                         <h5 class="card-title">{{b.name}}</h5>

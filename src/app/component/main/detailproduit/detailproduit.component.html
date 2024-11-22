@@ -24,7 +24,21 @@
     </div>
     <div class="products-container">
         <h2>Related Products</h2>
-
+        @if (products.length > 0) {
+        <div class="products-grid">
+            @for(p of products ; track $index){
+            <div class="product-card">
+                @if (p.productImage){
+                <img [src]="getImagePath(getImagePath(p.productImage))" />
+                }
+                <h3>{{ p.name }}</h3>
+                <p>Price: {{ p.price }}</p>
+            </div>
+            }
+        </div>
+        } @else {
+        <p>No related products available.</p>
+        }
     </div>
     }
     }@else {
