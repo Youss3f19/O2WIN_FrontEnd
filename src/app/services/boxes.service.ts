@@ -84,6 +84,10 @@ export class BoxesService {
     console.log('Panier vidé');
   }
   
-
+  clearPanierAfterPurchase(): void {
+    this.emptyPanier(); 
+    console.log('Panier vidé après achat.');
+  }
+  
 
 }

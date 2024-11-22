@@ -8,11 +8,13 @@ import { RarityService } from '../../../services/rarity.service';
 import { Rarity } from '../../../models/rarity';
 import { ActivatedRoute } from '@angular/router';
 import { NgClass } from '@angular/common';
+import { LoaderComponent } from "../../loader/loader.component";
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-add-box',
   standalone: true,
-  imports: [ReactiveFormsModule, NgClass],
+  imports: [ReactiveFormsModule, NgClass, LoaderComponent],
   templateUrl: './add-box.component.html',
   styleUrls: ['./add-box.component.css']
 })
@@ -23,6 +25,8 @@ export class AddBoxComponent implements OnInit {
   private readonly activatedRoute: ActivatedRoute = inject(ActivatedRoute); 
   private readonly fb: FormBuilder = inject(FormBuilder);
   
+  
+  
   boxForm!: FormGroup;
   boxId!: string;
   boxByIdCategories!: any[];
@@ -30,6 +34,8 @@ export class AddBoxComponent implements OnInit {
   categories: Category[] = [];
   rarities: Rarity[] = [];
   selectedImage: File | null = null;
+  loading: boolean = true;
+  loadingCategories: boolean = true;
 
 
   // onInit
@@ -44,7 +50,7 @@ export class AddBoxComponent implements OnInit {
       rarityProbabilities: this.fb.array([], { validators: this.probabilitySumValidator }),
       category: this.fb.array([])
     });
-
+    this.loading = true;
     if (this.boxId) {
       this.boxService.getBoxById(this.boxId).subscribe(
         (box) => {
@@ -56,13 +62,14 @@ export class AddBoxComponent implements OnInit {
           this.boxByIdRarityProbabilities = box.rarityProbabilities;
           console.log(this.boxByIdRarityProbabilities);
           
-          
           this.boxForm.patchValue(box);
-
-          
-          this.selectedImage = null;    
+          this.selectedImage = null;  
+          this.loading = false;  
         },
-        (error) => console.error('Error retrieving box', error)
+        (error) => {
+          console.error('Error retrieving box', error)
+          this.loading = false;
+        }
       );
     }
     this.initializeCategoryControls();
@@ -78,8 +85,13 @@ export class AddBoxComponent implements OnInit {
       (categories) => {
         this.categories = categories;
         this.initializeCategoryControls();  // Initialize checkbox controls for categories
+        this.loadingCategories = false;
       },
-      (error) => console.error('Error retrieving categories', error)
+      (error) => {
+        console.error('Error retrieving categories', error) 
+        this.loadingCategories = false;
+
+      }
     );
   }
 
@@ -95,28 +107,38 @@ export class AddBoxComponent implements OnInit {
 
   // Initialize category form controls
   private initializeCategoryControls(): void {
-    this.categories.forEach((category, index) => {
-      
-      const isSelected = this.boxByIdCategories ? this.boxByIdCategories.includes(category._id) : false;
-      console.log(category._id);
-            
-      console.log(isSelected);
-      
-      this.category.push(this.fb.control(isSelected)); 
+    // Emit the categories array as an observable
+    of(this.categories).subscribe((categories) => {
+      categories.forEach((category) => {
+        const isSelected = this.boxByIdCategories
+          ? this.boxByIdCategories.includes(category._id)
+          : false;
+        console.log(category._id);
+        console.log(isSelected);
+  
+        this.category.push(this.fb.control(isSelected));
+      });
     });
   }
-
-  // Initialize rarity probabilities form controls
+  
   private initializeRarity(): void {
-    this.rarities.forEach((rarity, index) => {
-
-      this.rarityProbabilities.push(this.fb.group({
-        rarity: rarity,
-        probability: [this.boxByIdRarityProbabilities ? this.boxByIdRarityProbabilities[index].probability : 100 / this.rarities.length, Validators.required]
-      }));
+    // Emit the rarities array as an observable
+    of(this.rarities).subscribe((rarities) => {
+      rarities.forEach((rarity, index) => {
+        this.rarityProbabilities.push(
+          this.fb.group({
+            rarity: rarity,
+            probability: [
+              this.boxByIdRarityProbabilities
+                ? this.boxByIdRarityProbabilities[index].probability
+                : 100 / this.rarities.length,
+              Validators.required,
+            ],
+          })
+        );
+      });
     });
   }
-
   // Custom validator to ensure total probability sums to 100
   probabilitySumValidator(control: AbstractControl): ValidationErrors | null {
     const formArray = control as FormArray;
@@ -145,6 +167,7 @@ export class AddBoxComponent implements OnInit {
 
   // Submit the form to add or update a box
   onSubmit(): void {
+    this.loading = true;
     const selectedCategories: string[] = this.category.controls
       .map((control, index) => control.value ? this.categories[index]._id : null)
       .filter((id) => id !== null);
@@ -169,13 +192,26 @@ export class AddBoxComponent implements OnInit {
     // Perform update if boxId exists, otherwise, add a new box
     if (this.boxId) {
       this.boxService.updateBox(this.boxId, formData).subscribe(
-        (response ) => console.log('Box updated successfully', response),
-        (error) => console.error('Error updating box', error)
+        (response ) => {
+          console.log('Box updated successfully', response)
+          this.loading = false;
+
+        },
+        (error) =>{ 
+          console.error('Error updating box', error)
+          this.loading = false;
+        }
       );
     } else {
       this.boxService.addBox(formData).subscribe(
-        (response) => console.log('Box added successfully', response),
-        (error) => console.error('Error adding box', error)
+        (response) => {
+          console.log('Box added successfully', response)
+          this.loading = false;
+        },
+        (error) =>{ 
+          this.loading = false;
+          console.error('Error adding box', error)
+        }
       );
     }
   }

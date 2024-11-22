@@ -19,9 +19,9 @@
 }
 
 .giphy-embed {
-    width: 100%;
-    height: 100%;
-    border-radius: 40px;
+    width: 96%;
+    height: 50vh;
+    border-radius: 40px 40px 0 0;
 }
 
 /* Overlay pour le texte et le bouton par-dessus la vidéo */
@@ -78,8 +78,9 @@
     padding: 1.5rem;
     background-color: rgba(46, 50, 59, 0.648);
     color: #fff;
-    border-radius: 50px;
-    margin: 2rem;
+    border-radius: 0 0 40px 40px;
+    margin: 4rem;
+    margin-top: 5px;
     
     text-align: center;
 }

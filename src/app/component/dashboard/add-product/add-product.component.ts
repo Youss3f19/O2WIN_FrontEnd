@@ -6,6 +6,7 @@ import { RarityService } from '../../../services/rarity.service';
 import { ActivatedRoute } from '@angular/router';
 import { Category } from '../../../models/category';
 import { Rarity } from '../../../models/rarity';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-add-product',
@@ -28,7 +29,7 @@ export class AddProductComponent implements OnInit {
   productId!: string;
   productByIdCategories!: any[];
   selectedImage: File | null = null;
-  categoriesLoaded = false; // New flag to control rendering
+  categoriesLoaded = false; 
 
   ngOnInit(): void {
     this.productId = this.activatedRoute.snapshot.params['id'];
@@ -89,9 +90,9 @@ export class AddProductComponent implements OnInit {
   private initializeCategoryControls(): void {
     this.category.clear();
   
-    // Populate FormArray with controls for each category
-    Promise.resolve().then(() => {
-      this.categories.forEach((category) => {
+    // Emit categories as an observable
+    of(this.categories).subscribe((categories) => {
+      categories.forEach((category) => {
         const isSelected = this.productByIdCategories
           ? this.productByIdCategories.includes(category._id)
           : false;
@@ -99,12 +100,11 @@ export class AddProductComponent implements OnInit {
         const control = this.fb.control(isSelected);
         this.category.push(control);
       });
-
+  
       // Indicate that categories have been loaded
       this.categoriesLoaded = true;
     });
   }
-
   // Getter for category FormArray
   get category(): FormArray {
     return this.productForm.get('category') as FormArray;

@@ -27,6 +27,7 @@ import { ChangermdpComponent } from './component/main/changermdp/changermdp.comp
 import { DetailproduitComponent } from './component/main/detailproduit/detailproduit.component';
 import { OpenBoxComponent } from './component/main/myboxes/open-box/open-box.component';
 import { OrderComponent } from './component/main/order/order.component';
+import { OrderTableComponent } from './component/dashboard/order-table/order-table.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/main/home', pathMatch: 'full' },
@@ -45,8 +46,7 @@ export const routes: Routes = [
             { path: 'update-product/:id' , component: AddProductComponent },
             { path: 'add-category' , component: AddCategoryComponent },
             { path: 'update-category/:id' , component: AddCategoryComponent },
-
-
+            { path: 'order-table/:status' , component: OrderTableComponent },
 
 
         ]

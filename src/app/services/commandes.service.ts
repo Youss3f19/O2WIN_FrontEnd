@@ -16,7 +16,6 @@ export class CommandesService {
   getCommandes(): Observable<Commande[]> {
     return this.http.get<Commande[]>(this.API_URL + "getAllCommands");
   }
-
   addCommand(products: any , headers : HttpHeaders): Observable<Commande>{
     return this.http.post<Commande>(this.API_URL + "create", products , { headers });
   }

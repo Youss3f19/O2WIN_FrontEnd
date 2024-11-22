@@ -6,33 +6,36 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-canvas-panier',
   standalone: true,
-  imports: [],
   templateUrl: './canvas-panier.component.html',
-  styleUrl: './canvas-panier.component.css'
+  styleUrls: ['./canvas-panier.component.css'], 
 })
 export class CanvasPanierComponent {
-  private readonly boxesService : BoxesService= inject(BoxesService);
-  private readonly router : Router= inject(Router);
+  private readonly boxesService = inject(BoxesService);
+  private readonly router = inject(Router);
 
-  panier!:Box[] | null;
+  panier: Box[] | null = null;
 
   ngOnInit(): void {
-    this.boxesService.currentPanier$.subscribe(panier => {
-      this.panier = panier;
-      console.log("Panier : "+panier);
-      
-  
+    this.boxesService.currentPanier$.subscribe((panier) => {
+      this.panier = panier || null;
+      console.log('Panier : ', panier);
     });
   }
-  removeFromPanier(index : number): void {
+
+  removeFromPanier(index: number): void {
     this.boxesService.removeFromPanier(index);
-  }
-  
-  emptyPanier(){
-    this.boxesService.emptyPanier();
+    if (this.panier && this.panier.length === 0) {
+      this.boxesService.emptyPanier();
+      this.panier = null;
+    }
   }
 
-  checkout(){
+  emptyPanier(): void {
+    this.boxesService.emptyPanier();
+    this.panier = null;
+  }
+
+  checkout(): void {
     this.router.navigate(['/main/panier']);
   }
 
