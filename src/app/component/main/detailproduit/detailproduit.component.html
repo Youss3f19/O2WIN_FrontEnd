@@ -22,6 +22,21 @@
             <button class="btnadd" (click)="addBoxToCart(box)">Add Box</button>
         </div>
     </div>
+    <div class="products-container">
+        <h2>Related Products</h2>
+        <div class="products-grid">
+            <div class="product-card" *ngFor="let product of products">
+                <div class="product-img-container">
+                    <img [src]="getImagePath(product.image)" alt="{{ product.name }}" width="150" height="150">
+                </div>
+                <h3>{{ product.name }}</h3>
+                <p>Price: <i class="fa-brands fa-ethereum"></i> {{ product.price }}</p>
+                <button class="btnadd" (click)="addBoxToCart(product)">Add to Cart</button>
+            </div>
+        </div>
+    </div>
     }
+    }@else {
+    <app-loader></app-loader>
     }
 </div>

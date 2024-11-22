@@ -3,11 +3,12 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { BoxesService } from '../../../services/boxes.service';
 import { Box } from '../../../models/box';
 import { UsersService } from '../../../services/users.service';
+import { LoaderComponent } from '../../loader/loader.component';
 
 @Component({
   selector: 'app-detailproduit',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, LoaderComponent],
   templateUrl: './detailproduit.component.html',
   styleUrl: './detailproduit.component.css'
 })

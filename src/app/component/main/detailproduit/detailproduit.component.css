@@ -6,6 +6,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     height: 100vh;
     text-align: center;
     line-height: 2;
@@ -68,3 +69,22 @@ h2{
 .btnadd:hover{
     background: linear-gradient(45deg, #f82424, #f16938);
 }
+
+
+.products-container {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #1d2326;
+    border-radius: 8px;
+  }
+  
+  .products-container h2 {
+    font-size: 28px;
+    color: #ff8c00;
+    margin-bottom: 20px;
+  }
+  
+ 
+  
+  
+  

@@ -31,107 +31,61 @@
         <h3 class="mb-4 title-products">Latest products</h3>
         <div id="multiCardCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
-                <!-- Slide 1 -->
+                <!-- Slide -->
                 <div class="carousel-item active">
                     <div class="row">
+                        @for(box of boxes; track $index){
                         <div class="col-md-4">
                             <div class="card" routerLink="/main/produit">
-                                <img src="images/gift-dynamic-color.png" class="card-img-top" alt="Image 1">
+                                @if(box.boxImage){
+                                <img [src]="getImagePath(box.boxImage)"  class="card-img-top" alt="">
+                                }
                                 <div class="card-body">
-                                    <h5 class="card-title">Produit 1</h5>
-                                    <p class="card-text">Description du produit 1.</p>
+                                    <h5 class="card-title">{{box.name}}</h5>
+                                    <p class="card-text">Price: {{box.price}} </p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="card" routerLink="/main/produit">
-                                <img src="images/gift-dynamic-color.png" class="card-img-top" alt="Image 2">
-                                <div class="card-body">
-                                    <h5 class="card-title">Produit 2</h5>
-                                    <p class="card-text">Description du produit 2.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card" routerLink="/main/produit">
-                                <img src="images/gift-dynamic-color.png" class="card-img-top" alt="Image 3">
-                                <div class="card-body">
-                                    <h5 class="card-title">Produit 3</h5>
-                                    <p class="card-text">Description du produit 3.</p>
-                                </div>
-                            </div>
-                        </div>
+                        }
                     </div>
-                </div>
-                <!-- Slide 2 -->
-                <div class="carousel-item">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="card" routerLink="/main/produit">
-                                <img src="images/gift-dynamic-color.png" class="card-img-top" alt="Image 4">
-                                <div class="card-body">
-                                    <h5 class="card-title">Produit 4</h5>
-                                    <p class="card-text">Description du produit 4.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card" routerLink="/main/produit">
-                                <img src="images/gift-dynamic-color.png" class="card-img-top" alt="Image 5">
-                                <div class="card-body">
-                                    <h5 class="card-title">Produit 5</h5>
-                                    <p class="card-text">Description du produit 5.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card" routerLink="/main/produit">
-                                <img src="images/gift-dynamic-color.png" class="card-img-top" alt="Image 6">
-                                <div class="card-body">
-                                    <h5 class="card-title">Produit 6</h5>
-                                    <p class="card-text">Description du produit 6.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Navigation controls -->
-            <button class="carousel-control-prev" type="button" data-bs-target="#multiCardCarousel"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#multiCardCarousel"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-    </div>
 
-    <div class="feature-container">
-        <div class="feature">
-            <div class="feature-icon"><img src="images/sheild-dynamic-color.png" alt=""
-                    style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;"></div>
-            <div class="feature-title">100% Authentic items</div>
-            <div class="feature-text">Each item you receive from Lootie is verified for authenticity, ensuring that
-                you
-                get the real deal with no compromises.</div>
+                </div>
+                <!-- Navigation controls -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#multiCardCarousel"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#multiCardCarousel"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
         </div>
-        <div class="feature">
-            <div class="feature-icon"><img src="images/bag-dynamic-color.png" alt=""
-                    style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;"></div>
-            <div class="feature-title">Sell Unwanted Items</div>
-            <div class="feature-text">All items in your inventory can be directly sold for money on Lootie so you
-                can
-                unbox something that matches your style -- no fees, no hidden costs -- just pure cash.</div>
-        </div>
-        <div class="feature">
-            <div class="feature-icon"><img src="images/map-pin-dynamic-color.png" alt=""
-                    style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;"></div>
-            <div class="feature-title">Worldwide Shipping Without Tax</div>
-            <div class="feature-text">All taxes are already paid by us, regardless of where you live.</div>
+
+        <div class="feature-container">
+            <div class="feature">
+                <div class="feature-icon"><img src="images/sheild-dynamic-color.png" alt=""
+                        style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;"></div>
+                <div class="feature-title">100% Authentic items</div>
+                <div class="feature-text">Each item you receive from Lootie is verified for authenticity, ensuring that
+                    you
+                    get the real deal with no compromises.</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon"><img src="images/bag-dynamic-color.png" alt=""
+                        style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;"></div>
+                <div class="feature-title">Sell Unwanted Items</div>
+                <div class="feature-text">All items in your inventory can be directly sold for money on Lootie so you
+                    can
+                    unbox something that matches your style -- no fees, no hidden costs -- just pure cash.</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon"><img src="images/map-pin-dynamic-color.png" alt=""
+                        style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;"></div>
+                <div class="feature-title">Worldwide Shipping Without Tax</div>
+                <div class="feature-text">All taxes are already paid by us, regardless of where you live.</div>
+            </div>
         </div>
     </div>
-</div>

@@ -2,11 +2,12 @@ import { Component, inject, Input, OnInit } from '@angular/core';
 import { BoxComponent } from "../box/box.component";
 import { BoxesService } from '../../../services/boxes.service';
 import { Box } from '../../../models/box';
+import { LoaderComponent } from '../../loader/loader.component';
 
 @Component({
   selector: 'app-list-box',
   standalone: true,
-  imports: [BoxComponent],
+  imports: [BoxComponent, LoaderComponent],
   templateUrl: './list-box.component.html',
   styleUrl: './list-box.component.css'
 })
@@ -14,6 +15,7 @@ export class ListBoxComponent implements OnInit {
   private readonly boxesService : BoxesService= inject(BoxesService);
   boxes: Box[] = [];
   isLoading: boolean = false; 
+  
   
 
   ngOnInit(): void {
