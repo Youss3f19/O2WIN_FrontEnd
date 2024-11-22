@@ -172,10 +172,17 @@
 }
 
 .card {
-    width: 80%;
+    width: 60%;
+    height: 360px;
     margin: 0 auto;
     background-color: #c2ac94;
     color: #fff;
+    padding: 10px;
+}
+.card-title{
+    font-weight: bold;
+    font-family: mv boli;
+    font-size: 25px;
 }
 
 .carousel-control-prev-icon,
@@ -196,6 +203,8 @@
 .card-img-top {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-radius: 8px;
+    width: 100px;
+    height: 300px;
 }
 
 .card-img-top:hover {
@@ -203,7 +212,17 @@
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
-
+.card-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.card-text{
+    font-size: 20px;
+    color: rgb(99, 7, 7);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bold;
+}
 
 .feature-container {
     display: flex;

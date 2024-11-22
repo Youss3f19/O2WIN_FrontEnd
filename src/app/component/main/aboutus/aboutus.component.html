@@ -1,3 +1,4 @@
+@if(!isLoading){
 <div class="container">
     <div class="parallax-header">
         <h1>
@@ -88,3 +89,8 @@
 
     </div>
 </div>
+}@else {
+    <div class="d-flex justify-content-center align-items-center " style="min-height: 40vw;">
+        <app-loader></app-loader>
+    </div>
+}

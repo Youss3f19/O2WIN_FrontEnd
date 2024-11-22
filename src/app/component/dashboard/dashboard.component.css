@@ -115,3 +115,9 @@ img {
     width: 30px;
     height: 30px;
   }
+
+  .contentDahboard{
+    min-height: 85vh;
+    max-height: 85vh;
+    overflow-y: scroll;
+  }

@@ -18,14 +18,17 @@
                 <td>
                     @if(p.productImage) {
                         <div>
-                            <img [src]="getImagePath(p.productImage)" width="100" height="100" alt="{{ p.productImage }}" />
+                            <img [src]="getImagePath(p.productImage)" class="w-25 h-25" alt="{{ p.productImage }}" />
                         </div>
                     }@else {
                         <div>
                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUrgu4a7W_OM8LmAuN7Prk8dzWXm7PVB_FmA&s" width="30" height="30" alt="{{ p.name }}" />
                         </div>
                     }
-                    {{p.name}}
+                    <div class="fw-bold">
+                        {{p.name}}
+
+                    </div>
                 </td>
                 <td>
                     {{p.description}}

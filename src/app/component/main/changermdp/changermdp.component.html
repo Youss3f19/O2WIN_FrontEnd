@@ -1,3 +1,4 @@
+@if(!isLoading){
 <div class="container">
   <div class="shipping-container">
     <form [formGroup]="resetPasswordForm" (ngSubmit)="onSubmit()">
@@ -15,7 +16,8 @@
         <input id="confirmPassword" formControlName="confirmPassword" type="password" placeholder="**********" />
       </div>
       <div class="w-100 d-flex justify-content-center">
-        <small  [ngClass]="{'text-success': messageResponse === 'Password changed successfully' , 'text-danger': messageResponse !== 'Password changed successfully' }" >
+        <small
+          [ngClass]="{'text-success': messageResponse === 'Password changed successfully' , 'text-danger': messageResponse !== 'Password changed successfully' }">
           {{messageResponse | titlecase}}
         </small>
       </div>
@@ -26,3 +28,8 @@
     </form>
   </div>
 </div>
+}@else {
+<div class="d-flex justify-content-center align-items-center " style="min-height: 40vw;">
+  <app-loader></app-loader>
+</div>
+}

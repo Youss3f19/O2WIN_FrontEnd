@@ -1,10 +1,16 @@
+@if(!isLoading){
 <div class="container-fluid pt-5 mt-3 mb-2">
     <div class="row">
         @for (box of boxes; track $index) {
-            <div class="col-3">
-                <app-box [box]="box"></app-box>
-             </div>
+        <div class="col-3">
+            <app-box [box]="box"></app-box>
+        </div>
         }
     </div>
 
 </div>
+}@else {
+<div class="d-flex justify-content-center align-items-center " style="min-height: 40vw;">
+    <app-loader></app-loader>
+</div>
+}
