@@ -48,9 +48,9 @@ export class DetailproduitComponent {
 
   getBoxByProduct(boxId:string):void {
     this.boxService.getProductsByBox(boxId).subscribe(
-      (products) => {
-        console.log('Products fetched:', products);
-        this.products = products;
+      (res) => {
+        console.log('Products fetched:', res);
+        this.products = res;
         this.isLoading = false;
       },
       (error) => {
