@@ -29,9 +29,9 @@
                 <div class="col-2">
                     <div class="product-card">
                         @if (p.productImage){
-                        <img [src]="getImagePath(p.productImage)" width="100" height="100" />
+                        <img [src]="getImagePath(p.productImage)" style="width: 100px;height: 84px;" />
                         }
-                        <h3>{{ p.name }}</h3>
+                        <div class="fs-5">{{ p.name }}</div>
                         <p>Price: {{ p.price }}</p>
                     </div>
                 </div>
