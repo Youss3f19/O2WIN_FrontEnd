@@ -24,16 +24,21 @@
     </div>
     <div class="products-container">
         <h2>Related Products</h2>
+        @if (products.length > 0) {
         <div class="products-grid">
-            <div class="product-card" *ngFor="let product of products">
-                <div class="product-img-container">
-                    <img [src]="getImagePath(product.image)" alt="{{ product.name }}" width="150" height="150">
-                </div>
-                <h3>{{ product.name }}</h3>
-                <p>Price: <i class="fa-brands fa-ethereum"></i> {{ product.price }}</p>
-                <button class="btnadd" (click)="addBoxToCart(product)">Add to Cart</button>
+            @for(p of products ; track $index){
+            <div class="product-card">
+                @if (p.productImage){
+                <img [src]="getImagePath(getImagePath(p.productImage))" />
+                }
+                <h3>{{ p.name }}</h3>
+                <p>Price: {{ p.price }}</p>
             </div>
+            }
         </div>
+        } @else {
+        <p>No related products available.</p>
+        }
     </div>
     }
     }@else {

@@ -4,6 +4,7 @@ import { Box } from '../models/box';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Panier } from '../models/panier';
 import { UsersService } from './users.service';
+import { Product } from '../models/product';
 
 @Injectable({
   providedIn: 'root'
@@ -21,9 +22,14 @@ export class BoxesService {
     this.currentPanier.next(panier ? JSON.parse(panier) : null);
   }
 
+
   getBoxes(): Observable<Box[]> {
     return this.http.get<Box[]>(this.API_URL + "getBoxes");
   }
+
+  getProductsByBox(boxId: String): Observable<Product[]> {
+    return this.http.get<Product[]>(this.API_URL + "getProductsByBox/" + boxId);
+  } 
 
   addBox(box: FormData): Observable<Box> {
     return this.http.post<Box>(this.API_URL + "addBox", box);
