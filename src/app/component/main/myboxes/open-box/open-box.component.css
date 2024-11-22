@@ -1,0 +1,54 @@
+.container-open {
+    height: 370px;
+    width: 280px;
+    perspective: 700px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.cardProduct {
+    height: inherit;
+    width: inherit;
+    border-radius: 10px;
+    position: relative;
+    transition: transform 1.5s;
+    transform-style: preserve-3d;
+    user-select: none;
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    height: inherit;
+    ;
+    width: inherit;
+    border-radius: 10px;
+    display: flex;
+    place-items: center;
+    justify-content: center;
+    backface-visibility: hidden;
+    user-select: none;
+}
+
+.card-back {
+    background: url(https://gameworld.tn/12104-large_default/playstation-5-slim-edition-digital-double-manettes-1tb-ssd.jpg) no-repeat right bottom / cover;
+
+    transform: rotateY(180deg) rotateZ(180deg);
+}
+
+.card-front {
+    background: url(https://media.hearthpwn.com/attachments/104/176/power-core.png) no-repeat right bottom / contain;
+}
+
+.clicked {
+    transform: rotateY(180deg) rotateZ(180deg);
+}
+
+.cursor-grab{
+    cursor: grab;
+}
+
+.card-product{
+    min-height: 35vh;
+    max-height: 35vh;
+}

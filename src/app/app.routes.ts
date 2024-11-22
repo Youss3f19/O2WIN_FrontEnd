@@ -26,6 +26,7 @@ import { PanierComponent } from './component/main/panier/panier.component';
 import { ChangermdpComponent } from './component/main/changermdp/changermdp.component';
 import { DetailproduitComponent } from './component/main/detailproduit/detailproduit.component';
 import { OpenBoxComponent } from './component/main/myboxes/open-box/open-box.component';
+import { OrderComponent } from './component/main/order/order.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/main/home', pathMatch: 'full' },
@@ -64,6 +65,7 @@ export const routes: Routes = [
              { path: 'choixpayement', component: ChoixpayementComponent , canActivate:[authGuard] },
              { path: 'payement', component: PayementComponent , canActivate:[authGuard]},
              { path: 'inventory', component: InventoryComponent , canActivate:[authGuard] },
+             { path: 'order' , component: OrderComponent , canActivate:[authGuard]},
              { path: 'profile', component: ProfileComponent , canActivate:[authGuard]},
              { path: 'myboxes', component: MyboxesComponent, canActivate:[authGuard]},
              { path: 'openBox', component: OpenBoxComponent, canActivate:[authGuard]},

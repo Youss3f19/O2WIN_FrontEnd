@@ -19,6 +19,8 @@ export class CanvasPanierComponent {
   ngOnInit(): void {
     this.boxesService.currentPanier$.subscribe(panier => {
       this.panier = panier;
+      console.log("Panier : "+panier);
+      
   
     });
   }

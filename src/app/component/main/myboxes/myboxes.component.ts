@@ -4,11 +4,12 @@ import { UsersService } from '../../../services/users.service';
 import { BoxComponent } from "../box/box.component";
 import { BoxesService } from '../../../services/boxes.service';
 import { HttpHeaders } from '@angular/common/http';
+import { OpenBoxComponent } from "./open-box/open-box.component";
 
 @Component({
   selector: 'app-myboxes',
   standalone: true,
-  imports: [],
+  imports: [OpenBoxComponent],
   templateUrl: './myboxes.component.html',
   styleUrl: './myboxes.component.css'
 })
@@ -18,15 +19,16 @@ export class MyboxesComponent {
 
   currentUser: User | null = null;
   boxes : any[] = [];
+  products: any[] = [];
   selectedBox: any = null; 
+  open: boolean = false;
 
 
   ngOnInit(): void {
     this.userService.checkUserValidity();
     this.userService.currentUser$.subscribe((user) => {
       this.currentUser = user; 
-      this.boxes = this.currentUser?.boxes.filter((box)=>{ box.opened == false}) || [];
-      console.log(this.boxes);
+      this.boxes = this.currentUser?.boxes.filter((box) => box.opened == false) || [];
       
       console.log('Current User:', this.currentUser);
     });
@@ -45,15 +47,23 @@ export class MyboxesComponent {
     this.boxService.openBox(boxId , header).subscribe(
         (response) => {
             console.log('Box opened:', response);
+            this.products = response.generatedProducts
             this.boxes = this.boxes.map((box) => 
                 box.box._id === boxId ? { ...box, opened: true } : box
             );
-            
             this.userService.checkUserValidity();
+            this.open = true;
+
+
         },
         (err) => console.error('Error opening box:', err),
     );
 }
+  closeBox(){
+    this.open = false;
+    this.products = [];
+
+  }
 
   getImagePath(relativePath: string): string {
     return `http://localhost:3000/${relativePath.replace(/\\/g, '/')}`;

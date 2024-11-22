@@ -1,0 +1,139 @@
+<div class="container">
+    <div class="header">
+        <button class="goback-button">
+            <i class="fa-solid fa-arrow-left" style="margin-right: 10px;"></i> GO BACK
+        </button>
+        <div class="action-buttons">
+            <button class="sell-btn" disabled>Sell</button>
+            <button class="withdraw-btn">Withdraw</button>
+        </div>
+    </div>
+
+
+    <div class="content">
+        <div class="row ">
+            <div class="col-md-4">
+                <div class="card bg-dark text-light shadow-sm">
+                  <div class="card-body">
+                    <h4 class="card-title text-center mb-4">FAQ</h4>
+                    <!-- Question 1 -->
+                    <div class="d-flex align-items-start mb-3">
+                      <div>
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-1-circle-fill text-warning fs-4"></i>
+                            <h5 class="fw-bold mt-2 mx-2">How long does shipping take?</h5>
+                        </div>
+                        <p class="text-secodary">
+                          Shipping time will depend on your item and its value. The average shipping time for electronic items is 2-5 days. For StockX items, it can take between 5-14 days.
+                        </p>
+                      </div>
+                    </div>
+                    <!-- Question 2 -->
+                    <div class="d-flex align-items-start mb-3">
+                      
+                      <div>
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-2-circle-fill text-warning fs-4"></i>
+                            <h5 class="fw-bold mt-4 mx-2">How will I receive shipping information?</h5>
+                        </div>
+                        <p class="text-secodary">
+                          Order- and tracking information will be sent to your email. Make sure to check your spam folder if you have not received an order confirmation.
+                        </p>
+                      </div>
+                    </div>
+                    <!-- Question 3 -->
+                    <div class="d-flex align-items-start">
+                      <div>
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-3-circle-fill text-warning fs-4"></i>
+                            <h5 class="fw-bold mt-2 mx-2">Can I cancel an order?</h5>
+                        </div>
+                        <p class="text-secodary">
+                          You can cancel an order as long as it's not yet shipped. Contact customer support if you wish to cancel an order.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="w-100">
+                    <div class="alert alert-warning bg-dark text-warning" role="alert">
+                        <i class="bi bi-exclamation-triangle-fill"></i>
+                        Please note you can only choose one item at once
+                    </div>
+                    @if (selectedItems.length>0) {
+                      <div class="text-end">
+                        <button class="btn btn-success w-25 rounded-5 mb-5" (click)="addCommand()">Valider</button>
+                      </div>
+                    }
+                    <div class="selected-item">
+                      @for (item of selectedItems; track $index) {
+                        <div  class="row mb-3">
+                          <div class="col-4 d-flex align-items-center">
+                            <img [src]="getImagePath(item.product.productImage)" width="50" height="50" [alt]="item.product.name">
+                            <h6 class="text-light mx-3">{{item.product.name}}</h6>
+                          </div>
+                          <div class="col-3 d-flex align-items-center">
+                            <h6 class="text-light ">Price: {{item.product.price}}</h6>
+                            </div>
+                            <div class="col-3 d-flex align-items-center justify-content-center">
+                            <h6 class="text-light mx-3">
+                              Quantity:  {{item.quantity}}
+                            </h6> 
+                          </div>
+                          <div class="col-2 d-flex align-items-center">
+                            <button class="btn btn-danger w-100 border-0  fw-bold text-secodary rounded-5" (click)="removeItem(item)">Remove</button>
+                          </div>
+                        </div>
+                      }
+                      
+                    </div>
+                    <div class="text-center">
+                        <button class="btn withdraw-btn w-50 border-0 mt-4  fs-4 px-5 py-2 fw-bold text-secodary rounded-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <i class="bi bi-plus-lg"></i>
+                            Select Item
+                        </button>
+                    </div>
+                </div>
+            </div>  
+        </div>
+    </div>
+
+    <div class="footer">
+      Selected Items: {{selectedItems.length}}
+  </div>
+</div>
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered  ">
+      <div class="modal-content bg-dark text-light">
+        <div class="modal-header border-0">
+          <h1 class="modal-title fs-5 w-100 text-center" id="exampleModalLabel">Select Item</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body bg-black">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search items..." [(ngModel)]="searchQuery"(input)="filterItems()">
+            </div>
+            @for (item of filteredInventory; track $index) {
+                <div class="w-100 ">
+                    <div class="item d-flex align-items-center pointer " (click)="selectItem(item)">
+                        <img [src]="getImagePath(item.product.productImage)" class="pointer" width="50" height="50" [alt]="item.product.name">
+                        <h6 class="text-light mt-3">{{item.product.name}}</h6>
+                        <h6 class="text-light mt-3">Price: {{item.product.price}}</h6>
+                        <h6 class="text-light mt-3">Quantity: {{item.quantity}}</h6>                        
+                    </div>
+                </div>
+                
+            }@empty {
+                <div class="text-center fs-5 mt-5">No Items</div>
+            }
+        </div>
+      
+      </div>
+    </div>
+  </div>

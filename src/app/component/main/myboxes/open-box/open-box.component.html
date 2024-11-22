@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="text-light row">
+        @for (p of products; track $index ; let i = $index ;) {
+            <div class="col-4 my-2 p-2">
+                <div class="card-product bg-light bg-light rounded" >
+                    @if (reveal[i]) {
+                        <div class="item  text-center">
+                            <img [src]="getImagePath(p.productImage)" class="pointer" width="100" height="100" [alt]="p.name">
+                            <h6 class="text-muted mt-3">{{p.name}}</h6>
+                            <h6 class="text-muted mt-3">Price: {{p.price}}</h6>
+                        </div>
+                    }@else {
+                        <a class="cursor-grab" (click)="revealProduct(i)">
+                            <img src="https://i.pinimg.com/736x/f0/6a/c2/f06ac224d5bd0685f6a6baf7bccbc8b3.jpg"  class="w-100 h-100" alt="">
+                        </a>
+                    }
+                   
+                </div>
+            </div>
+        }
+    </div>
+</div>

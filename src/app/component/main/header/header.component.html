@@ -71,6 +71,12 @@
                             <li>
                                 <a class="dropdown-item" routerLink="inventory"><i class="bi bi-columns-gap"></i>Inventory</a>
                             </li>
+                            @if (currentUser.role == "admin") {
+                                <li>
+                                    <a class="dropdown-item" routerLink="/dashboard/home-dashboard"><i class="bi bi-speedometer2"></i>Dashboard</a>
+                                </li>
+                            }
+                           
                             <li>
                                 <a class="dropdown-item" (click)="logout()"
                                     style="color: red; display: flex; align-items: center;">

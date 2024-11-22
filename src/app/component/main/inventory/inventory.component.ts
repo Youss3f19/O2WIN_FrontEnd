@@ -1,11 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { UsersService } from '../../../services/users.service';
 import { User } from '../../../models/user';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-inventory',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './inventory.component.html',
   styleUrl: './inventory.component.css'
 })
@@ -13,7 +14,6 @@ export class InventoryComponent implements OnInit {
   private readonly userService: UsersService = inject(UsersService);
   currentUser: User | null = null;
   inventory : any[] = [];
-  selectedProduct: any = null;
 
 
   ngOnInit(): void {

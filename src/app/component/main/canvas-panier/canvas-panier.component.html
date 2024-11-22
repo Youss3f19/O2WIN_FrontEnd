@@ -35,7 +35,7 @@
         
     </div>
     <div class="offcanvas-footer p-3">
-       @if (panier?.length != 0) {
+       @if (panier!=null) {
         <button class="btn  w-100 bg-red text-light" (click)="checkout()">
             Valid
         </button>
