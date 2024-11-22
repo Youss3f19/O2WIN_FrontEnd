@@ -7,7 +7,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
     text-align: center;
     line-height: 2;
 }
@@ -76,7 +76,7 @@ h2{
     padding: 20px;
     background-color: #1d2326;
     border-radius: 8px;
-  }
+  } 
   
   .products-container h2 {
     font-size: 28px;

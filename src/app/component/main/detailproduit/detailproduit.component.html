@@ -1,6 +1,5 @@
 <div class="container">
-    @if (!isLoading){
-    @if (box){
+    @if (!isLoading && box){
     <div class="card">
         <div class="top-bar">
             <button routerLink="/main/list-boxes" class="goback-button">
@@ -22,25 +21,26 @@
             <button class="btnadd" (click)="addBoxToCart(box)">Add Box</button>
         </div>
     </div>
-    <div class="products-container">
+    <div class="container-fluid">
         <h2>Related Products</h2>
-        @if (products.length > 0) {
-        <div class="products-grid">
+        @if (products && products.length) {
+        <div class="row">
             @for(p of products ; track $index){
-            <div class="product-card">
-                @if (p.productImage){
-                <img [src]="getImagePath(getImagePath(p.productImage))" />
-                }
-                <h3>{{ p.name }}</h3>
-                <p>Price: {{ p.price }}</p>
-            </div>
+                <div class="col-2">
+                    <div class="product-card">
+                        @if (p.productImage){
+                        <img [src]="getImagePath(p.productImage)" width="100" height="100" />
+                        }
+                        <h3>{{ p.name }}</h3>
+                        <p>Price: {{ p.price }}</p>
+                    </div>
+                </div>
             }
         </div>
         } @else {
         <p>No related products available.</p>
         }
     </div>
-    }
     }@else {
     <app-loader></app-loader>
     }
