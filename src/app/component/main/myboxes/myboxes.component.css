@@ -12,6 +12,10 @@
     margin-bottom: 70px;
 }
 
+.card{
+    background-color: #414648a2;
+    color: white;
+}
 .header {
     display: flex;
     justify-content: space-between;
@@ -39,6 +43,16 @@
     padding: 10px;
     font-size: 18px;
     min-height: 50vh;
+    
+}
+.btn{
+    background-color: #e95533f3;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 20px;
     
 }
 @media (max-width: 768px) {

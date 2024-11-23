@@ -1,6 +1,6 @@
 <div class="container">
     <div class="header">
-        <button class="goback-button">
+        <button class="goback-button" routerLink="/main/home">
             <i class="fa-solid fa-arrow-left" style="margin-right: 10px;"></i> GO BACK
         </button>
         <div class="action-buttons">
@@ -11,30 +11,30 @@
 
     <div class="search-bar">
         <i class="fas fa-search"></i>
-        <input type="text" placeholder="Search items...">
+        <input type="text" placeholder="Search items..." [(ngModel)]="searchQuery"
+        (input)="onSearchChange(searchQuery)">
     </div>
 
     <div class="content">
         <div class="filters">
-            <input type="checkbox"> Select All
             <div class="btn-group">
-                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn dropdown-toggle text-light" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Price
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">High</a></li>
-                    <li><a class="dropdown-item" href="#">Low</a></li>
+                    <li><a class="dropdown-item text-light" (click)="onSortChange('High')">High</a></li>
+                    <li><a class="dropdown-item text-light" (click)="onSortChange('Low')">Low</a></li>
                 </ul>
             </div>
         </div>
         <div class="row">
-            @for (item of inventory; track $index) {
-                <div class="col-2 bg-light rounded m-2">
+            @for (item of filteredInventory; track $index) {
+                <div class="col-2 rounded m-2 bg-dark p-2 " >
                     <div class="item  text-center">
-                        <img [src]="getImagePath(item.product.productImage)" class="pointer" width="100" height="100" [alt]="item.product.name">
-                        <h6 class="text-muted mt-3">{{item.product.name}}</h6>
-                        <h6 class="text-muted mt-3">Price: {{item.product.price}}</h6>
-                        <h6 class="text-muted mt-3">Quantity: {{item.quantity}}</h6>                        
+                        <img [src]="getImagePath(item.product.productImage)" class="pointer" width="95" height="84" [alt]="item.product.name">
+                        <div class="text-light mt-3 fs-5">{{item.product.name}}</div>
+                        <div class="text-light mt-3 fs-6">Price: {{item.product.price}}</div>
+                        <div class="text-light mt-3 fs-6">Quantity: {{item.quantity}}</div>                        
                     </div>
     
                 </div>

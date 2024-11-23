@@ -5,11 +5,12 @@ import { BoxComponent } from "../box/box.component";
 import { BoxesService } from '../../../services/boxes.service';
 import { HttpHeaders } from '@angular/common/http';
 import { OpenBoxComponent } from "./open-box/open-box.component";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-myboxes',
   standalone: true,
-  imports: [OpenBoxComponent],
+  imports: [OpenBoxComponent, RouterLink],
   templateUrl: './myboxes.component.html',
   styleUrl: './myboxes.component.css'
 })

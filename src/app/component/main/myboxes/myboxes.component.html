@@ -1,7 +1,7 @@
 @if (!open) {
     <div class="container">
         <div class="header">
-            <button class="goback-button">
+            <button class="goback-button" routerLink="/main/list-boxes">
                 <i class="fa-solid fa-arrow-left " style="margin-right: 10px;"></i> GO BACK
             </button>
     
@@ -20,8 +20,9 @@
                                 }@else {
                                     <img src="https://c1.klipartz.com/pngpicture/867/576/sticker-png-cardboard-box-freight-transport-packaging-and-labeling-delivery-mail-parcel-line-logo.png" width="100" height="100" alt="{{ box.box.name }}">
                                 }
-                                <h4>{{box.box.name}} </h4>
-                                    <a class="btn btn-warning w-75" (click)="openBox(box.box._id)">
+                                <div class="fs-4" style="font-family: mv boli;">{{box.box.name}} </div>
+                                <div class="fs-6">Price {{box.box.price}} </div>
+                                    <a class="btn w-75" (click)="openBox(box.box._id)">
                                         Open
                                     </a> 
                             </div>
