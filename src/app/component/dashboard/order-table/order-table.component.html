@@ -9,7 +9,28 @@
             </tr>
         </thead>
         <tbody>
-        
+            @for(c of commandes; track $index) {
+                <tr>
+                    <td>{{c.user.name}} {{c.user.lastname}}</td>
+                    <td class=" d-flex flex-column align-items-start">
+                        @for (p of c.products; track $index) {
+                            <div>
+                                {{p.quantity}} * {{p.product.name}} 
+                            </div>
+                            
+                        }
+                    </td>
+                   
+                    <td>{{c.status}}</td>
+                    <td>
+                        @if(c.status == 'Pending'){
+                            <button class="btn btn-success mx-1" (click)="updateCommandStatus(c._id,'Completed')">Accept</button>
+                            <button class="btn btn-danger " (click)="updateCommandStatus(c._id,'Cancelled')">Cancel</button>
+                        }
+                    </td>
+                </tr>
+                
+            }
 
 
         </tbody>

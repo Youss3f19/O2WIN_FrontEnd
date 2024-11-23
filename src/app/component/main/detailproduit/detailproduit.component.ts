@@ -10,7 +10,7 @@ import { JsonPipe } from '@angular/common';
 @Component({
   selector: 'app-detailproduit',
   standalone: true,
-  imports: [RouterLink, LoaderComponent,JsonPipe],
+  imports: [RouterLink, LoaderComponent],
   templateUrl: './detailproduit.component.html',
   styleUrl: './detailproduit.component.css'
 })

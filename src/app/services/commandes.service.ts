@@ -20,6 +20,10 @@ export class CommandesService {
     return this.http.post<Commande>(this.API_URL + "create", products , { headers });
   }
 
+  updateCommandStatus(commandId: string, status: string, headers: HttpHeaders): Observable<Commande> {
+    return this.http.put<Commande>(`${this.API_URL}updateCommandStatus/${commandId}`, { status }, { headers });
+  }
+  
 
 
 

@@ -69,18 +69,18 @@ export class OrderComponent {
 
   addCommand(): void {
     const formattedProducts = this.selectedItems.map(item => ({
-      productId: item.product._id,  
+      product: item.product._id, // Use "product" to match the backend schema
       quantity: item.quantity,
     }));
   
     const commandPayload = { products: formattedProducts };
   
-    const header = this.getHeaders();  
-    
+    const header = this.getHeaders();
+  
     this.commandService.addCommand(commandPayload, header).subscribe(
       (response) => {
         console.log('Command added:', response);
-        this.selectedItems = []; 
+        this.selectedItems = [];
       },
       (error) => {
         console.error('Error adding command:', error);
@@ -88,7 +88,6 @@ export class OrderComponent {
     );
   }
   
-
 
   getImagePath(relativePath: string): string {
     return `http://localhost:3000/${relativePath.replace(/\\/g, '/')}`;
