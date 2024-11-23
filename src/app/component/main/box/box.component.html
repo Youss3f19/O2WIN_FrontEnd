@@ -3,8 +3,9 @@
         @if(box.boxImage){
             <img [src]="getImagePath(box.boxImage)" class="box-image cursor-pointer" width="150" height="150" alt="" [routerLink]="['/main/detailbox', box._id]">
         }
-        <div class="fs-4">{{box.name}} </div>
-        <a class="btn btn-warning w-75" (click)="addBoxToCart(box)">
+        <div class="fs-5" style="font-family: mv boli;">{{box.name}} </div>
+        <div class="fs-6">Price {{box.price}} </div>
+        <a class="btn btn-warning w-75 m-2" (click)="addBoxToCart(box)">
             Purchase Now
         </a>
     </div>

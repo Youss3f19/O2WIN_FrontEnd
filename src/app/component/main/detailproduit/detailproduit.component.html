@@ -19,6 +19,12 @@
         </div>
         <div>
             <button class="btnadd" (click)="addBoxToCart(box)">Add Box</button>
+            <div class="rarities">
+                    @for(rarity of box.rarityProbabilities ; track $index ){
+                       {{ rarity.rarity.name }} - Probability: {{ rarity.probability }}% 
+                    }
+                
+            </div>
         </div>
     </div>
     <div class="container-fluid">
@@ -27,11 +33,18 @@
         <div class="row">
             @for(p of products ; track $index){
                 <div class="col-2">
-                    <div class="product-card">
+                    <div class="product-card" [ngClass]="{
+                        'common': p.rarity.name === 'Common',
+                        'uncommon': p.rarity.name === 'Uncommon',
+                        'rare': p.rarity.name === 'Rare',
+                        'epic': p.rarity.name === 'Epic',
+                        'legendary': p.rarity.name === 'Legendary'
+                      }">
                         @if (p.productImage){
                         <img [src]="getImagePath(p.productImage)" style="width: 100px;height: 84px;" />
+                        <img [src]="getImagePath(p.productImage)" style="width: 100px;height: 84px;" />
                         }
-                        <div class="fs-5">{{ p.name }}</div>
+                        <div class="fs-6 fw-bold" style="height: 80px; ">{{ p.name }}</div>
                         <p>Price: {{ p.price }}</p>
                     </div>
                 </div>

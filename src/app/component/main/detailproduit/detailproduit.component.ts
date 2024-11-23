@@ -5,12 +5,12 @@ import { Box } from '../../../models/box';
 import { UsersService } from '../../../services/users.service';
 import { LoaderComponent } from '../../loader/loader.component';
 import { Product } from '../../../models/product';
-import { JsonPipe } from '@angular/common';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-detailproduit',
   standalone: true,
-  imports: [RouterLink, LoaderComponent],
+  imports: [RouterLink, LoaderComponent, NgClass],
   templateUrl: './detailproduit.component.html',
   styleUrl: './detailproduit.component.css'
 })
@@ -22,7 +22,7 @@ export class DetailproduitComponent {
 
 
   box? :  Box;
-  products!: Product[] ;
+  products: Product[] = [];
   isLoading: boolean = true; 
   error: string | null = null; 
 
@@ -33,6 +33,7 @@ export class DetailproduitComponent {
         next: (box) => {
           this.box = box;
           this.getBoxByProduct(boxId);
+          console.log(box);
           
         },
         error: (err) => {

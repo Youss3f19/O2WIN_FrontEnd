@@ -69,20 +69,55 @@ h2{
 .btnadd:hover{
     background: linear-gradient(45deg, #f82424, #f16938);
 }
+.container-fluid{
+    background-color: transparent;
+    margin-top: 60px;
+}
+.container-fluid h2{
+    margin-bottom: 40px;
+    font-family: mv boli;
+    
+}
 
+.product-card{
+    background-color: #1f2426ad;
+    margin: 20px;
+}
 
-.products-container {
-    margin-top: 30px;
-    padding: 20px;
-    background-color: #1d2326;
-    border-radius: 8px;
-  } 
-  
-  .products-container h2 {
-    font-size: 28px;
-    color: #ff8c00;
-    margin-bottom: 20px;
+/* styles.css ou dans votre fichier CSS local */
+.common {
+   border-bottom: 3px solid rgb(111, 111, 111);
+   border-radius: 10px;
   }
+
+  .uncommon{
+    border-bottom: 3px solid rgb(100, 225, 194);
+    border-radius: 10px;
+  }
+  
+  .rare {
+    border-bottom: 3px solid rgb(33, 47, 104);
+    border-radius: 10px;
+  }
+  
+  .epic {
+    border-bottom: 3px solid #9932cc;
+    border-radius: 10px;
+  }
+  
+  .legendary {
+    border-bottom: 3px solid #eeb114;
+    border-radius: 10px;
+  }
+  
+  .rarities{
+    font-size: 15px;
+    margin: 20px;
+    color: rgb(107, 103, 103);
+  }
+
+
+
   
  
   
