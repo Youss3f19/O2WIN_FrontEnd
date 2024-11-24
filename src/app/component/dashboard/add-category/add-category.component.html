@@ -1,4 +1,7 @@
 <div class="container">
+    @if(showModal){
+    <app-modal [title]="modalTitle" [message]="modalMessage" (closeModal)="closeModal()"></app-modal>
+    }
     <div class="row d-flex justify-content-center p-3">
         <div class="col-12 col-lg-6">
             <div class="row justify-content-xl-center">
@@ -9,25 +12,43 @@
                                 <div class="fs-3 text-center pt-4 fw-bold">{{action}} CATEGORY</div>
                             </div>
                         </div>
-                        <form  [formGroup]="categoryForm" (submit)="onSubmit()">
+                        <form [formGroup]="categoryForm" (submit)="onSubmit()">
                             <div class="row gy-4 gy-xl-3 p-4 p-xl-5">
-                                
+
                                 <div class="col-12">
-                                    <label for="name" class="form-label">Category Name <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="name" formControlName="name" required>
+                                    <label for="name" class="form-label">Category Name <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="name" formControlName="name"
+                                        [ngClass]="{
+                                            'is-invalid': categoryForm.get('name')?.touched && categoryForm.get('name')?.invalid,
+                                            'is-valid': categoryForm.get('name')?.touched && categoryForm.get('name')?.valid}" required />
+                                    <div class="invalid-feedback">
+                                        @if(categoryForm.get('name')?.touched && categoryForm.get('name')?.hasError('required')){
+                                            <span>Name is required</span>
+                                        }
+                                        @if(categoryForm.get('name')?.touched && categoryForm.get('name')?.hasError('pattern')){
+                                            <span> Name must start with a capital letter.</span>
+                                        }
+                                        @if(categoryForm.get('name')?.touched && categoryForm.get('name')?.hasError('maxlength')){
+                                            <span> Name cannot exceed 20 characters.</span>
+                                        }
+                                       
+                                    </div>
                                 </div>
 
                                 <div class="col-12">
                                     <label for="description" class="form-label">Description</label>
-                                    <textarea class="form-control" id="description" formControlName="description"></textarea>
+                                    <textarea class="form-control" id="description"
+                                        formControlName="description"></textarea>
                                 </div>
 
-                              
+
 
                                 <div class="col-12">
                                     <label for="image">Upload Image</label>
                                     <div class="input-group">
-                                        <input id="image" type="file" class="form-control" (change)="onFileChange($event)" accept=".png, .jpg, .jpeg" />
+                                        <input id="image" type="file" class="form-control"
+                                            (change)="onFileChange($event)" accept=".png, .jpg, .jpeg" />
                                         <span class="input-group-text">
                                             <img src="images/picture-dynamic-color.png" width="25" height="25" alt="">
                                         </span>
@@ -40,8 +61,8 @@
                                             <div class="original">{{action}}</div>
                                             <div class="letters">
                                                 @for (C of action; track $index) {
-                                                     <span>{{C}}</span>
- 
+                                                <span>{{C}}</span>
+
                                                 }
                                             </div>
                                         </button>

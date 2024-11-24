@@ -45,10 +45,11 @@
         
     </div>
 }@else {
-    <app-open-box [products]="products"></app-open-box>
-    <button class="close-button" (click)="closeBox()">
-        <i class="fa-solid fa-times " style="margin-right: 10px;"></i> CLOSE
+    <button class="close-button" (click)="closeBox()" >
+        <i class="fa-solid fa-times " ></i> CLOSE
     </button>
+    <app-open-box [products]="products"></app-open-box>
+    
 }
 
 

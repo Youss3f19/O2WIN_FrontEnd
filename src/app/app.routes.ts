@@ -28,6 +28,7 @@ import { DetailproduitComponent } from './component/main/detailproduit/detailpro
 import { OpenBoxComponent } from './component/main/myboxes/open-box/open-box.component';
 import { OrderComponent } from './component/main/order/order.component';
 import { OrderTableComponent } from './component/dashboard/order-table/order-table.component';
+import { PartnershipComponent } from './component/main/partnership/partnership.component';
 
 
 export const routes: Routes = [
@@ -76,9 +77,8 @@ export const routes: Routes = [
              { path: 'changepassword' , component: ChangermdpComponent},
              { path: 'panier', component: PanierComponent, canActivate:[authGuard] },
              { path: 'detailbox' , component: DetailproduitComponent },
-             { path: 'changepassword' , component: ChangermdpComponent , canActivate:[authGuard]}
-
-
+             { path: 'changepassword' , component: ChangermdpComponent , canActivate:[authGuard]},
+             { path: 'partnership' , component: PartnershipComponent }
 
         ]
     }

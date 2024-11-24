@@ -7,6 +7,7 @@ import { Product } from '../../../models/product';
 import { CanvasPanierComponent } from "../canvas-panier/canvas-panier.component";
 import { DecimalPipe } from '@angular/common';
 
+
 @Component({
   selector: 'app-header',
   standalone: true,

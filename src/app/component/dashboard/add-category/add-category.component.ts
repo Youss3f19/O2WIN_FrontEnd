@@ -2,11 +2,13 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CategoryService } from '../../../services/category.service';
+import { ModalComponent } from '../../modal/modal.component';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-add-category',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, ModalComponent, NgClass ],
   templateUrl: './add-category.component.html',
   styleUrls: ['./add-category.component.css']
 })
@@ -19,7 +21,10 @@ export class AddCategoryComponent {
   categoryForm!: FormGroup;
   categoryId!: string;
   selectedImage: File | null = null;
-  action: string = "ADD"
+  action: string = "ADD";
+  showModal: boolean = false;
+  modalTitle: string = '';
+  modalMessage: string = '';
 
   ngOnInit(): void {
     this.categoryId = this.activatedRoute.snapshot.params['id'];
@@ -67,6 +72,9 @@ export class AddCategoryComponent {
         this.categorieService.updateCategory(this.categoryId, categoryData).subscribe(
           () => {
             console.log('Category updated successfully');
+            this.modalTitle = 'Category Updated';
+            this.modalMessage = 'The category was updated successfully.';
+            this.showModal = true;
           },
           (error) => {
             console.error('Error updating category:', error);
@@ -77,6 +85,9 @@ export class AddCategoryComponent {
         this.categorieService.addCategory(categoryData).subscribe(
           () => {
             console.log('Category added successfully');
+            this.modalTitle = 'Category Added';
+          this.modalMessage = 'The category was added successfully.';
+          this.showModal = true;
           },
           (error) => {
             console.error('Error adding category:', error);
@@ -86,6 +97,9 @@ export class AddCategoryComponent {
     } else {
       console.error('Form is invalid');
     }
+  }
+  closeModal(): void {
+    this.showModal = false;
   }
   
 }

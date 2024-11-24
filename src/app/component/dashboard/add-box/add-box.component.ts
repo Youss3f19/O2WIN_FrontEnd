@@ -11,11 +11,12 @@ import { NgClass } from '@angular/common';
 import { LoaderComponent } from "../../loader/loader.component";
 import { of } from 'rxjs';
 import { Box } from '../../../models/box';
+import { ModalComponent } from '../../modal/modal.component';
 
 @Component({
   selector: 'app-add-box',
   standalone: true,
-  imports: [ReactiveFormsModule, NgClass, LoaderComponent],
+  imports: [ReactiveFormsModule, NgClass, LoaderComponent, ModalComponent],
   templateUrl: './add-box.component.html',
   styleUrls: ['./add-box.component.css']
 })
@@ -38,7 +39,10 @@ export class AddBoxComponent implements OnInit {
   loadingCategories: boolean = true;
   boxCategories:Category[]=[]
   restCategories!:Category[];
-  action:string = 'ADD'
+  action:string = 'ADD';
+  showModal: boolean = false;
+  modalTitle: string = '';
+  modalMessage: string = '';
   
 
 
@@ -225,6 +229,9 @@ removeCategoryFromBox(category: Category): void {
         (response) => {
           console.log('Box updated successfully', response);
           this.loading = false;
+          this.modalTitle = 'Box Updated';
+          this.modalMessage = 'The box was updated successfully.';
+          this.showModal = true;
         },
         (error) => {
           console.error('Error updating box', error);
@@ -236,6 +243,9 @@ removeCategoryFromBox(category: Category): void {
         (response) => {
           console.log('Box added successfully', response);
           this.loading = false;
+          this.modalTitle = 'Box Added';
+          this.modalMessage = 'The Box was added successfully.';
+          this.showModal = true;
         },
         (error) => {
           console.error('Error adding box', error);
@@ -243,6 +253,9 @@ removeCategoryFromBox(category: Category): void {
         }
       );
     }
+  }
+  closeModal(): void {
+    this.showModal = false;
   }
   
   
