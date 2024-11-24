@@ -52,7 +52,7 @@ export class AddBoxComponent implements OnInit {
     });
     this.loading = true;
     if (this.boxId) {
-      this.boxService.getBoxById(this.boxId).subscribe(
+      this.boxService.getBoxById(this.boxId).subscribe( 
         (box) => {
           console.log(box);
           

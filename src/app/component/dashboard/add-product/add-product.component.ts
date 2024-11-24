@@ -7,11 +7,12 @@ import { ActivatedRoute } from '@angular/router';
 import { Category } from '../../../models/category';
 import { Rarity } from '../../../models/rarity';
 import { of } from 'rxjs';
+import { ModalComponent } from '../../modal/modal.component';
 
 @Component({
   selector: 'app-add-product',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, ModalComponent],
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.css']
 })
@@ -29,7 +30,10 @@ export class AddProductComponent implements OnInit {
   productId!: string;
   productByIdCategories!: any[];
   selectedImage: File | null = null;
-  categoriesLoaded = false; 
+  categoriesLoaded = false;
+  showModal: boolean = false;
+  modalTitle: string = '';
+  modalMessage: string = '';
 
   ngOnInit(): void {
     this.productId = this.activatedRoute.snapshot.params['id'];
@@ -40,7 +44,7 @@ export class AddProductComponent implements OnInit {
       description: ['', Validators.maxLength(500)],
       price: ['', [Validators.required, Validators.min(1)]],
       stock: ['', [Validators.required, Validators.min(0)]],
-      category: this.fb.array([], [this.minSelectedCheckboxes(1)]), 
+      category: this.fb.array([], [this.minSelectedCheckboxes(1)]),
       rarity: ['', Validators.required]
     });
 
@@ -89,18 +93,18 @@ export class AddProductComponent implements OnInit {
   // Initialize category checkboxes
   private initializeCategoryControls(): void {
     this.category.clear();
-  
+
     // Emit categories as an observable
     of(this.categories).subscribe((categories) => {
       categories.forEach((category) => {
         const isSelected = this.productByIdCategories
           ? this.productByIdCategories.includes(category._id)
           : false;
-  
+
         const control = this.fb.control(isSelected);
         this.category.push(control);
       });
-  
+
       // Indicate that categories have been loaded
       this.categoriesLoaded = true;
     });
@@ -154,6 +158,9 @@ export class AddProductComponent implements OnInit {
       this.productService.updateProduct(this.productId, formData).subscribe(
         (response) => {
           console.log('Product updated successfully', response);
+          this.modalTitle = 'Product Updated';
+          this.modalMessage = 'The product was updated successfully.';
+          this.showModal = true;
         },
         (error) => console.error('Error updating product', error)
       );
@@ -161,9 +168,15 @@ export class AddProductComponent implements OnInit {
       this.productService.addProduct(formData).subscribe(
         (response) => {
           console.log('Product added successfully', response);
+          this.modalTitle = 'Product Added';
+          this.modalMessage = 'The product was added successfully.';
+          this.showModal = true;
         },
         (error) => console.error('Error adding product', error)
       );
     }
+  }
+  closeModal(): void {
+    this.showModal = false;
   }
 }

@@ -6,11 +6,12 @@ import { UsersService } from '../../../services/users.service';
 import { LoaderComponent } from '../../loader/loader.component';
 import { Product } from '../../../models/product';
 import { NgClass } from '@angular/common';
+import { EnStockPipe } from '../../../pipes/en-stock.pipe';
 
 @Component({
   selector: 'app-detailproduit',
   standalone: true,
-  imports: [RouterLink, LoaderComponent, NgClass],
+  imports: [RouterLink, LoaderComponent, NgClass, EnStockPipe],
   templateUrl: './detailproduit.component.html',
   styleUrl: './detailproduit.component.css'
 })
