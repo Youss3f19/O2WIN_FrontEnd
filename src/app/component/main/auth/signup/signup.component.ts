@@ -1,8 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { UsersService } from '../../../../services/users.service';
 import { FormBuilder, FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
-import { User } from '../../../../models/user';
 import { Router } from '@angular/router';
+import { Auth } from '../../../../models/auth';
 
 @Component({
   selector: 'app-signup',
@@ -30,7 +30,7 @@ export class SignupComponent implements OnInit {
 
   onSubmit(): void {
     if (this.userForm.valid) {
-      const newUser = new User(
+      const newUser = new Auth(
         this.userForm.value.name,
         this.userForm.value.lastname,
         this.userForm.value.email,

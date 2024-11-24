@@ -61,6 +61,7 @@
                 </div>
             }
         </div>
+        <app-comment-list [comments]="comments" [boxId]="boxId" (commentAdded)="onCommentAdded()"  ></app-comment-list>
         } @else {
         <p>No related products available.</p>
         }

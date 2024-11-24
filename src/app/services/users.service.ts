@@ -21,7 +21,7 @@ export class UsersService {
     this.checkUserValidity();
   }
 
-  signup(user: User): Observable<User> {
+  signup(user: Auth): Observable<User> {
     return this.http.post<User>(this.API_URL + 'signup', user);
   }
 

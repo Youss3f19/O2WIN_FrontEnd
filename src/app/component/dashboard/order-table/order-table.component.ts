@@ -2,13 +2,13 @@ import { Component, inject } from '@angular/core';
 import { CommandesService } from '../../../services/commandes.service';
 import { Commande } from '../../../models/commande';
 import { HttpHeaders } from '@angular/common/http';
-import { NgClass } from '@angular/common';
+import { DatePipe, NgClass } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-order-table',
   standalone: true,
-  imports: [NgClass , FormsModule],
+  imports: [NgClass , FormsModule , DatePipe],
   templateUrl: './order-table.component.html',
   styleUrl: './order-table.component.css',
 })

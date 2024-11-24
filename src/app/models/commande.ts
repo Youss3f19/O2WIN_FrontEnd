@@ -6,6 +6,8 @@ export class Commande {
         public _id : string,
         public user: User,
         public products: Inventory[],
-        public status : string
+        public status : string,
+        public createdAt?: Date,
+        public updatedAt?: Date,
     ){}
 }

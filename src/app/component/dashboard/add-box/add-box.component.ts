@@ -10,7 +10,6 @@ import { ActivatedRoute } from '@angular/router';
 import { NgClass } from '@angular/common';
 import { LoaderComponent } from "../../loader/loader.component";
 import { of } from 'rxjs';
-import { Box } from '../../../models/box';
 
 @Component({
   selector: 'app-add-box',
@@ -183,10 +182,11 @@ removeCategoryFromBox(category: Category): void {
   }
 
   // Handle file change for image picker
-  onFileChange(event: any): void {
-    const file = event.target.files[0]; 
-    this.selectedImage = file ? file : null;
-  }
+  onFileChange(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    const file = input?.files?.[0];
+    this.selectedImage = file || null;
+    }
 
   // Submit the form to add or update a box
   onSubmit(): void {

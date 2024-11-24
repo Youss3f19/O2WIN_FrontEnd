@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import {  RouterLink } from '@angular/router';
 import { UsersService } from '../../../services/users.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { GiftCardsService } from '../../../services/gift-cards.service';
@@ -17,7 +17,6 @@ export class PayementComponent implements OnInit {
 
   private readonly giftCardService: GiftCardsService = inject(GiftCardsService);
   private readonly userService: UsersService = inject(UsersService);
-  private readonly router: Router = inject(Router);
   private readonly fb: FormBuilder = inject(FormBuilder);
 
   codeForm!: FormGroup; 

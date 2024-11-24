@@ -28,6 +28,7 @@ import { DetailproduitComponent } from './component/main/detailproduit/detailpro
 import { OpenBoxComponent } from './component/main/myboxes/open-box/open-box.component';
 import { OrderComponent } from './component/main/order/order.component';
 import { OrderTableComponent } from './component/dashboard/order-table/order-table.component';
+import { GenerateGiftCardsComponent } from './component/dashboard/generate-gift-cards/generate-gift-cards.component';
 
 
 export const routes: Routes = [
@@ -48,6 +49,8 @@ export const routes: Routes = [
             { path: 'add-category' , component: AddCategoryComponent },
             { path: 'update-category/:id' , component: AddCategoryComponent },
             { path: 'order-table/:status' , component: OrderTableComponent },
+            { path: 'generate-gift-cards' , component: GenerateGiftCardsComponent },
+
 
 
         ]

@@ -34,11 +34,12 @@
                 <th scope="col">User</th>
                 <th scope="col">Products</th>
                 <th scope="col">Status</th>
+                <th scope="col">Date</th>
                 <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
-            @for(c of filteredCommandes; track $index) {
+            @for(c of filteredCommandes.reverse(); track $index) {
                 <tr>
                     <td>{{c.user.name}} {{c.user.lastname}}</td>
                     <td class=" d-flex flex-column align-items-start">
@@ -51,12 +52,14 @@
                     </td>
                    
                     <td [ngClass]="{'text-danger': c.status == 'Cancelled' , 'text-success' : c.status == 'Completed'}">{{c.status}}</td>
+                    <td>{{c.createdAt| date:'dd/MM/yyyy'}}</td>
                     <td>
                         @if(c.status == 'Pending'){
                             <button class="btn btn-success mx-1" (click)="updateCommandStatus(c._id,'Completed')">Accept</button>
                             <button class="btn btn-danger " (click)="updateCommandStatus(c._id,'Cancelled')">Cancel</button>
                         }
                     </td>
+                  
                 </tr>
                 
             }@empty {

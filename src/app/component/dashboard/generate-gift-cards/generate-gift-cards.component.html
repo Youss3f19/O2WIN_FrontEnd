@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="row d-flex justify-content-center p-3">
+        <div class="col-12 col-lg-6">
+            <div class="row justify-content-xl-center">
+                <div class="col-12 col-xl-11">
+                    <div class="bg-gradient border rounded shadow-sm overflow-hidden">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="fs-3 text-center pt-4 fw-bold">Generate GIFTCARDS</div>
+                            </div>
+                        </div>
+                        <form  [formGroup]="giftCardsForm" (submit)="onSubmit()">
+                            <div class="row gy-4 gy-xl-3 p-4 p-xl-5">
+                                
+                                <div class="col-12">
+                                    <label class="form-label">Card Value <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="value" formControlName="value" required>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">NumberOfCards <span class="text-danger">*</span></label>
+                                    <input type="number" class="form-control" id="name" formControlName="quantity" required>
+                                </div>
+                 
+
+                        
+
+                                <div class="col-12 d-flex flex-column align-items-center">
+                                    <div class="d-grid w-100">
+                                        <button class="btn-53" type="submit">
+                                            <div class="original">Generate</div>
+                                            <div class="letters">
+                                                 <span>G</span>
+                                                 <span>E</span>
+                                                 <span>N</span>
+                                                 <span>E</span>
+                                                 <span>R</span>
+                                                 <span>A</span>
+                                                 <span>T</span>
+                                                 <span>E</span>  
+                                            </div>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
