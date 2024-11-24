@@ -1,0 +1,14 @@
+.modal {
+    display: block;
+}
+
+.modal-content {
+    background-color: #1f2528d2;
+    color: white;
+}
+
+.modal-footer button {
+    background-color: #ff4f02;
+    color: white;
+    border: none;
+}

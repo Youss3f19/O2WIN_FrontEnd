@@ -23,6 +23,9 @@ export class ProfileComponent implements OnInit {
       console.log('Current User profile:', this.currentUser);
     });
   }
+  
+
+  
 
 
 

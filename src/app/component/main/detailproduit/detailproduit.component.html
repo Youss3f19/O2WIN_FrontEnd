@@ -49,6 +49,9 @@
                         'epic': p.rarity.name === 'Epic',
                         'legendary': p.rarity.name === 'Legendary'
                       }">
+                      <div class="" [ngClass]="{'text-success': p.stock > 0, 'text-danger': p.stock === 0}">
+                        {{p.stock | enStock}}
+                      </div>
                         @if (p.productImage){
                         <img [src]="getImagePath(p.productImage)" style="width: 100px;height: 84px;" />
                         }

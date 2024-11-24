@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import {  Routes } from '@angular/router';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { MainComponent } from './component/main/main.component';
 import { HomeDashboardComponent } from './component/dashboard/home-dashboard/home-dashboard.component';
@@ -28,6 +28,7 @@ import { DetailproduitComponent } from './component/main/detailproduit/detailpro
 import { OpenBoxComponent } from './component/main/myboxes/open-box/open-box.component';
 import { OrderComponent } from './component/main/order/order.component';
 import { OrderTableComponent } from './component/dashboard/order-table/order-table.component';
+
 
 export const routes: Routes = [
     { path: '', redirectTo: '/main/home', pathMatch: 'full' },
@@ -83,3 +84,5 @@ export const routes: Routes = [
     }
     
 ];
+
+
