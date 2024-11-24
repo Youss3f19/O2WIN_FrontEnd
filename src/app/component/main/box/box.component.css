@@ -23,5 +23,13 @@
 .cursor-pointer{
     cursor: pointer;
 }
+.btn{
+    background-color: rgba(218, 126, 92, 0.918);
+    color: whitesmoke;
+}
+.badge{
+    background-color: rgb(99, 74, 66);
+    padding: 7px 10px;
+}
 
 

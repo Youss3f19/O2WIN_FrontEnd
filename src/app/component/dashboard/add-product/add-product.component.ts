@@ -8,11 +8,12 @@ import { Category } from '../../../models/category';
 import { Rarity } from '../../../models/rarity';
 import { of } from 'rxjs';
 import { ModalComponent } from '../../modal/modal.component';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-add-product',
   standalone: true,
-  imports: [ReactiveFormsModule, ModalComponent],
+  imports: [ReactiveFormsModule, ModalComponent, NgClass],
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.css']
 })

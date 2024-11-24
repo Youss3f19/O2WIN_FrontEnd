@@ -4,9 +4,8 @@
             <img [src]="getImagePath(box.boxImage)" class="box-image cursor-pointer" width="150" height="150" alt="" [routerLink]="['/main/detailbox', box._id]">
         }
         <div class="fs-5" style="font-family: mv boli;">{{box.name}} </div>
-        <div class="fs-6">Price {{box.price}} </div>
-        <a class="btn btn-warning w-75 m-2" (click)="addBoxToCart(box)">
-            Purchase Now
+        <a class="btn  w-80 m-1 " (click)="addBoxToCart(box)">
+            Buy Now <span class="badge ">{{box.price}} <i class="fa-brands fa-ethereum"></i></span>
         </a>
     </div>
 </div>

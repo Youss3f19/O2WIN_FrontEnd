@@ -1,5 +1,8 @@
 @if (!loading) {
 <div class="container">
+    @if(showModal){
+    <app-modal [title]="modalTitle" [message]="modalMessage" (closeModal)="closeModal()"></app-modal>
+    }
     <div class="row d-flex justify-content-center p-3">
         <div class="col-12 col-lg-6 ">
             <div class="row justify-content-xl-center">
@@ -15,7 +18,26 @@
                                 <div class="col-12">
                                     <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" formControlName="name" id="name" name="name"
-                                        value="" required>
+                                        value="" [ngClass]="{
+                                            'is-invalid': boxForm.get('name')?.touched && boxForm.get('name')?.invalid, 
+                                            'is-valid':boxForm.get('name')?.touched && boxForm.get('name')?.valid
+                                          }" required />
+                                    <div class="invalid-feedback">
+                                        @if (boxForm.get('name')?.touched && boxForm.get('name')?.invalid) {
+                                        @if(boxForm.get('name')?.hasError('required')){
+                                        <span>Name is required.</span>
+                                        }
+                                        @if (boxForm.get('name')?.hasError('pattern')) {
+                                        <span>Name should start with a capital letter.</span>
+                                        }
+                                        @if (boxForm.get('name')?.hasError('maxlength')){
+                                        <span>
+                                            Name cannot exceed 25 characters.
+                                        </span>
+                                        }
+                                        }
+                                    </div>
+
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <label for="price" class="form-label">Price <span
@@ -25,7 +47,19 @@
                                             <img src="images/eth-dynamic-color.png" width="25" height="25" alt="">
                                         </span>
                                         <input type="number" class="form-control" id="price" name="price"
-                                            formControlName="price" value="" required>
+                                            formControlName="price" value="" [ngClass]="{
+                                                'is-invalid': boxForm.get('price')?.touched && boxForm.get('price')?.invalid
+                                              }" required />
+                                        <div class="invalid-feedback">
+                                            @if (boxForm.get('price')?.touched && boxForm.get('price')?.invalid) {
+                                            @if(boxForm.get('price')?.hasError('required')){
+                                            <span>Price is required.</span>
+                                            }
+                                            @if (boxForm.get('price')?.hasError('min')) {
+                                            <span>Price must be greater than 0.</span>
+                                            }
+                                            }
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6">
@@ -36,7 +70,7 @@
 
                                         </span>
                                         <input type="number" class="form-control" id="productLimit" name="productLimit"
-                                            formControlName="productLimit" min="1" >
+                                            formControlName="productLimit" min="1">
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -46,10 +80,11 @@
                                     <div formArrayName="category">
                                         <div class="row">
                                             @for (cat of boxCategories ; track $index ; let i = $index) {
-                                                <label class="col-4 py-2 boxCategorie pointer" (click)="removeCategoryFromBox(cat)">{{ cat.name }}</label>
-                                            
+                                            <label class="col-4 py-2 boxCategorie pointer"
+                                                (click)="removeCategoryFromBox(cat)">{{ cat.name }}</label>
+
                                             }@empty {
-                                                <div class="text-danger">min 1 categorie</div>
+                                            <div class="text-danger">min 1 categorie</div>
                                             }
                                             <button type="button" class="btn btn-warning " data-bs-toggle="modal"
                                                 data-bs-target="#exampleModal">
@@ -75,6 +110,7 @@
                                                 min="0" max="100" [ngClass]="{
                                                                 'is-invalid': boxForm.get('rarityProbabilities')?.hasError('probabilitySum') && boxForm.get('rarityProbabilities')?.touched
                                                             }" />
+
                                         </div>
                                         }
                                     </div>
@@ -106,7 +142,7 @@
                                             <div class="letters">
 
                                                 @for (c of action; track $index) {
-                                                    <span>{{ c }}</span>
+                                                <span>{{ c }}</span>
                                                 }
                                             </div>
                                         </button>
@@ -133,7 +169,7 @@
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content bg-model" >
+        <div class="modal-content bg-model">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Rest Categories</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

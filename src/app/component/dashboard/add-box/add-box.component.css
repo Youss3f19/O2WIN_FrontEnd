@@ -13,10 +13,10 @@
 
 
 /*-------form control------*/
-input.ng-invalid{
+input.ng-invalid.ng-touched {
   border-bottom: 3px solid red;
 }
-input.ng-valid{
+input.ng-valid.ng-touched {
   border-bottom: 3px solid green;
 }
 /*--------------------------*/
@@ -116,3 +116,7 @@ input.ng-valid{
   cursor: pointer;
 }
 
+.invalid-feedback {
+  color: #dc3545;
+  font-size: 0.875rem;
+}

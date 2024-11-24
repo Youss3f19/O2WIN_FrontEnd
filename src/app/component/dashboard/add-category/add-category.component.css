@@ -13,10 +13,11 @@
 
 
 /*-------form control------*/
-input.ng-invalid{
+input.ng-touched.ng-invalid {
   border-bottom: 3px solid red;
 }
-input.ng-valid{
+
+input.ng-touched.ng-valid {
   border-bottom: 3px solid green;
 }
 /*--------------------------*/

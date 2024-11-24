@@ -15,7 +15,25 @@
                                 <div class="col-12">
                                     <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" id="name" name="name" formControlName="name"
-                                        required>
+                                        [ngClass]="{
+                                        'is-invalid': productForm.get('name')?.touched && productForm.get('name')?.invalid, 
+                                        'is-valid':productForm.get('name')?.touched && productForm.get('name')?.valid
+                                      }" required>
+                                    <div class="invalid-feedback">
+                                        @if (productForm.get('name')?.touched && productForm.get('name')?.invalid) {
+                                        @if(productForm.get('name')?.hasError('required')){
+                                        <span>Name is required.</span>
+                                        }
+                                        @if (productForm.get('name')?.hasError('pattern')) {
+                                        <span>Name should start with a capital letter.</span>
+                                        }
+                                        @if (productForm.get('name')?.hasError('maxlength')){
+                                        <span>
+                                            Name cannot exceed 25 characters.
+                                        </span>
+                                        }
+                                        }
+                                    </div>
                                 </div>
 
                                 <!-- Product Description -->
@@ -34,7 +52,20 @@
                                             <img src="images/eth-dynamic-color.png" width="25" height="25" alt="">
                                         </span>
                                         <input type="number" class="form-control" id="price" formControlName="price"
-                                            name="price" required>
+                                            name="price" [ngClass]="{
+                                                'is-invalid': productForm.get('price')?.touched && productForm.get('price')?.invalid
+                                              }" required>
+                                        <div class="invalid-feedback">
+                                            @if (productForm.get('price')?.touched && productForm.get('price')?.invalid)
+                                            {
+                                            @if(productForm.get('price')?.hasError('required')){
+                                            <span>Price is required.</span>
+                                            }
+                                            @if (productForm.get('price')?.hasError('min')) {
+                                            <span>Price must be greater than 0.</span>
+                                            }
+                                            }
+                                        </div>
                                     </div>
                                 </div>
 
@@ -43,14 +74,29 @@
                                     <label for="stock" class="form-label">Stock <span
                                             class="text-danger">*</span></label>
                                     <input type="number" class="form-control" id="stock" formControlName="stock"
-                                        name="stock" required>
+                                        name="stock" [ngClass]="{
+                                            'is-invalid': productForm.get('stock')?.touched && productForm.get('stock')?.invalid
+                                          }" required>
+                                    <div class="invalid-feedback">
+                                        @if (productForm.get('stock')?.touched && productForm.get('stock')?.invalid)
+                                        {
+                                        @if(productForm.get('stock')?.hasError('required')){
+                                        <span>stock is required.</span>
+                                        }
+                                        @if (productForm.get('stock')?.hasError('min')) {
+                                        <span>stock must be greater than 0.</span>
+                                        }
+                                        }
+                                    </div>
                                 </div>
 
                                 <!-- Product Categories -->
                                 <div class="col-12">
                                     <label for="categories" class="form-label">Categories</label>
                                     <div>
-                                        <div formArrayName="category">
+                                        <div formArrayName="category" [ngClass]="{
+                                            'is-invalid': productForm.get('category')?.touched && productForm.get('category')?.invalid
+                                        }">
                                             @if (categoriesLoaded) {
                                             <div class="row">
                                                 @for (cat of categories; track $index ; let i = $index ;) {
@@ -64,6 +110,12 @@
 
                                         </div>
                                     </div>
+                                    <div class="invalid-feedback">
+                                        @if (productForm.get('category')?.touched &&
+                                        productForm.get('category')?.hasError('required')) {
+                                        <span>At least one category must be selected.</span>
+                                        }
+                                    </div>
                                 </div>
 
                                 <!-- Product Rarity -->
@@ -71,11 +123,18 @@
                                     <label for="rarity" class="form-label">Rarity <span
                                             class="text-danger">*</span></label>
                                     <select class="form-select" id="rarity" formControlName="rarity" name="rarity"
-                                        required>
+                                        [ngClass]="{
+                                        'is-invalid': productForm.get('rarity')?.touched && productForm.get('rarity')?.invalid
+                                    }" required>
                                         @for (r of rarities; track $index) {
                                         <option [value]="r._id">{{r.name}}</option>
                                         }
                                     </select>
+                                    <div class="invalid-feedback">
+                                        @if (productForm.get('rarity')?.touched && productForm.get('rarity')?.hasError('required')) {
+                                        <span>Please select a rarity.</span>
+                                        }
+                                    </div>
                                 </div>
 
                                 <!-- Product Image Upload -->

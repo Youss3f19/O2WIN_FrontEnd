@@ -1,10 +1,10 @@
-import { JsonPipe } from '@angular/common';
+import { JsonPipe, NgStyle } from '@angular/common';
 import { Component, Input, input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-open-box',
   standalone: true,
-  imports: [],
+  imports: [NgStyle],
   templateUrl: './open-box.component.html',
   styleUrl: './open-box.component.css'
 })
