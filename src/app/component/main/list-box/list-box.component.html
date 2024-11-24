@@ -1,11 +1,34 @@
 @if(!isLoading){
 <div class="container-fluid pt-5 mt-3 mb-2">
+    <div class="row mb-4">
+        <div class="col-md-4">
+          <select class="form-control" [(ngModel)]="selectedCategory" (change)="filterBoxes()">
+            <option value="">All Categories</option>
+            @for (category of categories; track $index) {
+                <option  [value]="category._id">{{ category.name }}</option>
+
+            }
+          </select>
+        </div>
+        <div class="col-md-4">
+            <div class="col-md-4">
+                <input class="form-control" type="text" placeholder="Search by name" [(ngModel)]="searchQuery" (input)="filterBoxes()" />
+            </div>
+        </div>
+      </div>
     <div class="row">
+        
         @for (box of boxes; track $index) {
         <div class="col-2">
             <app-box [box]="box"></app-box>
         </div>
-        }
+        }@empty {
+            <div class="row d-flex align-items-center justify-content-center" style="min-height: 40vh;">
+                <div class="col-4  text-center text-light">
+                    No Boxes Found
+                </div>     
+            </div>
+             }
     </div>
 
 </div>

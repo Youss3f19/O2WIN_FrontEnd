@@ -82,7 +82,37 @@ input.ng-valid{
 .btn-53:hover span:nth-child(3) {
   transition-delay: 0.2s;
 }
+.btn-53:hover span:nth-child(4) {
+  transition-delay: 0.3s;
+}
+.btn-53:hover span:nth-child(5) {
+  transition-delay: 0.4s;
+}
+.btn-53:hover span:nth-child(6) {
+  transition-delay: 0.5s;
+}
 
 
 
 /*------------------------------------------*/
+.form-check {
+  cursor: pointer;
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.form-check:hover {
+  background-color: #f0f0f0;
+}
+
+.boxCategorie:hover{
+  text-decoration: line-through red;
+}
+
+.pointer{
+  cursor: pointer;
+}
+

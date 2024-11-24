@@ -1,4 +1,33 @@
 <div class="p-3">
+    <div class="filters mb-3 d-flex align-items-center">
+        <div class="form-group me-3">
+          <label for="statusFilter" class="form-label">Filter by Status</label>
+          <select
+            id="statusFilter"
+            class="form-select"
+            [(ngModel)]="statusFilter"
+            (change)="applyFilters()"
+          >
+            <option value="">All</option>
+            <option value="Pending">Pending</option>
+            <option value="Completed">Completed</option>
+            <option value="Cancelled">Cancelled</option>
+          </select>
+        </div>
+    
+        <div class="form-group me-3">
+          <label for="searchUser" class="form-label">Search by User</label>
+          <input
+            id="searchUser"
+            type="text"
+            class="form-control"
+            placeholder="Search by name"
+            [(ngModel)]="userFilter"
+            (input)="applyFilters()"
+          />
+        </div>
+      </div>
+    
     <table class="table table-striped table-hover text-center">
         <thead>
             <tr>
@@ -9,7 +38,7 @@
             </tr>
         </thead>
         <tbody>
-            @for(c of commandes; track $index) {
+            @for(c of filteredCommandes; track $index) {
                 <tr>
                     <td>{{c.user.name}} {{c.user.lastname}}</td>
                     <td class=" d-flex flex-column align-items-start">
@@ -21,7 +50,7 @@
                         }
                     </td>
                    
-                    <td>{{c.status}}</td>
+                    <td [ngClass]="{'text-danger': c.status == 'Cancelled' , 'text-success' : c.status == 'Completed'}">{{c.status}}</td>
                     <td>
                         @if(c.status == 'Pending'){
                             <button class="btn btn-success mx-1" (click)="updateCommandStatus(c._id,'Completed')">Accept</button>
@@ -30,6 +59,10 @@
                     </td>
                 </tr>
                 
+            }@empty {
+                <tr>
+                    <td colspan="4">No command found</td>
+                </tr>
             }
 
 

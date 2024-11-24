@@ -1,11 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { BoxesService } from '../../../services/boxes.service';
 import { Box } from '../../../models/box';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-canvas-panier',
   standalone: true,
+  imports: [RouterLink],
   templateUrl: './canvas-panier.component.html',
   styleUrls: ['./canvas-panier.component.css'], 
 })

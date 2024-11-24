@@ -14,7 +14,7 @@ export class BoxesService {
   private readonly http: HttpClient = inject(HttpClient);
 
   API_URL = "http://localhost:3000/box/";
-  private currentPanier = new BehaviorSubject<Box[] | null>(null); 
+  private currentPanier = new BehaviorSubject<Box[]>([]); 
   currentPanier$ = this.currentPanier.asObservable(); 
 
   constructor() {
@@ -47,7 +47,7 @@ export class BoxesService {
     return this.http.delete<Box>(this.API_URL + "deleteBox/" + boxId);
   }
   purchaseBoxes(panier: Panier[] ,headers: HttpHeaders ): Observable<any> {
-    return this.http.post<Panier[]>(`${this.API_URL}purchaseBoxes`, { panier: panier } , {headers});
+    return this.http.post<Panier[]>(`${this.API_URL}purchaseBoxes`, { panier: panier } , {headers})
   }
 
   openBox(boxId: string , headers: HttpHeaders): Observable<any> {
@@ -85,15 +85,20 @@ export class BoxesService {
   }
   
   emptyPanier(){
-    this.currentPanier.next(null);
+    this.currentPanier.next([]);
     localStorage.removeItem('panier');
     console.log('Panier vidé');
   }
   
   clearPanierAfterPurchase(): void {
+    this.currentPanier.next([]);
     this.emptyPanier(); 
+    localStorage.removeItem('panier');  
+
     console.log('Panier vidé après achat.');
-  }
+
+}
+
   
 
 }

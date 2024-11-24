@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NgClass } from '@angular/common';
 import { LoaderComponent } from "../../loader/loader.component";
 import { of } from 'rxjs';
+import { Box } from '../../../models/box';
 
 @Component({
   selector: 'app-add-box',
@@ -29,13 +30,16 @@ export class AddBoxComponent implements OnInit {
   
   boxForm!: FormGroup;
   boxId!: string;
-  boxByIdCategories!: any[];
   boxByIdRarityProbabilities!: rarityProbabilities[];
   categories: Category[] = [];
   rarities: Rarity[] = [];
   selectedImage: File | null = null;
   loading: boolean = true;
   loadingCategories: boolean = true;
+  boxCategories:Category[]=[]
+  restCategories!:Category[];
+  action:string = 'ADD'
+  
 
 
   // onInit
@@ -46,7 +50,7 @@ export class AddBoxComponent implements OnInit {
     this.boxForm = this.fb.group({
       name: ['', [Validators.required, Validators.pattern('[A-Z][A-Za-z ]+'), Validators.maxLength(25)]],
       price: ['', [Validators.required, Validators.min(1)]],
-      productLimit: ['', Validators.required],
+      productLimit: [1, Validators.required],
       rarityProbabilities: this.fb.array([], { validators: this.probabilitySumValidator }),
       category: this.fb.array([])
     });
@@ -55,28 +59,34 @@ export class AddBoxComponent implements OnInit {
       this.boxService.getBoxById(this.boxId).subscribe(
         (box) => {
           console.log(box);
+          this.boxCategories = box.categories;
           
-          this.boxByIdCategories = box.categories;
-          console.log(this.boxByIdCategories);
-
+          
           this.boxByIdRarityProbabilities = box.rarityProbabilities;
           console.log(this.boxByIdRarityProbabilities);
           
           this.boxForm.patchValue(box);
           this.selectedImage = null;  
           this.loading = false;  
+          this.action = 'UPDATE'
+          this.getAllCategories();
+          this.getAllRarity();
+
         },
         (error) => {
           console.error('Error retrieving box', error)
           this.loading = false;
         }
       );
+    }else{
+      this.loading = false; 
+      this.getAllCategories();
+      this.getAllRarity();
     }
-    this.initializeCategoryControls();
-    this.initializeRarity();
 
-    this.getAllCategories();
-    this.getAllRarity();
+    this.initializeRarity();
+    
+
   }
 
   // Get All categories and rarity
@@ -84,8 +94,16 @@ export class AddBoxComponent implements OnInit {
     this.categoryService.getCategorys().subscribe(
       (categories) => {
         this.categories = categories;
-        this.initializeCategoryControls();  // Initialize checkbox controls for categories
+        console.log(categories);
+        if (this.boxId) {
+          this.restCategories = this.categories.filter(c =>!this.boxCategories.some(bc => bc._id === c._id));
+          console.log(this.restCategories);
+        }else{
+          this.restCategories = this.categories;
+        }
+
         this.loadingCategories = false;
+
       },
       (error) => {
         console.error('Error retrieving categories', error) 
@@ -94,6 +112,24 @@ export class AddBoxComponent implements OnInit {
       }
     );
   }
+  // Méthode pour ajouter une catégorie à boxCategories et la retirer de restCategories
+addCategoryToBox(category: Category): void {
+  // Ajoute la catégorie à boxCategories
+  this.boxCategories.push(category);
+
+  // Retire la catégorie de restCategories
+  this.restCategories = this.restCategories.filter(cat => cat._id !== category._id);
+}
+
+// Méthode pour retirer une catégorie de boxCategories et la remettre dans restCategories
+removeCategoryFromBox(category: Category): void {
+  // Ajoute la catégorie à restCategories
+  this.restCategories.push(category);
+
+  // Retire la catégorie de boxCategories
+  this.boxCategories = this.boxCategories.filter(cat => cat._id !== category._id);
+}
+
 
   getAllRarity(): void {
     this.rarityService.getRarities().subscribe(
@@ -106,20 +142,7 @@ export class AddBoxComponent implements OnInit {
   }
 
   // Initialize category form controls
-  private initializeCategoryControls(): void {
-    // Emit the categories array as an observable
-    of(this.categories).subscribe((categories) => {
-      categories.forEach((category) => {
-        const isSelected = this.boxByIdCategories
-          ? this.boxByIdCategories.includes(category._id)
-          : false;
-        console.log(category._id);
-        console.log(isSelected);
-  
-        this.category.push(this.fb.control(isSelected));
-      });
-    });
-  }
+
   
   private initializeRarity(): void {
     // Emit the rarities array as an observable
@@ -168,15 +191,22 @@ export class AddBoxComponent implements OnInit {
   // Submit the form to add or update a box
   onSubmit(): void {
     this.loading = true;
-    const selectedCategories: string[] = this.category.controls
-      .map((control, index) => control.value ? this.categories[index]._id : null)
-      .filter((id) => id !== null);
   
+    // Utiliser les catégories sélectionnées via boxCategories
+    const selectedCategories: string[] = this.boxCategories.map(cat => cat._id);
+    if (selectedCategories.length < 1 ) {
+      this.loading = false;
+      alert('Veuillez sélectionner au moins une catégorie');
+      return;
+    }
+  
+    // Préparer les probabilités de rareté
     const rarityData = this.rarityProbabilities.controls.map(control => ({
       rarity: control.value.rarity._id,
       probability: control.value.probability
     }));
   
+    // Préparer le formulaire pour l'envoi
     const formData = new FormData();
     formData.append('name', this.boxForm.value.name);
     formData.append('price', this.boxForm.value.price);
@@ -184,36 +214,36 @@ export class AddBoxComponent implements OnInit {
     formData.append('rarityProbabilities', JSON.stringify(rarityData));
     formData.append('categories', JSON.stringify(selectedCategories));
   
-    // Append the file only if a new one was selected
+    // Ajouter le fichier image uniquement s'il est sélectionné
     if (this.selectedImage) {
       formData.append('file', this.selectedImage, this.selectedImage.name);
     }
   
-    // Perform update if boxId exists, otherwise, add a new box
+    // Appel à l'API pour ajouter ou mettre à jour la box
     if (this.boxId) {
       this.boxService.updateBox(this.boxId, formData).subscribe(
-        (response ) => {
-          console.log('Box updated successfully', response)
+        (response) => {
+          console.log('Box updated successfully', response);
           this.loading = false;
-
         },
-        (error) =>{ 
-          console.error('Error updating box', error)
+        (error) => {
+          console.error('Error updating box', error);
           this.loading = false;
         }
       );
     } else {
       this.boxService.addBox(formData).subscribe(
         (response) => {
-          console.log('Box added successfully', response)
+          console.log('Box added successfully', response);
           this.loading = false;
         },
-        (error) =>{ 
+        (error) => {
+          console.error('Error adding box', error);
           this.loading = false;
-          console.error('Error adding box', error)
         }
       );
     }
   }
+  
   
 }

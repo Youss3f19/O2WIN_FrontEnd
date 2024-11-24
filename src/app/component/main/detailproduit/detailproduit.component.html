@@ -20,8 +20,17 @@
         <div>
             <button class="btnadd" (click)="addBoxToCart(box)">Add Box</button>
             <div class="rarities">
-                    @for(rarity of box.rarityProbabilities ; track $index ){
-                       {{ rarity.rarity.name }} - Probability: {{ rarity.probability }}% 
+                    @for(rarity of box.rarityProbabilities.reverse() ; track $index ){
+                       <span [ngClass]="{
+                        'common-text': rarity.rarity.name  === 'Common',
+                        'uncommon-text':rarity.rarity.name  === 'Uncommon',
+                        'rare-text':rarity.rarity.name === 'Rare',
+                        'epic-text':rarity.rarity.name  === 'Epic',
+                        'legendary-text': rarity.rarity.name  === 'Legendary'
+                      }">{{ rarity.rarity.name }} 
+                        - {{ rarity.probability }}% /  
+                    </span>
+                       
                     }
                 
             </div>
@@ -41,7 +50,6 @@
                         'legendary': p.rarity.name === 'Legendary'
                       }">
                         @if (p.productImage){
-                        <img [src]="getImagePath(p.productImage)" style="width: 100px;height: 84px;" />
                         <img [src]="getImagePath(p.productImage)" style="width: 100px;height: 84px;" />
                         }
                         <div class="fs-6 fw-bold" style="height: 80px; ">{{ p.name }}</div>

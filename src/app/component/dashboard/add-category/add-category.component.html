@@ -6,7 +6,7 @@
                     <div class="bg-gradient border rounded shadow-sm overflow-hidden">
                         <div class="row">
                             <div class="col-12">
-                                <div class="fs-3 text-center pt-4 fw-bold">ADD CATEGORY</div>
+                                <div class="fs-3 text-center pt-4 fw-bold">{{action}} CATEGORY</div>
                             </div>
                         </div>
                         <form  [formGroup]="categoryForm" (submit)="onSubmit()">
@@ -37,11 +37,12 @@
                                 <div class="col-12 d-flex flex-column align-items-center">
                                     <div class="d-grid w-100">
                                         <button class="btn-53" type="submit">
-                                            <div class="original">ADD</div>
+                                            <div class="original">{{action}}</div>
                                             <div class="letters">
-                                                <span>A</span>
-                                                <span>D</span>
-                                                <span>D</span>
+                                                @for (C of action; track $index) {
+                                                     <span>{{C}}</span>
+ 
+                                                }
                                             </div>
                                         </button>
                                     </div>

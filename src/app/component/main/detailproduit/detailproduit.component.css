@@ -120,6 +120,24 @@ h2{
 
   
  
-  
+  .common-text {
+    color:  rgb(111, 111, 111);
+   }
+ 
+   .uncommon-text{
+     color:  rgb(100, 225, 194);
+   }
+   
+   .rare-text {
+     color:  rgb(33, 47, 104);
+   }
+   
+   .epic-text {
+     color:  #9932cc;
+   }
+   
+   .legendary-text {
+     color:  #eeb114;
+   } 
   
   

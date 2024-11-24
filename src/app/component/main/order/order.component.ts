@@ -70,7 +70,7 @@ export class OrderComponent {
 
   addCommand(): void {
     const formattedProducts = this.selectedItems.map(item => ({
-      product: item.product._id, // Use "product" to match the backend schema
+      product: item.product._id, 
       quantity: item.quantity,
     }));
   
@@ -88,7 +88,8 @@ export class OrderComponent {
       }
     );
   }
-  
+
+ 
 
   getImagePath(relativePath: string): string {
     return `http://localhost:3000/${relativePath.replace(/\\/g, '/')}`;

@@ -4,8 +4,12 @@
             <i class="fa-solid fa-arrow-left" style="margin-right: 10px;" ></i> GO BACK
         </button>
         <div class="action-buttons">
-            <button class="sell-btn" disabled>Sell</button>
-            <button class="withdraw-btn">Withdraw</button>
+          @if (selectedItems.length>0) {
+            <div class="text-end d-flex align-items-center">
+              <button class="btn btn-success rounded-5" (click)="addCommand()">Valider</button>
+            </div>
+          }
+            
         </div>
     </div>
 
@@ -62,11 +66,7 @@
                         <i class="bi bi-exclamation-triangle-fill"></i>
                         Please note you can only choose one item at once
                     </div>
-                    @if (selectedItems.length>0) {
-                      <div class="text-end">
-                        <button class="btn btn-success w-25 rounded-5 mb-5" (click)="addCommand()">Valider</button>
-                      </div>
-                    }
+                 
                     <div class="selected-item">
                       @for (item of selectedItems; track $index) {
                         <div  class="row mb-3">

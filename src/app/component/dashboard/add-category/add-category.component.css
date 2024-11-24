@@ -82,6 +82,15 @@ input.ng-valid{
 .btn-53:hover span:nth-child(3) {
   transition-delay: 0.2s;
 }
+.btn-53:hover span:nth-child(4) {
+  transition-delay: 0.3s;
+}
+.btn-53:hover span:nth-child(5) {
+  transition-delay: 0.4s;
+}
+.btn-53:hover span:nth-child(6) {
+  transition-delay: 0.5s;
+}
 
 
 

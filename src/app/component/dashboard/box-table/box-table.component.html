@@ -1,4 +1,62 @@
 <div class="p-3">
+    <div class="filters mb-4">
+        <div class="row">
+          <!-- Filter by Name -->
+          <div class="col-md-4">
+            <label for="nameFilter" class="form-label">Search by Name</label>
+            <input
+              id="nameFilter"
+              type="text"
+              class="form-control"
+              placeholder="Enter box name"
+              [(ngModel)]="nameFilter"
+              (input)="applyFilters()"
+            />
+          </div>
+    
+          <!-- Filter by Price Range -->
+          <div class="col-md-4">
+            <label for="priceFilter" class="form-label">Price Range</label>
+            <div class="d-flex gap-2">
+              <input
+                id="priceMin"
+                type="number"
+                class="form-control"
+                placeholder="Min"
+                [(ngModel)]="priceMin"
+                (input)="applyFilters()"
+              />
+              <input
+                id="priceMax"
+                type="number"
+                class="form-control"
+                placeholder="Max"
+                [(ngModel)]="priceMax"
+                (input)="applyFilters()"
+              />
+            </div>
+          </div>
+    
+          <!-- Filter by Category -->
+          <div class="col-md-4">
+            <label for="categoryFilter" class="form-label">Category</label>
+            <select
+              id="categoryFilter"
+              class="form-select"
+              [(ngModel)]="selectedCategory"
+              (change)="applyFilters()"
+            >
+              <option value="">All Categories</option>
+              @for (category of allCategories; track $index) {
+                <option  [value]="category._id">
+                    {{ category.name }}
+                  </option>
+              }
+             
+            </select>
+          </div>
+        </div>
+      </div>
     <table class="table table-striped table-hover text-center">
         <thead>
             <tr>
@@ -15,7 +73,7 @@
             @if (!isLoading && boxes.length === 0) {
                 No boxes available.
             }@else{
-                @for (box of boxes; track $index) {
+                @for (box of filteredBoxes; track $index) {
                     <tr>
                         <td>
                             {{box.name}}

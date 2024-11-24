@@ -1,4 +1,18 @@
 <div class="p-3">
+    <div class="filters mb-3 d-flex align-items-center">
+        <div class="form-group me-3">
+          <label for="nameFilter" class="form-label">Search by Name</label>
+          <input
+            id="nameFilter"
+            type="text"
+            class="form-control"
+            placeholder="Search by category name"
+            [(ngModel)]="nameFilter"
+            (input)="applyFilters()"
+          />
+        </div>
+    
+    </div>
     <table class="table table-striped table-hover text-center">
         <thead>
             <tr>
@@ -9,7 +23,7 @@
             </tr>
         </thead>
         <tbody>
-            @for (cat of categories; track $index) {
+            @for (cat of filteredCategories; track $index) {
                 <tr>
                     <td>
                         @if (cat.categoryImage) {
@@ -27,8 +41,6 @@
                     </td>
                 </tr>
             }
-
-
         </tbody>
     </table>
 </div>

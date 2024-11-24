@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Commande } from '../models/commande';
 import { Observable } from 'rxjs';
+import { Product } from '../models/product';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,7 @@ export class CommandesService {
     return this.http.put<Commande>(`${this.API_URL}updateCommandStatus/${commandId}`, { status }, { headers });
   }
   
-
+ 
 
 
 

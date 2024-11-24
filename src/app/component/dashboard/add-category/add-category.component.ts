@@ -19,6 +19,7 @@ export class AddCategoryComponent {
   categoryForm!: FormGroup;
   categoryId!: string;
   selectedImage: File | null = null;
+  action: string = "ADD"
 
   ngOnInit(): void {
     this.categoryId = this.activatedRoute.snapshot.params['id'];
@@ -32,6 +33,7 @@ export class AddCategoryComponent {
       this.categorieService.getCategoryById(this.categoryId).subscribe(
         (category) => {
           console.log(category);
+          this.action = "UPDATE";
           this.categoryForm.patchValue({
             name: category.name,
             description: category.description,
