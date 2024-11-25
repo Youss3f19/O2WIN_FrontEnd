@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { UsersService } from '../../../services/users.service';
 import { User } from '../../../models/user';
 import { TitleCasePipe, UpperCasePipe } from '@angular/common';
+import { Box } from '../../../models/box';
 
 @Component({
   selector: 'app-profile',
@@ -24,6 +25,10 @@ export class ProfileComponent implements OnInit {
     });
   }
   
+
+  nbOpenedBox():number{
+    return this.currentUser?.boxes.filter(box => box.opened === true).length || 0;
+  }
 
   
 
