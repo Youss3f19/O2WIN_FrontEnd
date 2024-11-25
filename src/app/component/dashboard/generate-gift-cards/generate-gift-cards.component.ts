@@ -2,11 +2,12 @@ import { HttpHeaders } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { GiftCardsService } from '../../../services/gift-cards.service';
+import { ModalComponent } from '../../modal/modal.component';
 
 @Component({
   selector: 'app-generate-gift-cards',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, ModalComponent],
   templateUrl: './generate-gift-cards.component.html',
   styleUrl: './generate-gift-cards.component.css'
 })
@@ -14,6 +15,11 @@ export class GenerateGiftCardsComponent implements OnInit  {
 
   private readonly fb: FormBuilder = inject(FormBuilder);
   private readonly giftCardsService: GiftCardsService = inject(GiftCardsService);
+
+  showModal: boolean = false;
+  modalTitle: string = '';
+  modalMessage: string = '';
+
 
   giftCardsForm!: FormGroup;
 
@@ -43,17 +49,26 @@ export class GenerateGiftCardsComponent implements OnInit  {
       this.giftCardsService.generateGiftCards(quantity, value, headers).subscribe(
          (response) => {
           console.log('Gift cards generated successfully:', response);
-          alert('Gift cards generated successfully!');
+          this.modalTitle = 'Gift card added';
+          this.modalMessage = 'Gift cards generated successfully!';
+          this.showModal = true;
         },
          (error) => {
           console.error('Error generating gift cards:', error);
-          alert('Failed to generate gift cards. Please try again.');
+          this.modalTitle = 'Fail';
+          this.modalMessage = 'Failed to generate gift cards. Please try again.';
+          this.showModal = true;
         }
       );
     } else {
       console.error('Form is invalid:', this.giftCardsForm.errors);
-        alert('Please fix the form errors before submitting.');
+        this.modalTitle = 'Error';
+          this.modalMessage = 'Please fix the form errors before submitting.';
+          this.showModal = true;
     }
   }
   
+  closeModal(): void {
+    this.showModal = false;
+  }
 }

@@ -3,11 +3,12 @@ import { Comment } from '../../../models/comment';
 import { DaysAgoPipe } from '../../../pipes/days-ago.pipe';
 import { UsersService } from '../../../services/users.service';
 import { User } from '../../../models/user';
+import { TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-comment',
   standalone: true,
-  imports: [DaysAgoPipe],
+  imports: [DaysAgoPipe, TitleCasePipe],
   templateUrl: './comment.component.html',
   styleUrl: './comment.component.css'
 })

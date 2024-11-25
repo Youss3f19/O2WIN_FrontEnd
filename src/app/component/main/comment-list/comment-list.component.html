@@ -7,26 +7,16 @@
         <div class="headings d-flex justify-content-between align-items-center mb-3">
           <h5>Comments({{comments.length}})</h5>
           <div class="d-flex">
-            <button class="btn btn-primary mx-1" (click)="onAddComment()"  type="submit" [disabled]="!newComment">submit</button>
+            <button class="btn  mx-1" (click)="onAddComment()"  type="submit" [disabled]="!newComment">submit</button>
             <input type="text" class="form-control mx-1" [(ngModel)]="newComment" name="commentText" placeholder="Add a comment..."  required>
-            <div class="buttons">
-  
-              <span class="badge bg-white d-flex flex-row align-items-center">
-                <span class="text-primary">Comments "ON"</span>
-                <div class="form-check form-switch">
-                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
-  
-                </div>
-              </span>
-  
-            </div>
+            
           </div>
   
   
         </div>
   
         @for (c of comments; track $index) {
-          <div class="card p-3 my-2">
+          <div class="card p-3 my-2 bg-secondary text-light">
             <app-comment [comment]="c" (deleteComment)="onDeleteComment($event)"></app-comment>
     
           </div>

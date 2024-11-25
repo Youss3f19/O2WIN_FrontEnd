@@ -7,11 +7,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Panier } from '../../../models/panier';
 import { UsersService } from '../../../services/users.service';
+import { ModalComponent } from '../../modal/modal.component';
 
 @Component({
   selector: 'app-panier',
   standalone: true,
-  imports: [RouterLink, DecimalPipe, FormsModule],
+  imports: [RouterLink, DecimalPipe, FormsModule, ModalComponent],
   templateUrl: './panier.component.html',
   styleUrls: ['./panier.component.css'], 
 })
@@ -19,6 +20,10 @@ export class PanierComponent {
   private readonly userService = inject(UsersService);
   private readonly boxesService = inject(BoxesService);
   private readonly router = inject(Router);
+
+  showModal: boolean = false;
+  modalTitle: string = '';
+  modalMessage: string = '';
 
   panier: Panier[] | null = null;
 
@@ -72,7 +77,9 @@ export class PanierComponent {
       this.boxesService.purchaseBoxes(this.panier, headers).subscribe(
         (response) => {
           console.log('Purchase successful:', response);
-  
+          this.modalTitle = 'Purchase successful ';
+          this.modalMessage = `Purchase successful! Total cost: ${response.totalCost}`;
+          this.showModal = true;
           // Vider le panier dans le service
           this.boxesService.clearPanierAfterPurchase();
   
@@ -82,19 +89,28 @@ export class PanierComponent {
           // Vérifier la validité de l'utilisateur après l'achat
           this.userService.checkUserValidity();
   
-          alert(`Purchase successful! Total cost: ${response.totalCost}`);
         },
         (error: HttpErrorResponse) => {
           console.error('Error during purchase:', error);
+          this.modalTitle = 'Error during purchase';
+          this.modalMessage = '';
+          this.showModal = true;
         }
       );
     } else {
-      alert('Your panier is empty!');
+      this.modalTitle = 'Empty';
+          this.modalMessage = 'Your cart is empty';
+          this.showModal = true;
+      
     }
   }
   
 
   getImagePath(relativePath: string): string {
     return `http://localhost:3000/${relativePath.replace(/\\/g, '/')}`;
+  }
+
+  closeModal(): void {
+    this.showModal = false;
   }
 }
