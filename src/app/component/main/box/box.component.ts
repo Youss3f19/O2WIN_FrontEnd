@@ -22,17 +22,13 @@ export class BoxComponent {
     this.usersService.currentUser$.subscribe(user => {
       if (user) {
         this.boxesService.addToPanier(box);
-        this.playSound();
       } else {
         this.router.navigate(['/main/auth/login']);
       }
     });
   }
 
-  playSound(): void {
-    const audio = new Audio('sounds/add-to-cart.mp3');
-    audio.play();
-  }
+
 
   getImagePath(relativePath: string): string {
     return `http://localhost:3000/${relativePath.replace(/\\/g, '/')}`;
