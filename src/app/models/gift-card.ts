@@ -5,9 +5,10 @@ export class GiftCard {
         public _id: string,
         public code : string,
         public value: number,
-        public redeemed: boolean = false,
-        public expirationDate : Date,
-        public redeemedBy?:User
+        public isRedeemed: boolean = false,
+        public redeemedBy?:User,
+        public createdAt?: Date,
+
 
 
     ) { }

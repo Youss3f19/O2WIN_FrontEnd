@@ -1,16 +1,28 @@
-<div class="p3">
+<div class="p-3">
     <table class="table table-striped table-hover text-center">
         <thead>
             <tr>
-                <th scope="col">User</th>
-                <th scope="col">Products</th>
-                <th scope="col">Status</th>
-                <th scope="col">Date</th>
-                <th scope="col">Actions</th>
+                <th scope="col">Code</th>
+                <th scope="col">Value</th>
+                <th scope="col">CreatedAt</th>
+                <th scope="col">RedeemedBy</th>
+
             </tr>
         </thead>
         <tbody>
-            
+            @for (card of giftCards.reverse(); track $index) {
+                <tr>
+                    <td>{{card.code}}</td>
+                    <td>{{card.value}}</td>
+                    <td>{{card.createdAt| date: 'dd/MM/yyyy'}}</td>
+                    @if (card.isRedeemed) {
+                        <td>{{card.redeemedBy?.name}} {{card.redeemedBy?.lastname}}</td>
+                    }
+                    @else {
+                        <td>Not Redeemed</td>
+                    }
+                </tr>
+            }
         </tbody>
     </table>
 </div>

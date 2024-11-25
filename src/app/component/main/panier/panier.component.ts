@@ -21,7 +21,7 @@ export class PanierComponent {
   private readonly router = inject(Router);
 
   panier: Panier[] | null = null;
-
+  
   ngOnInit(): void {
     this.boxesService.currentPanier$.subscribe((panier) => {
       if (panier) {
@@ -47,6 +47,7 @@ export class PanierComponent {
   updateTotal(index: number, quantity: number): void {
     if (this.panier) {
       this.panier[index].quantity = quantity;
+
     }
   }
 
@@ -73,15 +74,14 @@ export class PanierComponent {
         (response) => {
           console.log('Purchase successful:', response);
   
-          // Vider le panier dans le service
           this.boxesService.clearPanierAfterPurchase();
   
-          // Vider le panier localement
           this.panier = null;
   
-          // Vérifier la validité de l'utilisateur après l'achat
           this.userService.checkUserValidity();
   
+          this.playSound();
+
           alert(`Purchase successful! Total cost: ${response.totalCost}`);
         },
         (error: HttpErrorResponse) => {
@@ -92,8 +92,12 @@ export class PanierComponent {
       alert('Your panier is empty!');
     }
   }
-  
+   
 
+  playSound() {
+    const audio = new Audio('sounds/cash.mp3');
+    audio.play();
+  }
   getImagePath(relativePath: string): string {
     return `http://localhost:3000/${relativePath.replace(/\\/g, '/')}`;
   }

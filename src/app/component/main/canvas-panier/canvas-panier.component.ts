@@ -18,16 +18,16 @@ export class CanvasPanierComponent {
 
   ngOnInit(): void {
     this.boxesService.currentPanier$.subscribe((panier) => {
-      this.panier = panier || null;
-      console.log('Panier : ', panier);
+      this.panier = panier && panier.length > 0 ? panier : null;
     });
   }
 
   removeFromPanier(index: number): void {
-    this.boxesService.removeFromPanier(index);
-    if (this.panier && this.panier.length === 0) {
-      this.boxesService.emptyPanier();
-      this.panier = null;
+    if (this.panier) {
+      this.boxesService.removeFromPanier(index);
+      if (this.panier.length === 0) {
+        this.boxesService.emptyPanier();
+      }
     }
   }
 

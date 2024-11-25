@@ -23,4 +23,9 @@ export class GiftCardsService {
     return this.http.post<GiftCard>(this.API_URL + "generate/" , { numberOfCards , value}, {headers});
   }
 
+  getAllGiftCards(headers: HttpHeaders): Observable<GiftCard[]> {
+    return this.http.get<GiftCard[]>(this.API_URL + "getAllGiftCards/", { headers });
+}
+
+
 }

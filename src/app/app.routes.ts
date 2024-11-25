@@ -30,6 +30,7 @@ import { OrderComponent } from './component/main/order/order.component';
 import { OrderTableComponent } from './component/dashboard/order-table/order-table.component';
 import { GenerateGiftCardsComponent } from './component/dashboard/generate-gift-cards/generate-gift-cards.component';
 import { PartnershipComponent } from './component/main/partnership/partnership.component';
+import { GiftCardsTableComponent } from './component/dashboard/gift-cards-table/gift-cards-table.component';
 
 
 export const routes: Routes = [
@@ -51,6 +52,8 @@ export const routes: Routes = [
             { path: 'update-category/:id' , component: AddCategoryComponent },
             { path: 'order-table/:status' , component: OrderTableComponent },
             { path: 'generate-gift-cards' , component: GenerateGiftCardsComponent },
+            { path: 'gift-card-table' , component: GiftCardsTableComponent },
+
 
 
 

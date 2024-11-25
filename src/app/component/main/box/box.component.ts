@@ -9,29 +9,31 @@ import { UsersService } from '../../../services/users.service';
   standalone: true,
   imports: [RouterLink],
   templateUrl: './box.component.html',
-  styleUrl: './box.component.css'
+  styleUrls: ['./box.component.css']
 })
 export class BoxComponent {
   private readonly router: Router = inject(Router);
-  private readonly boxesService : BoxesService= inject(BoxesService);
-  private readonly usersService : UsersService= inject(UsersService);
+  private readonly boxesService: BoxesService = inject(BoxesService);
+  private readonly usersService: UsersService = inject(UsersService);
 
-  @Input() box! :Box;
-
+  @Input() box!: Box;
 
   addBoxToCart(box: Box): void {
     this.usersService.currentUser$.subscribe(user => {
       if (user) {
         this.boxesService.addToPanier(box);
+        this.playSound();
       } else {
         this.router.navigate(['/main/auth/login']);
       }
-    })
-
+    });
   }
-  
 
-  
+  playSound(): void {
+    const audio = new Audio('sounds/add-to-cart.mp3');
+    audio.play();
+  }
+
   getImagePath(relativePath: string): string {
     return `http://localhost:3000/${relativePath.replace(/\\/g, '/')}`;
   }

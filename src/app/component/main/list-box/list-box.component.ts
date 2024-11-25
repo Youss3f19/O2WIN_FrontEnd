@@ -28,7 +28,7 @@ export class ListBoxComponent implements OnInit {
     this.loadCategories();
     this.loadBoxes();
   }
-
+ 
   loadCategories(): void {
     this.categoryService.getCategorys().subscribe(
       (categories) => {
