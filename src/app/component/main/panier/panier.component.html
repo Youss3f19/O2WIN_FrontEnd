@@ -1,4 +1,7 @@
 <div class="container text-light mt-5 mb-5">
+  @if(showModal){
+    <app-modal [title]="modalTitle" [message]="modalMessage" (closeModal)="closeModal()"></app-modal>
+    }
     <div class="row">
       <div class="col-12 fs-2 text-center panier">
         Votre panier
