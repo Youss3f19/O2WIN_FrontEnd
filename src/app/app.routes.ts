@@ -31,6 +31,7 @@ import { OrderTableComponent } from './component/dashboard/order-table/order-tab
 import { GenerateGiftCardsComponent } from './component/dashboard/generate-gift-cards/generate-gift-cards.component';
 import { PartnershipComponent } from './component/main/partnership/partnership.component';
 import { GiftCardsTableComponent } from './component/dashboard/gift-cards-table/gift-cards-table.component';
+import { Error404Component } from './component/error404/error404.component';
 
 
 export const routes: Routes = [
@@ -87,7 +88,8 @@ export const routes: Routes = [
              { path: 'partnership' , component: PartnershipComponent }
 
         ]
-    }
+    },
+    { path: '**',  title : 'Error404' ,component:Error404Component }
     
 ];
 

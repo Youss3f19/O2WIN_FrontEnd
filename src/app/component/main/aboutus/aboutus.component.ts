@@ -7,7 +7,7 @@ import { LoaderComponent } from '../../loader/loader.component';
   standalone: true,
   imports: [RouterLink, LoaderComponent],
   templateUrl: './aboutus.component.html',
-  styleUrl: './aboutus.component.css'
+  styleUrls: ['./aboutus.component.css' , './aboutus2.component.css']
 })
 export class AboutusComponent {
   isLoading: boolean = false; 
